@@ -1,26 +1,46 @@
-.DS_Store
-
-application/cache/*
-!application/cache/index.html
-
+# logs and cache files
+**/logs
+**/logs/debug.log
+**/logs/error.log
+**/error.log
+*.log
 application/logs/*
-!application/logs/index.html
-
-!application/*/.htaccess
-
 composer.lock
 
-user_guide_src/build/*
-user_guide_src/cilexer/build/*
-user_guide_src/cilexer/dist/*
-user_guide_src/cilexer/pycilexer.egg-info/*
+.DS_Store
+application/cache/*
+
+# Backup Files
+*.bak
+
+# Composer Files
 /vendor/
+composer.phar
+composer.lock
+
+# application direcrories
+/uploads
+user_guide/*
+user_guide/build/*
+user_guide/cilexer/build/*
+user_guide/cilexer/dist/*
+user_guide/cilexer/pycilexer.egg-info/*
+
+#application files
+environment.php
+phinx.yml
+
+#system config files
+.editorconfig
+
+
+# github cache
+/github-cache
+github-*.zip
 
 # IDE Files
-#-------------------------
 /nbproject/
 .idea/*
-
 ## Sublime Text cache files
 *.tmlanguage.cache
 *.tmPreferences.cache
