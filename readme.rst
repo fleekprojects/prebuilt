@@ -20,15 +20,15 @@ Main pages of the website will be designed later. We need to test and experience
 
 -  Customer visits the site and hit the get project started sequence.
 -  
-Business details! business name, industry, upload logo (if any).
+Business details; business name, industry, upload logo (if any).
 -  Enter domain name (if any), otherwise search for a domain name (Namecheap API to find & buy domain). Domain search results will appear on this step for selection.
 -  Themes preview (Images) Clicking any image will zoom in for larger preview.
 -  
-Requirements info! the customer will enter details about the project here. Just one field to gather all info.
--  Packages selection! Two packages will be displayed; a) One-time package. b) Lower one-time package and a monthly price.
+Requirements info; the customer will enter details about the project here. Just one field to gather all info.
+-  Packages selection; Two packages will be displayed; a) One-time package. b) Lower one-time package and a monthly price.
 -  
-Customer details! Package selected,  Name, phone, email,  contact preferences.
+Customer details; Package selected,  Name, phone, email,  contact preferences.
 -  
-Payment screen! both paypal and credit card payment are accepted
+Payment screen; both paypal and credit card payment are accepted
 .
 -  Payment thank you screen and auto redirection to user dashboard.
