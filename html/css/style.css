@@ -35,7 +35,7 @@ h1.h_content {
     font-weight: 600;
 }
 p.p_content {
-    text-align: justify;
+    text-align: left;
     display: block;
     margin-left: 18%;
     margin-right: 18%;
@@ -44,9 +44,18 @@ p.p_content {
     font-size: 16px;
 }
 
-
+.topSection{
+    height: 90vh;
+    overflow: hidden;
+    padding: 60px;
+    overflow-y: auto;
+    padding-top: 159px;
+}
+footer{
+    padding: 3px 60px;
+}
 .l_style {
-    text-align: justify !important;
+    text-align: left;
 }
 .custom-file-upload .custom-file-upload {
     border: 1px solid #ccc;
@@ -58,8 +67,7 @@ p.p_content {
     display: none;
 }
 .bg_height {
-    padding-top: 217px;
-    padding-left: 55px;
+   padding:0px;
     height: 100vh;
 }
 select.s_select {
@@ -69,6 +77,10 @@ select.s_select {
     border-radius: 4px;
     padding-left: 10px;
     border: 1px solid #ccc;
+}
+.form-horizontal .control-label {
+   
+    text-align: left;
 }
 .f_name {
     width: 40%;
@@ -86,6 +98,10 @@ select.s_select {
 .f_font {
     font-size: 14px;
     color: #a56fef;
+}
+.active {
+   
+    border: 3px solid !important;
 }
 
 label.custom-file-upload {
@@ -175,12 +191,13 @@ p.o_one {
     border-radius: 4px;
 }
 .bg1_height {
-    padding-top: 80px;
-    overflow-y: visible;
-    height: auto;
-    /* padding-bottom: 190px; */
+    /* padding-top: 80px;
+    overflow-y: visible;*/
+    height: 100vh;
+    /* padding-bottom: 190px;
     overflow-x: hidden;
-    padding: 60px;
+    padding: 60px; */
+        overflow: hidden;
 }
 
 h2.s_main {
@@ -222,6 +239,7 @@ button.btn.p_btn {
 section.bg_color_bg {
     background-color: #a56fef;
     height: 100vh;
+    margin-top: -20px;
 }
 h2.p_confirm {
     font-size: 32px;
@@ -349,19 +367,21 @@ a.con_back {
     
 }
 img.img-responsive.i_img:hover {
-   
-    height: 352px;
+
+    height: 190px;
+
 }
-.s_shadow:hover
-{
+.s_shadow:hover {
+
     box-shadow: 0px 0px 150px #000000;
     z-index: 2;
-    transition: all 0.5s ease;
+    transition: all 0.6s ease;
     height: 100%;
-    transform: scale(1.2);
+    transform: scale(1.05);
     z-index: 9999;
-    height: 400px;
+    height: 242px;
     position: absolute;
+
 }
 .btn_color {
     padding-left: 50px;
@@ -393,7 +413,7 @@ button.btn.p_btn:hover {
     border: 1px solid #651dc7;
 }
 .footer_inner.clearifix {
-    position: fixed;
+  /* position: fixed;*/
     bottom: 0px;
    
     right: 0px;
@@ -402,9 +422,9 @@ button.btn.p_btn:hover {
     
 }
 .footer_inner_left.clearifix {
-    position: fixed;
-    bottom: 0px;
-   
+        display: inline-block;
+   /* bottom: 0px;
+   position: fixed;*/
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation:landscape){
@@ -472,11 +492,70 @@ a.con_back {
 .bg_height {
     padding-left: 17px;
 }
+.footer_inner_left.clearifix {
+   
+        margin-left: -51px;
+    
+   
+}
+.footer_inner.clearifix {
+  
+    margin-top: 1px;
+    margin-right: -56px;
+
+}
+.topSection {
+    padding: 30px;
+}
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024p)  {
     .g_pad label.control-label.col-md-2.l_style {
    
     float: left;
+}
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px){
+   .bg_logo {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.s_shadow {
+    margin-bottom: 24px;
+}
+.more a {
+   
+    padding-left: 35%;
+    padding-right: 35%;
+    
+}
+.btn_pay {
+    text-align: center;
+}
+.bg1_height {
+   
+    padding: 25px;
+}
+.padding_bg {
+    padding: 0px !important;
+}
+.top_one {
+    padding: 0px;
+}
+.confrm_btn {
+    text-align: center;
+}
+select.s_select {
+    width: 100%;
+}
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px)and (orientation:landscape)
+{
+    .bg_color {
+  
+    padding-top: 35px;
+   
 }
 }

@@ -29,7 +29,8 @@
           <p class="p_content">Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit,<br> sed to eiusmod tempor<br> incididunt ut labore et <br>dolore magna aliqua.</p>
 
         </div>
-        <div class="col-md-9 bg1_height">
+        <div class="col-md-9 padding_bg">
+            <div class="topSection top_one">
          
           <div class="col-md-6">
              <h2 class="s_main">Standard Package</h2>
@@ -91,6 +92,7 @@
        
       </div>
           </div>
+          </div>
 
           <footer>
     <div class="footer_inner_left clearifix">
@@ -123,16 +125,17 @@
   <script src="js/aos-min.js"></script>
   <script src="js/owl.carousel-min.js"></script>
   <script src="js/custom.js"></script>
+  
+  
   <script type="text/javascript">
-   $('.more a').click(function()
+   $( document ).ready(function() {
 
-   {
-
-    alert("Package has been Selected");
-     $(".box").css({"background-color": "#a56fef"});
-
-   })
-
+  $('.i_info').click( function() {
+      $('.i_info').removeClass( "active" );
+    $(this).addClass( "active" );
+    
+} );
+}); 
 
   </script>
   
