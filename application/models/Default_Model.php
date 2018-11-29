@@ -4,7 +4,7 @@
 
 		function __construct() {
 			parent::__construct();
-			$set= $this->db->get('settings')->row();
+			$set= $this->db->get('pre_settings')->row();
 			define('Site_Title',$set->Site_Title);
 			define('Admin_Title',$set->Admin_Title);
 			define('Site_Email',$set->Email);
