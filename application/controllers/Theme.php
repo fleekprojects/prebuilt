@@ -9,7 +9,10 @@
 		}
 		
 		public function index(){
-			$viewdata="";
+			$get_data=array('parent_id'=>0);
+			$viewdata['categories']=$this->Dmodel->get_tbl_whr_arr('pre_categories',$get_data);
+			$viewdata['themes']=$this->Dmodel->get_tbl('pre_themes');
+			
 			$this->LoadView('theme',$viewdata);
 		}
 		

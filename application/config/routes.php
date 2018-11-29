@@ -57,6 +57,9 @@ $route['other-info'] = 'Info';
 $route['select-package'] = 'Package';
 $route['checkout'] = 'Checkout';
 $route['payment-confirm'] = 'Confirm';
+$route['save-user-info'] = 'Home/save_user_info';
+$route['domain'] = 'Domain/index';
+$route['select-theme'] = 'Theme/index';
 
 $route['admin/contact-queries'] = 'admin/Contact';
 $route['admin/categories'] = 'admin/Categories';

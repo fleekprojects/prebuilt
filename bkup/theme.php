@@ -14,25 +14,65 @@
                   <button class="btn btn-small btn-danger btn_color" data-toggle="portfilter" data-target="all">
                   All
                   </button>
-				  <?php foreach($categories as $category){ ?>
                   <button class="btn btn-small btn-danger btn_color" data-toggle="portfilter" data-target="art">
-                  <?= $category['name']?>
+                  Websites
                   </button>
-				  <?php }  ?>
+                  <button class="btn btn-small btn-danger btn_color" data-toggle="portfilter" data-target="media">
+                  Brochures
+                  </button>
+                  <button class="btn btn-small btn-danger btn_color" data-toggle="portfilter" data-target="brand">
+                  Logo design / Brand Collaterals
+                  </button>
                </div>
             </div>
             <div class="row">
-			<?php foreach($themes as $theme){ ?>
-               <div class="col-md-3" data-tag='all'>
+               <div class="col-md-3" data-tag='brand'>
                   <div class="s_shadow">
-                     <h1 class="alignleft"><?= $theme['theme_name'] ?></h1>
+                     <h1 class="alignleft">THEME 1</h1>
                      <a href="#" class="alignright">SELECT</a>
-                     <img src="<?=base_url()?>assets/front/images/<?= $theme['image1']?>" class="img-responsive i_img">
+                     <img src="images/image1.jpg" class="img-responsive i_img">
                   </div>
                </div>
-			<?php } ?>
-			   </div>
-           <!--<div class="col-md-3">
+               <div class="col-md-3" data-tag='media'>
+                  <div class="s_shadow">
+                     <h1 class="alignleft">THEME 2</h1>
+                     <a href="#" class="alignright">SELECT</a>
+                     <img src="images/image2.jpg" class="img-responsive i_img">
+                  </div>
+               </div>
+               <div class="col-md-3" data-tag='art'>
+                  <div class="s_shadow">
+                     <h1 class="alignleft">THEME 3</h1>
+                     <a href="#" class="alignright">SELECT</a>
+                     <img src="images/image3.jpg" class="img-responsive i_img">
+                  </div>
+               </div>
+               <div class="col-md-3" data-tag='brand'>
+                  <div class="s_shadow">
+                     <h1 class="alignleft">THEME 4</h1>
+                     <a href="#" class="alignright">SELECT</a>
+                     <img src="images/image3.jpg" class="img-responsive i_img">
+                  </div>
+               </div>
+            </div>
+            <br>
+            <div class="row">
+               <div class="col-md-3" data-tag='media'>
+                  <div class="s_shadow">
+                     <h1 class="alignleft">THEME 1</h1>
+                     <a href="#" class="alignright">SELECT</a>
+                     <img src="images/image1.jpg" class="img-responsive i_img">
+                  </div>
+               </div>
+               <div class="col-md-3" data-tag='art'>
+                  <div class="s_shadow">
+                     <h1 class="alignleft">THEME 2</h1>
+                     <a href="#" class="alignright">SELECT</a>
+                     <img src="images/image2.jpg" class="img-responsive i_img">
+                  </div>
+               </div>
+            </div>
+            <!--<div class="col-md-3">
                <div class="s_shadow">
                <h1 class="alignleft">THEME 1</h1>
                <a href="#" class="alignright">SELECT</a>

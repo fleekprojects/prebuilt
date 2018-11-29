@@ -9,6 +9,7 @@
 		}
 		
 		public function index(){
+			
 			$viewdata="";
 			$this->LoadView('domain',$viewdata);
 		}
