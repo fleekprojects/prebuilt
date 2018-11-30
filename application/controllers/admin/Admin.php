@@ -45,7 +45,11 @@
 		public function login_auth(){
 			$data['user_name']=$_POST['user_name']; 
 			$data['password']=md5($_POST['password']);
-			$data['remember_me']=$_POST['remember_me']; 
+			if(isset($_POST['remember_me']) && $_POST['remember_me'] == 'on'){
+				$data['remember_me']=$_POST['remember_me']; 
+			}else{
+				$data['remember_me']='off';
+			}
 			$result = $this->Amodel->login($data);
 			echo $result;
 		}
@@ -65,13 +69,13 @@
 		public function dashboard(){
 			$this->Dmodel->checkLogin();
 			$viewdata['title']="Trade Ins";
-			$viewdata['counters']=$this->Amodel->get_counters();
-			$viewdata['records']=$this->Amodel->get_recent();
+			//$viewdata['counters']=$this->Amodel->get_counters();
+			//$viewdata['records']=$this->Amodel->get_recent();
 			$this->LoadAdminView("admin/dashboard",$viewdata);
 		}
 		
 		public function updatesettings(){
-			$tbl="settings";
+			$tbl="pre_settings";
 			$ID=1;
 			$key="ID";
 			$Title=$this->input->post('Title');
