@@ -28,10 +28,13 @@ user_guide/cilexer/pycilexer.egg-info/*
 
 #application files
 environment.php
+environment2.php
 phinx.yml
 
 #system config files
 .editorconfig
+/.htaccess
+.htaccess
 
 
 # github cache
