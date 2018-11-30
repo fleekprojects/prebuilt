@@ -54,6 +54,7 @@ $route['default_controller'] = 'Home';
 $route['select-domain'] = 'Domain';
 $route['select-theme'] = 'Theme';
 $route['other-info'] = 'Info';
+$route['save-details'] = 'Info/savedetails';
 $route['select-package'] = 'Package';
 $route['checkout'] = 'Checkout';
 $route['payment-confirm'] = 'Confirm';
