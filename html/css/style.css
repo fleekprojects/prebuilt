@@ -699,9 +699,16 @@ select.s_select {
 
 }
 }
+
+@media(max-width: 1280px){
+  footer {
+    max-width: 900px;
+
+}
+}
 @media(max-width: 1024px){
   footer {
-    max-width: 767px;
+    max-width: 750px;
 
 }
 }
@@ -712,6 +719,9 @@ select.s_select {
 }
 }
 @media (max-width:768px){
+  .bg1_height, .bg_height {
+    height: auto;
+}
   .f_name,select.s_select{ width: 100%; margin-bottom: 20px;}
   .form-horizontal .radio-inline{margin-bottom: 20px;}
   .btn_color { padding-left:0px; padding-right:0px;width: 100%;margin-bottom: 10px;}
@@ -730,6 +740,7 @@ select.s_select {
   footer{
    position: relative;
    padding: 10px;
+   background: none;
 }
 .padding_bg footer, .bg1_height footer {
     bottom: 0px;
