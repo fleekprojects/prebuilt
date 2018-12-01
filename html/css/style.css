@@ -66,29 +66,25 @@ p.p_content {
     padding-top: 79px;
 }
 footer{
-    padding: 3px 30px;
-    position: absolute;
-    bottom: 20px;
+    padding: 30px 30px;
+   position: fixed;
+    bottom: 0px;
     width:100%;
-    max-width: 1080px;
+    max-width: 1000px;
     margin: 0px auto;
-    left: 0px;
     right:0px;
     background: #fff;
-    z-index: 9;
+    z-index: 9999;
 }
+.theme-sec{
+  overflow: hidden;
+}
+.bg1_height,
 .bg_height {
     height: 100vh;
 }
-.padding_bg footer{
-  bottom:20px;
-}
-.conFrm footer,
-.bg1_height footer{
- bottom:0px;
-}
-.confrm_btn {
 
+.confrm_btn {
     margin-bottom: 30px;
 
 }
@@ -703,7 +699,18 @@ select.s_select {
 
 }
 }
+@media(max-width: 1024px){
+  footer {
+    max-width: 767px;
 
+}
+}
+
+@media (max-width: 900px){
+  footer {
+    max-width: inherit;
+}
+}
 @media (max-width:768px){
   .f_name,select.s_select{ width: 100%; margin-bottom: 20px;}
   .form-horizontal .radio-inline{margin-bottom: 20px;}
@@ -720,7 +727,10 @@ select.s_select {
 
 }
   .topSection {  height: 100%;}
-  footer{bottom: 0px;}
+  footer{
+   position: relative;
+   padding: 10px;
+}
 .padding_bg footer, .bg1_height footer {
     bottom: 0px;
 }
