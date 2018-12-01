@@ -25,6 +25,16 @@
     padding-top: 214px;
     height: 100vh;
 }
+  .bg_color1 {
+    height: 115vh;
+}
+ .bg_color2 {
+    height: 120vh;
+}
+.topSection.top_one {
+    height: 100vh;
+    margin-bottom: 80px;
+}
 h1.h_content {
     text-align: justify;
     display: block;
@@ -56,9 +66,9 @@ p.p_content {
     padding-top: 79px;
 }
 footer{
-    padding: 3px 60px;
+    padding: 3px 30px;
     position: absolute;
-    bottom: 60px;
+    bottom: 20px;
     width:100%;
     max-width: 1080px;
     margin: 0px auto;
@@ -66,6 +76,21 @@ footer{
     right:0px;
     background: #fff;
     z-index: 9;
+}
+.bg_height {
+    height: 100vh;
+}
+.padding_bg footer{
+  bottom:20px;
+}
+.conFrm footer,
+.bg1_height footer{
+ bottom:0px;
+}
+.confrm_btn {
+
+    margin-bottom: 30px;
+
 }
 .l_style {
     text-align: left;
@@ -79,9 +104,7 @@ footer{
 .custom-file-upload input[type="file"] {
     display: none;
 }
-.topSection {
-    height: 100vh;
-}
+
 .btn-danger:active,
 .btn_color:hover{
   background: #8953d3;
@@ -508,9 +531,7 @@ a:hover{
     transform: scale(1.05);
     z-index: 9999;
 }
-.bg1_height {
-      height: 100vh;
-  }
+
 .btn_color {
     padding-left: 50px;
     padding-right: 50px;
@@ -621,19 +642,10 @@ a.con_back {
     bottom: 5%;
     left: 27%;
 }
-.bg_height {
-    padding-left: 17px;
-}
-.footer_inner_left.clearifix {
-
-        margin-left: -51px;
 
 
-}
 .footer_inner.clearifix {
-
     margin-top: 1px;
-    margin-right: -56px;
 
 }
 .topSection {
@@ -702,9 +714,16 @@ select.s_select {
   .i_info ul { text-align: left;}
   .g_pad {margin-bottom: 6px;}
   .button-default{max-width: inherit;}
+  .topSection.top_one {
+    height: 100%;
+    margin-bottom: 10px;
+
+}
   .topSection {  height: 100%;}
   footer{bottom: 0px;}
-
+.padding_bg footer, .bg1_height footer {
+    bottom: 0px;
+}
 .bg1_height {
       height: 100%;
   }
