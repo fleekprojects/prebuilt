@@ -35,7 +35,8 @@ class Model_admin extends CI_Model {
                 $this->session->set_userdata('_admin',true);
                 $this->session->set_userdata('admin_user_name',$user_name);
                 $this->session->set_userdata('admin_id',$rows->user_id);
-                $this->session->set_userdata('admin_email',$rows->Email);
+                $this->session->set_userdata('admin_email',$rows->email);
+                $this->session->set_userdata('admin_roles',$rows->user_role);
 				return $rows->user_id;
             }
             else{
@@ -85,5 +86,7 @@ class Model_admin extends CI_Model {
 	  $counters['returned']=$this->db->get_where('orders', array('status' => 'returned'))->num_rows();
 	  return $counters;
 	}
+
+	
 }
 ?>

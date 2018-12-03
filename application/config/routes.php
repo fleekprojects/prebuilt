@@ -61,6 +61,9 @@ $route['save-user-info'] = 'Home/save_user_info';
 $route['domain'] = 'Domain/index';
 $route['select-theme'] = 'Theme/index';
 
+
+
+
 $route['admin/contact-queries'] = 'admin/Contact';
 $route['admin/categories'] = 'admin/Categories';
 $route['admin/categories/(:any)'] = 'admin/Categories/$1';
@@ -112,5 +115,6 @@ $route['(:any)'] = 'Blogs/page/$1';
 // $route['staff/(:any)'] = 'Staff/$1';
 
 // $route['updatesettings'] = 'Admin/updatesettings';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

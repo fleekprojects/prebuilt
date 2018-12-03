@@ -20,6 +20,24 @@
 			define('Date_Now',date('Y-m-d'));
 			define('Time_Now',date('H:i:s'));
 			define('DateTime_Now',date('Y-m-d H:i:s'));
+			if($this->session->userdata('admin_id') != ''){
+			$userinfo= $this->db->get_where('pre_users', array('user_id' => $this->session->userdata('admin_id')))->row();
+			$userdetails= $this->db->get_where('pre_user_details', array('user_id' => $userinfo->user_id))->row();
+			define('user_id',$userinfo->user_id);
+			define('user_name',$userinfo->user_name);
+			define('user_pass',$userinfo->password);
+			define('user_email',$userinfo->email);
+			define('first_name',$userdetails->first_name);
+			define('last_name',$userdetails->last_name);
+			define('business_name',$userdetails->business_name);
+			define('industry_id',$userdetails->industry_id);
+			define('contact_preference',$userdetails->contact_preference);
+			define('address_1',$userdetails->address_1);
+			define('address_2',$userdetails->address_2);
+			define('city',$userdetails->city);
+			define('state',$userdetails->state);
+			define('country',$userdetails->country);
+			}else{}
 		}
 		
 		function checkLogin(){
@@ -38,6 +56,11 @@
 			return $query->result_array();
 		}
 		
+		function get_user_roles($tbl,$id){
+		    $query = $this->db->get_where($tbl, array('user_id' => $id));
+			return $query->row();
+		}
+
 		function get_tbl_whr_arr($tbl,$arr){	
 			$query = $this->db->get_where($tbl, $arr);
 			return $query->result_array();
