@@ -64,7 +64,9 @@ $route['select-theme'] = 'Theme/index';
 
 
 
-$route['admin/contact-queries'] = 'admin/Contact';
+$route['admin/users'] = 'admin/Users';
+$route['admin/usersadd'] = 'admin/Users/adduser';
+$route['admin/usersedit'] = 'admin/Users/edituser';
 $route['admin/categories'] = 'admin/Categories';
 $route['admin/categories/(:any)'] = 'admin/Categories/$1';
 $route['admin/condition'] = 'admin/Condition';

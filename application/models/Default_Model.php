@@ -50,7 +50,7 @@
 			$query = $this->db->get($tbl);
 			return $query->result_array();
 		}
-		
+
 		function get_tbl_whr($tbl,$id){	
 			$query = $this->db->get_where($tbl, array('id' => $id));
 			return $query->result_array();

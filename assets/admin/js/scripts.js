@@ -27,6 +27,30 @@
 		  }
 		});
 	}); 
+
+	$( "#createuserform" ).on( "submit", function(event){
+		event.preventDefault();
+		var val=$( this ).serialize() ;
+		$.ajax({
+		  type: "POST",
+		  data: val,
+		  url: 'usersadd',
+		  success: function (data) {
+		  	if(data == 'emailexist'){
+			  $('#usersmsg').html('<b style="color: red;">Error: Email address already exists. </b>');
+			}
+			else if(data == 'usernameexist'){
+			  $('#usersmsg').html('<b style="color: red;">Error: User name already exists. </b>');
+			}else{
+			   $('#usersmsg').html('<p><b style="color: green;">User add Successfully.</b></p>');	
+			}
+		  },
+		  error: function (xhr, textStatus, errorThrown) 
+		  {
+			$('#usersmsg').html('<b style="color: red;">Error: Somthing missing please refresh your browser and try again. </b>');
+		  }
+		});
+	}); 
 	  
 	$("#Addform").submit(function(e) { 
 		e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -64,6 +88,36 @@
 		}
 
 	});
+
+	$(document).on("click", ".edituser", function () {
+		var userId = $(this).attr("userId");
+		$.ajax({
+            url: "usersedit",
+            data: {userId:userId},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	$('#userid').val(result.user_id);
+            	$('#edit_fname').val(result.first_name);
+            	$('#edit_lname').val(result.last_name);
+            	$('#edit_email').val(result.email);
+            	$('#edit_business_name').val(result.business_name);
+            	$('#edit_user_role option[value='+result.user_role+']').attr('selected','selected');
+            	$('#edit_industry option[value='+result.industry_id+']').attr('selected','selected');
+            	$('#edit_contact_pref option[value='+result.contact_preference+']').attr('selected','selected');
+            	$('#edit_country option[value='+result.country+']').attr('selected','selected');
+            	$('#edit_state').val(result.state);
+            	$('#edit_city').val(result.city);
+            	$('#edit_address1').val(result.address_1);
+            	$('#edit_address2').val(result.address_2);
+            },
+            error: function () {
+            }
+        });
+    });		
+
 		
 	$(".btn-edit").click(function(){
 		$("#id").val($(this).data("id"));
