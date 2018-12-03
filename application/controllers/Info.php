@@ -14,7 +14,9 @@
 			$this->LoadView('info',$viewdata);
 		}
 		public function savedetails(){
-			
+			// $arr = unserialize($_COOKIE['user_info']);
+			print_r($_COOKIE['user_info']);
+			die;
 			
 			$user_info=array('user_info'=>$_POST);
 			$exec=$this->Fmodel->save_user_data($user_info);
