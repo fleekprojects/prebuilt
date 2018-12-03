@@ -18,25 +18,26 @@ class Model_admin extends CI_Model {
 				'expire' => '2147483647',                                                               
 				'secure' => TRUE
 			);
-		    $this->input->set_cookie($cookie);   
+		    //$this->input->set_cookie($cookie);   
 			$cookie = array(
 				'name'   => 'password',
 				'value'  => $password,                            
 				'expire' => '2147483647',                                                               
 				'secure' => TRUE
 			);
-		    $this->input->set_cookie($cookie);
+		    //$this->input->set_cookie($cookie);
 		}
 		$this->db->where('user_name',$user_name);    
-		$query = $this->db->get('users');
+		$query = $this->db->get('pre_users');
         if($query->num_rows() == 1){
             $rows = $query->row();
             if($rows->password == $password){
                 $this->session->set_userdata('_admin',true);
                 $this->session->set_userdata('admin_user_name',$user_name);
-                $this->session->set_userdata('admin_id',$rows->ID);
-                $this->session->set_userdata('admin_email',$rows->Email);
-				return $rows->ID;
+                $this->session->set_userdata('admin_id',$rows->user_id);
+                $this->session->set_userdata('admin_email',$rows->email);
+                $this->session->set_userdata('admin_roles',$rows->user_role);
+				return $rows->user_id;
             }
             else{
                 return 0;
@@ -48,10 +49,10 @@ class Model_admin extends CI_Model {
     }
 		
 	function fpass($email,$string){
-		$email_check=$this->db->get_where('users', array('email' => $email))->num_rows();
+		$email_check=$this->db->get_where('pre_users', array('email' => $email))->num_rows();
 		if($email_check==1){
 			$data=array('reset_token'=>$string);
-			$this->Dmodel->update_data('users',$email,$data,'email');
+			$this->Dmodel->update_data('pre_users',$email,$data,'email');
 			$maildata= array(
 				'from'=>Site_Title.','.Site_Email,
 				'to'=>$email,
@@ -85,5 +86,7 @@ class Model_admin extends CI_Model {
 	  $counters['returned']=$this->db->get_where('orders', array('status' => 'returned'))->num_rows();
 	  return $counters;
 	}
+
+	
 }
 ?>

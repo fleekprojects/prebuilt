@@ -5,7 +5,7 @@ class My_Controller extends CI_Controller {
     }
 	
     public function LoadAdminView($view,$viewData=null){
-		$viewData['side_cat']=$this->Dmodel->get_tbl("categories");
+		//$viewData['side_cat']=$this->Dmodel->get_tbl("categories");
 		
         $data=array(
             'view'=>$view,
