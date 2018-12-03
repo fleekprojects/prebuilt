@@ -12,7 +12,7 @@
 		
 		public function index(){
 			$get_data=array('status'=>1);
-			$viewdata['industries']=$this->Dmodel->get_tbl_whr_arr('pre_industries',$get_data);
+			$viewdata['industries']=$this->Dmodel->get_tbl_whr_arr('industries',$get_data);
 			$this->LoadView('home',$viewdata);
 		}
 		
