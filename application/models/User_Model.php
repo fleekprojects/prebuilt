@@ -27,6 +27,7 @@
 			$this->db->from('pre_users');
 			$this->db->join('pre_user_role', 'pre_user_role.id = pre_users.user_role','left');
 			$this->db->join('pre_user_details', 'pre_user_details.user_id = pre_users.user_id','left');
+			$this->db->where('pre_users.status',1);
 			$this->db->where_not_in('pre_users.user_id',1);
 			$query = $this->db->get();
 			return $query->result_array();
@@ -39,6 +40,20 @@
 			$this->db->where('pre_users.user_id',$id);
 			$query = $this->db->get();
 			return $query->row();
+		}
+
+		function update_user($data1,$data2){
+			$this->db->where('user_id', $data1['user_id']);
+			$query = $this->db->update('pre_users',$data1);
+			$this->db->where('user_id', $data2['user_id']);
+			$query2 = $this->db->update('pre_user_details',$data2);
+			echo 'updateuser';
+		}
+
+		function delete_user($id,$data){
+			$this->db->where('user_id', $id);
+			$query = $this->db->update('pre_users',$data);
+			echo 'deleteuser';
 		}
 	}
 

@@ -67,56 +67,26 @@ $route['select-theme'] = 'Theme/index';
 $route['admin/users'] = 'admin/Users';
 $route['admin/usersadd'] = 'admin/Users/adduser';
 $route['admin/usersedit'] = 'admin/Users/edituser';
-$route['admin/categories'] = 'admin/Categories';
-$route['admin/categories/(:any)'] = 'admin/Categories/$1';
-$route['admin/condition'] = 'admin/Condition';
-$route['admin/condition/(:any)'] = 'admin/Condition/$1';
-$route['admin/models'] = 'admin/Models';
-$route['admin/models/(:any)'] = 'admin/Models/$1';
-$route['admin/pricing'] = 'admin/Pricing';
-$route['admin/pricing/(:any)'] = 'admin/Pricing/$1';
-$route['admin/providers'] = 'admin/Providers';
-$route['admin/providers/(:any)'] = 'admin/Providers/$1';
-$route['admin/storage'] = 'admin/Storage';
-$route['admin/storage/(:any)'] = 'admin/Storage/$1';
-$route['admin/trades'] = 'admin/Trades';
-$route['admin/past-trades'] = 'admin/Trades/past_trades';
-$route['admin/trades/(:any)'] = 'admin/Trades/$1';
-$route['admin/faqs'] = 'admin/Faqs';
-$route['admin/faqs/(:any)'] = 'admin/Faqs/$1';
-$route['admin/posts'] = 'admin/Blogs';
-$route['admin/posts/(:any)'] = 'admin/Blogs/$1';
-$route['admin/posts/edit/(:any)'] = 'admin/Blogs/Edit/$1';
+$route['admin/userupdate'] = 'admin/Users/updateuser';
+$route['admin/userdelete'] = 'admin/Users/userdelete';
+$route['admin/industry'] = 'admin/Industry';
+$route['admin/industryadd'] = 'admin/Industry/addindustry';
+$route['admin/industryedit'] = 'admin/Industry/editindustry';
+$route['admin/industryupdate'] = 'admin/Industry/updateindustry';
+$route['admin/industrydelete'] = 'admin/Industry/industrydelete';
+$route['admin/packages'] = 'admin/Packages';
+$route['admin/packageadd'] = 'admin/Packages/addpackage';
+$route['admin/packageedit'] = 'admin/Packages/editpackage';
+$route['admin/packageupdate'] = 'admin/Packages/updatepackage';
+$route['admin/packagedelete'] = 'admin/Packages/packagedelete';
+$route['admin/category'] = 'admin/Themescategory';
+$route['admin/categoryadd'] = 'admin/Themescategory/addcategory';
+$route['admin/categoryedit'] = 'admin/Themescategory/editcategory';
+$route['admin/categoryupdate'] = 'admin/Themescategory/updatecategory';
+$route['admin/categorydelete'] = 'admin/Themescategory/categorydelete';
+$route['admin/themes'] = 'admin/Themes';
+
 $route['admin'] = 'admin/Admin';
 $route['admin/(:any)'] = 'admin/Admin/$1';
-
-$route['sell/(:any)/(:any)/(:any)/(:any)'] = 'Sell/condition/$1/$2/$3/$4';
-$route['sell/(:any)/(:any)/(:any)'] = 'Sell/storage/$1/$2/$3';
-$route['sell/(:any)/(:any)'] = 'Sell/providers/$1/$2';
-$route['sell/(:any)'] = 'Sell/models/$1';
-$route['sell'] = 'Sell/index';
-$route['shipping'] = 'Shipping/index';
-$route['get/conditon_details'] = 'Sell/get_crecord';
-$route['get/pricing'] = 'Sell/get_pricing';
-$route['cart/add'] = 'Order/add_to_cart';
-$route['order/payment'] = 'Order/payment';
-$route['order/contact-details'] = 'Order/contact';
-$route['order/update-item'] = 'Order/update_cart_item';
-$route['order/confirm-order'] = 'Order/place_order';
-
-
-$route['(:any)'] = 'Blogs/page/$1';
-
-//$route['admin/(:any)'] = 'admin/Categories/$1';
-// $route['login'] = 'Admin/login';
-// $route['logout'] = 'Admin/logout';
-// $route['dashboard'] = 'Admin/dashboard';
-
-// $route['templates'] = 'KPI/templates';
-// $route['template/heads/(:any)'] = 'KPI/heads/$1';
-// $route['staff/(:any)'] = 'Staff/$1';
-
-// $route['updatesettings'] = 'Admin/updatesettings';
-
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

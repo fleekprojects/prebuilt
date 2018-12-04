@@ -50,6 +50,24 @@
 			$('#usersmsg').html('<b style="color: red;">Error: Somthing missing please refresh your browser and try again. </b>');
 		  }
 		});
+	});
+	$( "#edituserform" ).on( "submit", function(event){
+		event.preventDefault();
+		var val=$( this ).serialize() ;
+		$.ajax({
+		  type: "POST",
+		  data: val,
+		  url: 'userupdate',
+		  success: function (data) {
+		  	if(data == 'updateuser'){
+			   $('#editusersmsg').html('<p><b style="color: green;">User Updat Successfully.</b></p>');	
+			}
+		  },
+		  error: function (xhr, textStatus, errorThrown) 
+		  {
+		  	$('#editusersmsg').html('<b style="color: red;">Error: Somthing missing please refresh your browser and try again. </b>');
+		  }
+		});
 	}); 
 	  
 	$("#Addform").submit(function(e) { 
@@ -99,7 +117,7 @@
             beforeSend: function () {
             },
             success: function (result) {
-            	$('#userid').val(result.user_id);
+            	$('#edit_userid').val(result.user_id);
             	$('#edit_fname').val(result.first_name);
             	$('#edit_lname').val(result.last_name);
             	$('#edit_email').val(result.email);
@@ -118,7 +136,275 @@
         });
     });		
 
-		
+	$(document).on("click", ".userdelete", function () {
+		var userId = $(this).attr("userId");
+		$.ajax({
+            url: "userdelete",
+            data: {userId:userId},
+            type: 'POST',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	if(result == 'deleteuser'){
+            		location.reload();
+            	}
+            },
+            error: function () {
+            }
+        });
+
+	});	
+
+	$( "#createindustryform" ).on( "submit", function(event){
+		event.preventDefault();
+		var val=$( this ).serialize() ;
+		$.ajax({
+		  type: "POST",
+		  data: val,
+		  url: 'industryadd',
+		  success: function (data) {
+		  	if(data == 'industryexist'){
+			  $('#industrymsg').html('<b style="color: red;">Error: Industry already exists. </b>');
+			}
+			else if(data == 'industryadd'){
+			  $('#industrymsg').html('<p><b style="color: green;">Industry add Successfully.</b></p>');	
+			}
+		  },
+		  error: function (xhr, textStatus, errorThrown) 
+		  {
+		  	$('#industrymsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+		  }
+		});
+	}); 
+
+	$(document).on("click", ".editindustry", function () {
+		var industryId = $(this).attr("industryId");
+		$.ajax({
+            url: "industryedit",
+            data: {industryId:industryId},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	$('#edit_industryid').val(result.id);
+            	$('#edit_industry').val(result.name);
+            },
+            error: function () {
+            }
+        });
+    });	
+
+    $( "#editindustryform" ).on( "submit", function(event){
+		event.preventDefault();
+		var val=$( this ).serialize() ;
+		$.ajax({
+		  type: "POST",
+		  data: val,
+		  url: 'industryupdate',
+		  success: function (data) {
+		 	if(data == 'industryexist'){
+			  $('#editindustrysmsg').html('<b style="color: red;">Error: Industry already exists. </b>');
+			}
+			else if(data == 'industryupdate'){
+			  $('#editindustrysmsg').html('<p><b style="color: green;">Industry Update Successfully.</b></p>');	
+			}
+		  },
+		  error: function (xhr, textStatus, errorThrown) 
+		  {
+		  	$('#editindustrysmsg').html('<b style="color: red;">Error: Somthing missing please refresh your browser and try again. </b>');
+		  }
+		});
+	});
+
+    $(document).on("click", ".industrydelete", function () {
+		var industryId = $(this).attr("industryId");
+		$.ajax({
+            url: "industrydelete",
+            data: {industryId:industryId},
+            type: 'POST',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	if(result == 'deleteindustry'){
+            		location.reload();
+            	}
+            },
+            error: function () {
+            }
+        });
+
+	});
+	
+	$( "#createpackageform" ).on( "submit", function(event){
+		event.preventDefault();
+		var val=$( this ).serialize() ;
+		$.ajax({
+		  type: "POST",
+		  data: val,
+		  url: 'packageadd',
+		  success: function (data) {
+		  	if(data == 'onlynumber'){
+			  $('#pckgsmsg').html('<b style="color: red;">Error: Price enter only in number formate. </b>');
+			}else if(data == 'packageexist'){
+			  $('#pckgsmsg').html('<b style="color: red;">Error: Package name already exists. </b>');
+			}
+			else if(data == 'packageadd'){
+			  $('#pckgsmsg').html('<p><b style="color: green;">Package add Successfully.</b></p>');	
+			}
+		  },
+		  error: function (xhr, textStatus, errorThrown) 
+		  {
+		  	$('#pckgsmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+		  }
+		});
+	}); 
+
+	$(document).on("click", ".editpackage", function () {
+		var packageId = $(this).attr("packageId");
+		$.ajax({
+            url: "packageedit",
+            data: {packageId:packageId},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	$('#edit_packageid').val(result.package_id);
+            	$('#edit_packagename').val(result.name);
+            	$('#edit_packagedetails').val(result.package_details);
+            	$('#edit_packageprice').val(result.package_price);
+            	$('#edit_packagediscountprice').val(result.package_discount);
+            	$('#edit_package_type option[value='+result.package_type+']').attr('selected','selected');
+            },
+            error: function () {
+            }
+        });
+    });
+
+	$( "#editpackageform" ).on( "submit", function(event){
+		event.preventDefault();
+		var val=$( this ).serialize() ;
+		$.ajax({
+		  type: "POST",
+		  data: val,
+		  url: 'packageupdate',
+		  success: function (data) {
+		  	if(data == 'onlynumber'){
+			  $('#editpckgsmsg').html('<b style="color: red;">Error: Price enter only in number formate. </b>');
+			}else if(data == 'packageexist'){
+			  $('#editpckgsmsg').html('<b style="color: red;">Error: Package name already exists. </b>');
+			}
+			else if(data == 'packageupdate'){
+			  $('#editpckgsmsg').html('<p><b style="color: green;">Package update Successfully.</b></p>');	
+			}
+		  },
+		  error: function (xhr, textStatus, errorThrown) 
+		  {
+		  	$('#editpckgsmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+		  }
+		});
+	});
+
+	$(document).on("click", ".packagedelete", function () {
+		var packageId = $(this).attr("packageId");
+		$.ajax({
+            url: "packagedelete",
+            data: {packageId:packageId},
+            type: 'POST',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	if(result == 'deletepackage'){
+            		location.reload();
+            	}
+            },
+            error: function () {
+            }
+        });
+
+	});
+	
+	$( "#createcategoryform" ).on( "submit", function(event){
+		event.preventDefault();
+		var val=$( this ).serialize() ;
+		$.ajax({
+		  type: "POST",
+		  data: val,
+		  url: 'categoryadd',
+		  success: function (data) {
+		  	if(data == 'categoryexist'){
+			  $('#catorymsg').html('<b style="color: red;">Error: Category already exists. </b>');
+			}
+			else if(data == 'categoryadd'){
+			  $('#catorymsg').html('<p><b style="color: green;">Category add Successfully.</b></p>');	
+			}
+		  },
+		  error: function (xhr, textStatus, errorThrown) 
+		  {
+		  	$('#catorymsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+		  }
+		});
+	});
+
+	$(document).on("click", ".editcategory", function () {
+		var categoryId = $(this).attr("categoryId");
+		$.ajax({
+            url: "categoryedit",
+            data: {categoryId:categoryId},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	$('#edit_categoryid').val(result.id);
+            	$('#edit_categoryname').val(result.name);
+            },
+            error: function () {
+            }
+        });
+    });
+
+    $( "#editcategoryform" ).on( "submit", function(event){
+		event.preventDefault();
+		var val=$( this ).serialize() ;
+		$.ajax({
+		  type: "POST",
+		  data: val,
+		  url: 'categoryupdate',
+		  success: function (data) {
+		  	if(data == 'categoryexist'){
+			  $('#editcategorysmsg').html('<b style="color: red;">Error: Category already exists. </b>');
+			}
+			else if(data == 'categoryupdate'){
+			  $('#editcategorysmsg').html('<p><b style="color: green;">Category update Successfully.</b></p>');	
+			}
+		  },
+		  error: function (xhr, textStatus, errorThrown) 
+		  {
+		  	$('#editcategorysmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+		  }
+		});
+	});
+
+	$(document).on("click", ".categorydelete", function () {
+		var categoryId = $(this).attr("categoryId");
+		$.ajax({
+            url: "categorydelete",
+            data: {categoryId:categoryId},
+            type: 'POST',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	if(result == 'deletecategory'){
+            		location.reload();
+            	}
+            },
+            error: function () {
+            }
+        });
+
+	});
 	$(".btn-edit").click(function(){
 		$("#id").val($(this).data("id"));
 		$("#title").val($(this).data("title"));

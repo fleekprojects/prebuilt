@@ -60,8 +60,9 @@
 <div class="form-group col-md-6">
 <label>Industry:</label>
 <select name="industry" id="industry" class="form-control">
-<option value="1">Volvo</option>
-<option value="2">Opel</option>			
+<?php foreach ($industrydata as $industry) { ?>
+<option value="<?php echo $industry['id']; ?>"><?php echo $industry['name']; ?></option>
+<?php } ?>
 </select>
 </div>
 <div class="form-group col-md-6">
@@ -343,7 +344,7 @@
 <!----------------------/Create User Modal ----------------------->
 <!-----------------Edit User Modal ------------------>
 <form role="form" action="" id="edituserform" method="post" enctype="multipart/form-data" name="frmPage">
-<input type="hidden" name="userid" id="userid">	
+<input type="hidden" name="edit_userid" id="edit_userid">	
 <div class="modal fade" id="edituserModal"  tabindex="-1" role="dialog" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
@@ -352,7 +353,7 @@
 <h3 class="panel-title" id="myModalLabel">Edit User</h3>
 </div>
 <div class="modal-body">
-<div id="usersmsg"></div>	
+<div id="editusersmsg"></div>	
 <div class="form-group col-md-6">
 <label>First Name:</label>
 <input type="text" name="edit_fname" id="edit_fname" class="form-control" required />
@@ -379,8 +380,9 @@
 <div class="form-group col-md-6">
 <label>Industry:</label>
 <select name="edit_industry" id="edit_industry" class="form-control">
-<option value="1">Volvo</option>
-<option value="2">Opel</option>			
+<?php foreach ($industrydata as $editindustry) { ?>	
+<option value="<?php echo $editindustry['id']; ?>"><?php echo $editindustry['name']; ?></option>
+<?php } ?>
 </select>
 </div>
 <div class="form-group col-md-6">
@@ -679,7 +681,7 @@
 <td>
 <a data-toggle="modal" data-target="#edituserModal" class="btn btn-warning btn-editc btn-sm edituser" userId="<?=$rec['user_id']?>">
 <i class="fa fa-edit"></i></a>
-<a class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+<a class="btn btn-danger btn-sm userdelete" userId="<?=$rec['user_id']?>"><i class="fa fa-trash"></i></a>
 </td>
 </tr>
 <?php } ?>
