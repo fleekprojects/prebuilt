@@ -57,6 +57,7 @@ $route['other-info'] = 'Info';
 $route['save-details'] = 'Info/savedetails';
 $route['select-package'] = 'Package';
 $route['checkout'] = 'Checkout';
+$route['checkout/submit'] = 'Checkout/checkoutsubmit';
 $route['payment-confirm'] = 'Confirm';
 $route['save-user-info'] = 'Home/save_user_info';
 $route['domain'] = 'Domain/index';

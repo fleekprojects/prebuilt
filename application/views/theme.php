@@ -29,12 +29,14 @@ All
 <div class="col-md-3" data-tag='cms'>
 <div class="s_shadow">
 <h1 class="alignleft"><?= strtoupper($theme['theme_name']) ?></h1>
-<a href="#" class="alignright">SELECT</a>
+<a href="#" onclick="themeSelect(<?= $theme['theme_id'] ?>)" class="alignright">SELECT</a>
 <img src="<?=base_url()?>assets/front/images/<?= $theme['image1'] ?>" class="img-responsive i_img">
+
 </div>
 </div>
 <?php } ?>
 </div>
+<input type="hidden" name="theme_id" id="theme_id">
 </div>
 <!--<div class="col-md-3">
 <div class="s_shadow">
@@ -72,7 +74,9 @@ All
 <a href="<?= base_url();?>select-domain" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span>Back</a>
 </div>
 <div class="footer_inner clearifix">
-<a href="<?= base_url();?>other-info" class="c_continue">Continue<span class="glyphicon glyphicon-arrow-right"></span></a>
+
+<a href="#" onclick="SaveChanges3()" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
+
 </div>
 </div>
 </footer>  

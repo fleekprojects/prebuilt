@@ -13,7 +13,7 @@
                <div class="form-group g_pad">
                   <label class="control-label col-sm-2 l_style" for="w_name">Write Details</label>
                   <div class="col-sm-10">
-                     <textarea rows="10" cols="80" name="comment"  class="t_area" placeholder="Mention few details about the features and functions you want to have in your website.You can also ask for help here."></textarea>
+                     <textarea rows="10"  id="comment" cols="80" name="comment"  class="t_area" placeholder="Mention few details about the features and functions you want to have in your website.You can also ask for help here."></textarea>
                   </div>
                </div>
            
@@ -23,7 +23,7 @@
                </div>
                <div class="footer_inner clearifix">
                   <!-- <a href="<?= base_url();?>select-package" class="c_continue">Continue<span class="glyphicon glyphicon-arrow-right"></span></a> -->
-                  <button type="submit" class="c_continue">Continue<span class="glyphicon glyphicon-arrow-right"></span></button>
+                    <a href="#" onclick="SaveChanges4()" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
                </div>
          </div>
          </footer>  

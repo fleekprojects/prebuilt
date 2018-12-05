@@ -76,7 +76,11 @@
 			$query = $this->db->insert($tbl,$data);
 			return $query;
 		}
-		
+		function insertdatatoid($tbl,$data){
+			 $this->db->insert($tbl,$data);
+			 $insert_id=$this->db->insert_id();
+			return $insert_id;
+		}
 		function update_data($tbl,$id,$data,$key){	
 			$this->db->where($key, $id);
 			$query = $this->db->update($tbl,$data);

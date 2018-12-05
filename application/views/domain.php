@@ -23,7 +23,8 @@
                   <a href="<?= base_url();?>" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span>Back</a>
                </div>
                <div class="footer_inner clearifix">
-                  <a href="<?= base_url();?>select-theme" class="c_continue">Continue<span class="glyphicon glyphicon-arrow-right"></span></a>
+                  <a href="#" onclick="SaveChanges2()"  class="c_continue">Continue<span class="glyphicon glyphicon-arrow-right"></span></a>
+                  
                </div>
          </div>
          </footer>

@@ -7,12 +7,11 @@ class Form_Model extends CI_Model {
 		$this->load->helper('cookie');
     }
 		
-	function save_user_data($user_data){
+	function save_user_data($cookiename,$user_data){
 		
 		$user_data=json_encode($user_data);
-		
 		$cookie = array(
-			 'name'   => 'user_info',
+			 'name'   => $cookiename,
 			 'value'  => $user_data,
 			 'expire' => '86500',
 			 'secure' => false
@@ -20,6 +19,7 @@ class Form_Model extends CI_Model {
 		
 		$this->input->set_cookie($cookie); 
 		 
+
 		return true;
 	}
 
