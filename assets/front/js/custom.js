@@ -101,8 +101,8 @@ else{
                 var reader = new FileReader();
 			
                 reader.onload = function (e) {
-					$("#blah").css("display", "block");
-                    $('#blah')
+					
+                    $('#img')
 					
                         .attr('src', e.target.result)
                         .width(276)
@@ -119,14 +119,15 @@ else{
             processData: false,
             success: function(response){
                 if(response !=0){
+
                     $("#img").attr("src",response); 
-                    $("#img").show(); // Display image element
+                    $("#img").css("display", "block"); // Display image element
                 }else{
                     alert('file not uploaded');
                 }
             },
         });
-                reader.readAsDataURL(input.files[0]);
+                // reader.readAsDataURL(input.files[0]);
 				
             }
         }
@@ -159,12 +160,11 @@ function SaveChanges1(q) {
 }
 
 function SaveChanges2() {
-	// var name= $('#name').val();
-	// var filepath= $('#img').attr('src');
-	// var e = document.getElementById(q);
-	// var industry = e.options[e.selectedIndex].text ;
-	// var userinfo = [name, industry, filepath];
-	// $.cookie('userinfo',userinfo);
+	var cook= $.cookie("userinfo");
+	var domain= $('#domain').val();
+	var have_domain = document.querySelector('input[name="youHavedomainName"]:checked').value;	// var filepath= $('#img').attr('src');
+	var cookie=cook+','+have_domain+','+domain;
+	$.cookie('userinfo',cookie);
 	window.location.href = baseUrl+"/select-theme";
 }
 function themeSelect(id){
