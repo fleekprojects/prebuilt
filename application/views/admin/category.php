@@ -69,6 +69,7 @@
 </form>
 <!----------------------/Edit Category Modal ----------------------->
 <div class="x_content">
+<div id="categorysmsg"></div>	
 <table id="datatable-buttons" class="table table-striped table-bordered">
 <thead>
 <tr>
@@ -79,7 +80,7 @@
 <tbody>
 <?php foreach ($categorydata as $category) { ?>
 <tr>
-<td><?php echo $category['name']; ?></td>
+<td><?php echo $category['pre_name']; ?></td>
 <td>
 <a data-toggle="modal" data-target="#editcategoryModal" class="btn btn-warning btn-editc btn-sm editcategory" categoryId="<?=$category['id']?>">
 <i class="fa fa-edit"></i></a>

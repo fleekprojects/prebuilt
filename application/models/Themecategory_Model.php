@@ -3,7 +3,7 @@
 	class Themecategory_Model extends CI_Model {
 
 		function add_category($tbl,$data){
-			$this->db->where('name', $data['name']);
+			$this->db->where('pre_name', $data['pre_name']);
 			$query = $this->db->get($tbl);
 			if(($query->num_rows()) > 0){
 				echo 'categoryexist';
@@ -19,7 +19,7 @@
 		}
 
 		function update_category($tbl,$data){
-			$where = "(name = '".$data['name']."' AND id <> '".$data['id']."')";
+			$where = "(pre_name = '".$data['pre_name']."' AND id <> '".$data['id']."')";
 			$this->db->where($where);
 			$query = $this->db->get($tbl);
 			if(($query->num_rows()) > 0){
@@ -33,9 +33,15 @@
 		}
 
 		function delete_category($tbl,$data){
-			$this->db->where('id', $data['id']);
-			$query = $this->db->update($tbl,$data);
-			echo 'deletecategory';
+			$this->db->where('category_id', $data['id']);
+			$query = $this->db->get('pre_theme_to_category');
+			if(($query->num_rows()) > 0){
+				echo 'categoryuse';
+			}else{
+				$this->db->where('id', $data['id']);
+				$query = $this->db->update($tbl,$data);
+				echo 'deletecategory';
+			}
 		}
 	}
 

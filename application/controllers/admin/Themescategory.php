@@ -25,7 +25,7 @@ public function index(){
 }
 
 public function addcategory(){
-	$data['name']=$this->input->post('categoryname');
+	$data['pre_name']=$this->input->post('categoryname');
 	$result=$this->Tcatmodel->add_category($this->table,$data);
 }
 
@@ -37,7 +37,7 @@ public function editcategory(){
 
 public function updatecategory(){
 	$data['id']=$this->input->post('edit_categoryid');
-	$data['name']=$this->input->post('edit_categoryname');
+	$data['pre_name']=$this->input->post('edit_categoryname');
 	$result=$this->Tcatmodel->update_category($this->table,$data);
 }
 

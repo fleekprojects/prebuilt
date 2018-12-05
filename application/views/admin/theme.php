@@ -16,7 +16,7 @@
 <div class="clearfix"></div>
 </div>
 <!-----------------Create Theme Modal ------------------>
-<form role="form" id="createthemeform" method="post" enctype="multipart/form-data" name="frmPage">
+<form role="form" id="createthemeform" action="" method="post" enctype="multipart/form-data" name="createthemeform">
 <div class="modal fade" id="createthemeModal"  tabindex="-1" role="dialog" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
@@ -29,6 +29,22 @@
 <div class="form-group col-md-12">
 <label>Theme Name:</label>
 <input type="text" name="themename" id="themename" class="form-control" required />
+</div>
+<div class="form-group col-md-12">
+<label>Theme Category:</label>
+<select name="theme_cat" id="theme_cat" class="form-control">
+<?php foreach ($themecategory as $themecat) { ?>
+<option value="<?php echo $themecat['id']; ?>"><?php echo $themecat['pre_name']; ?></option>	
+<?php }	?>
+</select>
+</div>
+<div class="form-group col-md-12">
+<label>Theme Description:</label>
+<textarea class="summernote" name="description" id="description"></textarea>
+</div>
+<div class="form-group col-md-12">
+<label>Theme Image:</label>
+<input type="file" name="themefile" id="themefile" class="form-control" required />
 </div>
 <div class="clearfix"></div>
 </div>
@@ -52,10 +68,27 @@
 <h3 class="panel-title" id="myModalLabel">Edit Theme</h3>
 </div>
 <div class="modal-body">
-<div id="editcategorysmsg"></div>	
+<div id="editthemesmsg"></div>	
 <div class="form-group col-md-12">
 <label>Theme Name:</label>
 <input type="text" name="edit_themename" id="edit_themename" class="form-control" required />
+</div>
+<div class="form-group col-md-12">
+<label>Theme Category:</label>
+<select name="edit_theme_cat" id="edit_theme_cat" class="form-control">
+<?php foreach ($themecategory as $edit_themecat) { ?>
+<option value="<?php echo $edit_themecat['id']; ?>"><?php echo $edit_themecat['pre_name']; ?></option>	
+<?php }	?>
+</select>
+</div>
+<div class="form-group col-md-12">
+<label>Theme Description:</label>
+<textarea class="summernote" name="edit_description" id="edit_description"></textarea>
+</div>
+<div class="form-group col-md-12">
+<label>Theme Image:</label>
+<input type="file" name="edit_themefile" id="edit_themefile" class="form-control" />
+<img class="editimg" src="" width="50px" height="50px">
 </div>
 <div class="clearfix"></div>
 </div>
@@ -73,6 +106,7 @@
 <thead>
 <tr>
 <th>Theme Name</th>
+<th>Theme Category Name</th>
 <th>Action</th>
 </tr>
 </thead>
@@ -80,10 +114,11 @@
 <?php foreach ($themedata as $theme) { ?>
 <tr>
 <td><?php echo $theme['theme_name']; ?></td>
+<td><?php echo $theme['pre_name']; ?></td>
 <td>
-<a data-toggle="modal" data-target="#editthemeModal" class="btn btn-warning btn-editc btn-sm edittheme" categoryId="<?=$theme['theme_id']?>">
+<a data-toggle="modal" data-target="#editthemeModal" class="btn btn-warning btn-editc btn-sm edittheme" themeId="<?=$theme['theme_id']?>">
 <i class="fa fa-edit"></i></a>
-<a class="btn btn-danger btn-sm themedelete" categoryId="<?=$theme['theme_id']?>"><i class="fa fa-trash"></i></a>	
+<a class="btn btn-danger btn-sm themedelete" themeId="<?=$theme['theme_id']?>"><i class="fa fa-trash"></i></a>	
 </td>
 </tr>	
 <?php } ?>
@@ -94,3 +129,12 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+$('.summernote').summernote({
+placeholder: 'Enter Details here...',
+tabsize: 2,
+height: 100
+});
+});
+</script>

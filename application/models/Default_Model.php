@@ -141,7 +141,7 @@
 				'wordwrap' => TRUE
 			);
 			$this->load->library('email', $config);
-			$this->email->from($maildata['from_email'],$maildata['from_name']);
+			$this->email->from($maildata['email'],$maildata['from_name']);
 			$this->email->to($maildata['to_email'],$maildata['to_name']);
 			$this->email->subject($maildata['subject']);
 			$this->email->message($maildata['message']);

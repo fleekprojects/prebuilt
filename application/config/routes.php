@@ -85,6 +85,11 @@ $route['admin/categoryedit'] = 'admin/Themescategory/editcategory';
 $route['admin/categoryupdate'] = 'admin/Themescategory/updatecategory';
 $route['admin/categorydelete'] = 'admin/Themescategory/categorydelete';
 $route['admin/themes'] = 'admin/Themes';
+$route['admin/themeadd'] = 'admin/Themes/addtheme';
+$route['admin/themeedit'] = 'admin/Themes/edittheme';
+$route['admin/themeupdate'] = 'admin/Themes/updatetheme';
+$route['admin/themedelete'] = 'admin/Themes/themedelete';
+
 
 $route['admin'] = 'admin/Admin';
 $route['admin/(:any)'] = 'admin/Admin/$1';

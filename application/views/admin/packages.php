@@ -32,7 +32,7 @@
 </div>
 <div class="form-group col-md-12">
 <label>About Package:</label>
-<input type="text" name="packagedetails" id="packagedetails" class="form-control" required />
+<textarea class="summernote" name="packagedetails" id="packagedetails"></textarea>
 </div>
 <div class="form-group col-md-6">
 <label>Package Price:</label>
@@ -79,7 +79,7 @@
 </div>
 <div class="form-group col-md-12">
 <label>About Package:</label>
-<input type="text" name="edit_packagedetails" id="edit_packagedetails" class="form-control" required />
+<textarea class="summernote" name="edit_packagedetails" id="edit_packagedetails"></textarea>
 </div>
 <div class="form-group col-md-6">
 <label>Package Price:</label>
@@ -134,3 +134,12 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+$('.summernote').summernote({
+placeholder: 'Enter Details here...',
+tabsize: 2,
+height: 100
+});
+});
+</script>

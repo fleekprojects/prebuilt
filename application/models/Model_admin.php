@@ -61,6 +61,8 @@ class Model_admin extends CI_Model {
 				If you do need to change your Password, you can use this link: '
 			);
 			$this->Dmodel->send_mail($maildata);
+		}else{
+			echo 'emailworng';
 		}
 	}
 	

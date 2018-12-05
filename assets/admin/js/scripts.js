@@ -272,7 +272,7 @@
             success: function (result) {
             	$('#edit_packageid').val(result.package_id);
             	$('#edit_packagename').val(result.name);
-            	$('#edit_packagedetails').val(result.package_details);
+            	$("#edit_packagedetails").summernote("code", result.package_details);
             	$('#edit_packageprice').val(result.package_price);
             	$('#edit_packagediscountprice').val(result.package_discount);
             	$('#edit_package_type option[value='+result.package_type+']').attr('selected','selected');
@@ -358,7 +358,7 @@
             },
             success: function (result) {
             	$('#edit_categoryid').val(result.id);
-            	$('#edit_categoryname').val(result.name);
+            	$('#edit_categoryname').val(result.pre_name);
             },
             error: function () {
             }
@@ -398,6 +398,8 @@
             success: function (result) {
             	if(result == 'deletecategory'){
             		location.reload();
+            	}else if(result == 'categoryuse'){
+            		$('#categorysmsg').html('<b style="color: red;">Error: Category already use in themes cannot deleted. </b>');
             	}
             },
             error: function () {
@@ -405,6 +407,103 @@
         });
 
 	});
+
+	$("#createthemeform").submit(function(e) { 
+		e.preventDefault();
+		if ($('#createthemeform').valid()) {
+			var value =new FormData(this);
+			$.ajax({
+				url:'themeadd',
+				type:'POST',
+				data:value,
+				processData: false,
+                contentType: false,
+				success:function(result){
+					if(result == 'invalidimage'){
+					  $('#thememsg').html('<b style="color: red;">Error: Please upload image only. </b>');
+					}else if(result == 'themeexist'){
+					  $('#thememsg').html('<b style="color: red;">Error: Theme name already exists. </b>');
+					}
+					else if(result == 'themeadd'){
+					  $('#thememsg').html('<p><b style="color: green;">Theme add Successfully.</b></p>');	
+					}
+				},
+				error: function (xhr, textStatus, errorThrown){
+					$('#thememsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+				}
+			});
+		}
+
+	});
+
+	$(document).on("click", ".edittheme", function () {
+		var themeId = $(this).attr("themeId");
+		$.ajax({
+            url: "themeedit",
+            data: {themeId:themeId},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	$('#edit_themeid').val(result.theme_id);
+            	$('#edit_themename').val(result.theme_name);
+            	$('#edit_theme_cat option[value='+result.category_id+']').attr('selected','selected');
+            	$("#edit_description").summernote("code", result.theme_desc);
+            	$(".editimg").attr("src","../uploads/themeimages/"+result.image1);
+            },
+            error: function () {
+            }
+        });
+    });
+
+	$("#editthemeform").submit(function(e) { 
+		e.preventDefault();
+		if ($('#editthemeform').valid()) {
+			var value =new FormData(this);
+			$.ajax({
+				url:'themeupdate',
+				type:'POST',
+				data:value,
+				processData: false,
+                contentType: false,
+				success:function(result){
+					if(result == 'invalidimage'){
+					  $('#editthemesmsg').html('<b style="color: red;">Error: Please upload image only. </b>');
+					}else if(result == 'themeexist'){
+					  $('#editthemesmsg').html('<b style="color: red;">Error: Theme name already exists. </b>');
+					}
+					else if(result == 'themeupdate'){
+					  $('#editthemesmsg').html('<p><b style="color: green;">Theme update Successfully.</b></p>');	
+					}
+				},
+				error: function (xhr, textStatus, errorThrown){
+					$('#editthemesmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+				}
+			});
+		}
+
+	});
+
+	$(document).on("click", ".themedelete", function () {
+		var themeId = $(this).attr("themeId");
+		$.ajax({
+            url: "themedelete",
+            data: {themeId:themeId},
+            type: 'POST',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	if(result == 'deletetheme'){
+            		location.reload();
+            	}
+            },
+            error: function () {
+            }
+        });
+
+	});
+	
 	$(".btn-edit").click(function(){
 		$("#id").val($(this).data("id"));
 		$("#title").val($(this).data("title"));
