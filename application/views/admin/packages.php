@@ -119,7 +119,7 @@
 <tbody>
 <?php foreach ($packagedata as $package) { ?>
 <tr>
-<td><?php echo $package['name']; ?></td>
+<td><?php echo $package['package_name']; ?></td>
 <td>
 <a data-toggle="modal" data-target="#editpackageModal" class="btn btn-warning btn-editc btn-sm editpackage" packageId="<?=$package['package_id']?>">
 <i class="fa fa-edit"></i></a>

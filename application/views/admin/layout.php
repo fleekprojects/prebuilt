@@ -59,7 +59,7 @@ font-weight: 100;
 <li><a href="<?= base_url(); ?>admin/themes">Themes</a></li>
 </ul>
 </li>
-
+<li><a href="<?= base_url(); ?>admin/webapp"><i class="fa fa-dashboard"></i> <span>WebApp</span></a></li>
 </ul>
 </div>
 </div>

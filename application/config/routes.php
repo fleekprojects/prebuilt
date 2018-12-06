@@ -89,6 +89,8 @@ $route['admin/themeadd'] = 'admin/Themes/addtheme';
 $route['admin/themeedit'] = 'admin/Themes/edittheme';
 $route['admin/themeupdate'] = 'admin/Themes/updatetheme';
 $route['admin/themedelete'] = 'admin/Themes/themedelete';
+$route['admin/webapp'] = 'admin/Webapp';
+$route['admin/vieworder'] = 'admin/Webapp/vieworder';
 
 
 $route['admin'] = 'admin/Admin';

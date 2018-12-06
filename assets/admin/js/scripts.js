@@ -271,7 +271,7 @@
             },
             success: function (result) {
             	$('#edit_packageid').val(result.package_id);
-            	$('#edit_packagename').val(result.name);
+            	$('#edit_packagename').val(result.package_name);
             	$("#edit_packagedetails").summernote("code", result.package_details);
             	$('#edit_packageprice').val(result.package_price);
             	$('#edit_packagediscountprice').val(result.package_discount);
@@ -504,6 +504,59 @@
 
 	});
 	
+	$(document).on("click", ".vieworder", function () {
+		var webId = $(this).attr("webId");
+		$.ajax({
+            url: "vieworder",
+            data: {webId:webId},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	 $('#ordnumber').html(result.webapp_id);
+            	 $('#orddte').html(result.date_created);
+            	 $('#ordnme').html(result.user_name);
+            	 $('#ordeml').html(result.email);
+            	 $('#ordbusnes').html(result.business_name);
+            	 $('#ordinds').html(result.name);
+            	 if(result.have_domain == 0){
+            	 	$('#ordhvedmn').html('NO');
+            	 }else{
+            	 	$('#ordhvedmn').html('YES');
+            	 }
+            	 $('#orddmn').html(result.domain);
+            	 $("#ordthm img").attr("src","../uploads/themeimages/"+result.image1);
+            	 $('#orddtls').html(result.customization_details);
+            	 $('#ordpckg').html(result.package_name);
+            	 if(result.package_type == 0){
+            	 	$('#ordpckgtyp').html('One Time');
+            	 }else if(result.package_type == 1){
+            	 	$('#ordpckgtyp').html('One Time + Monthly');
+            	 }else if(result.package_type == 2){
+            	 	$('#ordpckgtyp').html('Monthly');
+            	 }
+            	 $('#ordprce').html('$'+result.package_price);
+            	 if(result.status == 0){
+            	 	$('#ordsts').html('Deactive');
+            	 }else if(result.status == 1){
+            	 	$('#ordsts').html('Active');
+            	 }
+            	 if(result.auto_renew == 0){
+            	 	$('#ordrnw').html('NO');
+            	 }else if(result.auto_renew == 1){
+            	 	$('#ordrnw').html('YES');
+            	 }
+            	 if(result.contact_preference == 0){
+            	 	$('#ordcontct').html('Email');
+            	 }else if(result.contact_preference == 1){
+            	 	$('#ordcontct').html('Phone');
+            	 }
+            },
+            error: function () {
+            }
+        });
+    });
 	$(".btn-edit").click(function(){
 		$("#id").val($(this).data("id"));
 		$("#title").val($(this).data("title"));

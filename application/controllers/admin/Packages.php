@@ -25,7 +25,7 @@ public function index(){
 }
 
 public function addpackage(){
-	$data['name']=$this->input->post('packagename');
+	$data['package_name']=$this->input->post('packagename');
 	$data['package_details']=$this->input->post('packagedetails');
 	$data['package_price']=$this->input->post('packageprice');	
 	$data['package_discount']=$this->input->post('packagediscountprice');
@@ -47,7 +47,7 @@ public function editpackage(){
 
 public function updatepackage(){
 	$data['package_id']=$this->input->post('edit_packageid');
-	$data['name']=$this->input->post('edit_packagename');
+	$data['package_name']=$this->input->post('edit_packagename');
 	$data['package_details']=$this->input->post('edit_packagedetails');
 	$data['package_price']=$this->input->post('edit_packageprice');	
 	$data['package_discount']=$this->input->post('edit_packagediscountprice');

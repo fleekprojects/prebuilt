@@ -3,7 +3,7 @@
 	class Package_Model extends CI_Model {
 
 		function add_package($tbl,$data){
-			$this->db->where('name', $data['name']);
+			$this->db->where('package_name', $data['package_name']);
 			$query = $this->db->get($tbl);
 			if(($query->num_rows()) > 0){
 				echo 'packageexist';
@@ -19,7 +19,7 @@
 		}
 
 		function update_package($tbl,$data){
-			$where = "(name = '".$data['name']."' AND package_id <> '".$data['package_id']."')";
+			$where = "(package_name = '".$data['package_name']."' AND package_id <> '".$data['package_id']."')";
 			$this->db->where($where);
 			$query = $this->db->get($tbl);
 			if(($query->num_rows()) > 0){
