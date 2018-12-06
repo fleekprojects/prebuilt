@@ -1,59 +1,63 @@
 <section>
    <div class="">
       <div class="">
-         <div class="col-md-3 bg_color">
+         <div class="col-md-3 bg_color bg_color2">
             <h1 class="h_content">6/6
                <br>Confirm
                <br>Purchase
             </h1>
-            <p class="p_content">Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit,<br> sed to eiusmod tempor<br> incididunt ut labore et <br>dolore magna aliqua.</p>
+            <p class="p_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit,  sed to eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
          </div>
-         <div class="col-md-9 bg_height">
-            <form class="form-horizontal" method="POST" action="#">
-               <div class="form-group g_pad">
-                  <label class="control-label col-md-2 l_style" for="package">Package Choosen</label>
-                  <div class="col-md-8">
-                     <input type="text" disabled="" name="package" class="form-control f_name alignleft" id="package" placeholder="Standard Package">
+         <div class="col-md-9 bg1_height conFrm">
+            <div class="topSection">
+               <form class="form-horizontal" method="POST" action="#">
+                  <div class="form-group col-sm-12">
+                     <label class="control-label col-sm-3 label-style" for="package">Package Choosen</label>
+                     <div class="col-sm-9">
+                        <input type="text" disabled="" name="package" class="form-control" id="package" placeholder="Standard Package">
+                        <a href="#" class="alignright1">Change Your Package</a>
+                     </div>
                   </div>
-               </div>
-               <div class="form-group g_pad">
-                  <label class="control-label col-sm-2 l_style" for="p_num">Phone Number</label>
-                  <div class="col-sm-10">
-                     <input type="text" name="phone" id="phone" class="num_field" placeholder="ENTER YOUR PHONE NUMBER"/>&nbsp;<span id="errmsg"></span>
+                  <div class="form-group col-sm-12">
+                     <label class="control-label col-sm-3 label-style" for="name">Name</label>
+                     <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="MENTION YOUR NAME">
+                     </div>
                   </div>
-               </div>
-               <div class="form-group g_pad">
-                  <label class="control-label col-sm-2 l_style" for="email">Email Address</label>
-                  <div class="col-sm-10">
-                     <input type="email" class="form-control f_name" id="email" name="email" placeholder="ENTER YOUR EMAIL NUMBER">
+                  <div class="form-group col-sm-12">
+                     <label class="control-label col-sm-3 label-style" for="p_num">Phone Number</label>
+                     <div class="col-sm-9">
+                        <input type="text" name="phone" id="phone" class="form-control" placeholder="ENTER YOUR PHONE NUMBER"/>&nbsp;<span id="errmsg"></span>
+                     </div>
                   </div>
-               </div>
-               <div class="form-group g_pad">
-                  <label class="control-label col-sm-2 l_style" for="email">How would you like to be contacted?</label>
-                  <div class="col-sm-10">
-                     <label class="radio-inline r_inline">
-                     <input type="radio" name="optradio" class="radioclass" value="0"> Email
-                     </label>
-                     <label class="radio-inline r_inline">
-                     <input type="radio" name="optradio"  class="radioclass" value="1"> Phone
-                     </label>
+                  <div class="form-group col-sm-12">
+                     <label class="control-label col-sm-3 label-style" for="email">Email Address</label>
+                     <div class="col-sm-9">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="ENTER YOUR EMAIL NUMBER">
+                     </div>
                   </div>
-               </div>
-               <button type="button" onclick="SaveChanges6()" class="btn p_btn">PAY NOW</button>
-           
+                  <div class="form-group col-sm-12">
+                     <label class="control-label col-sm-3 label-style" for="email">How would you like to be contacted?</label>
+                     <div class="col-sm-9">
+                        <label class="radio-inline r_inline">
+                        <input type="radio" name="optradio" class="radioclass" value="0"> Email
+                        </label>
+                        <label class="radio-inline r_inline">
+                        <input type="radio" name="optradio"  class="radioclass" value="1"> Phone
+                        </label>
+                     </div>
+                  </div>
+                  <div class="form-group col-sm-12" style="text-align: center;padding-top: 10px;">
+                     <button type="button" onclick="SaveChanges6()" class="btn button-default">PAY NOW</button>
+                  </div>
+               </form>
+            </div>
             <footer>
                <div class="footer_inner_left clearifix">
                   <a href="<?= base_url();?>select-package" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span>Back</a>
-               </div><!-- 
-               <div class="footer_inner clearifix">
-                   <a href="#" onclick="SaveChanges6()" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
-               </div> -->
-                </form>
+               </div>
+            </footer>
          </div>
-         </footer>  
-         <!--<a href="select_packgae.html" class="con_back"><span class="glyphicon glyphicon-arrow-left"></span>Back</a>
-            <a href="payment_confirm.html" class="c_continue">Continue<span class="glyphicon glyphicon-arrow-right"></span></a>-->
       </div>
-   </div>
    </div>
 </section>
