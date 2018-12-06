@@ -13,14 +13,7 @@
                <div class="form-group g_pad">
                   <label class="control-label col-md-2 l_style" for="package">Package Choosen</label>
                   <div class="col-md-8">
-                     <input type="text"  name="package" class="form-control f_name alignleft" id="package" placeholder="Standard Package">
-                     <a href="#" class="alignright1">Change Your Package</a>
-                  </div>
-               </div>
-               <div class="form-group g_pad">
-                  <label class="control-label col-sm-2 l_style" for="name">Name</label>
-                  <div class="col-sm-10">
-                     <input type="text" class="form-control f_name" id="name" name="name" placeholder="MENTION YOUR NAME">
+                     <input type="text" disabled="" name="package" class="form-control f_name alignleft" id="package" placeholder="Standard Package">
                   </div>
                </div>
                <div class="form-group g_pad">

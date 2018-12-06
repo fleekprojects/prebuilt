@@ -98,16 +98,7 @@ else{
 
     function readURL(input) {
             if (input.files && input.files[0]) {
-                var reader = new FileReader();
-			
-                reader.onload = function (e) {
-					
-                    $('#img')
-					
-                        .attr('src', e.target.result)
-                        .width(276)
-                        .height(200);
-                };
+               
             var fd = new FormData();
         var files = $('#file-upload')[0].files[0];
         fd.append('file',files);
@@ -121,7 +112,9 @@ else{
                 if(response !=0){
 
                     $("#img").attr("src",response); 
-                    $("#img").css("display", "block"); // Display image element
+                    $("#img").css("display", "block")
+                   		 .width(276)
+                        .height(200); // Display image element
                 }else{
                     alert('file not uploaded');
                 }
@@ -188,21 +181,20 @@ function SaveChanges4() {
 	$.cookie('userinfo',cookie);
 	window.location.href = baseUrl+"/select-package";
 }
-function SaveChanges5() {
+function SaveChanges5(packageid) {
 	var packageid= $('#packageid').val();
 	var cook= $.cookie("userinfo");
 	var cookie=cook+','+packageid;
 	$.cookie('userinfo',cookie);
-	window.location.href = baseUrl+"/checkout";
+	window.location.href = baseUrl+"/checkout/";
 }
 function SaveChanges6() {
 
-	var name= $('#name').val();
 	var phone= $('#phone').val();
 	var email= $('#email').val();
 	var radio=$('input:radio[name=optradio]:checked').val();
 	var cook= $.cookie("userinfo");
-	var cookie=cook+','+name+','+phone+','+email+','+radio+','+name;
+	var cookie=cook+','+phone+','+email+','+radio;
 	$.cookie('userinfo',cookie);
 
 		 $.ajax({
@@ -210,11 +202,10 @@ function SaveChanges6() {
             type: 'POST',
             data: cookie,
             success: function(response){
-                if(response !=0){
-                    $("#img").attr("src",response); 
-                    $("#img").show(); // Display image element
+                if(response =='successfull'){
+                 window.location.href = baseUrl+"/payment-confirm";
                 }else{
-                    alert('file not uploaded');
+                    alert('Error');
                 }
             },
         });
