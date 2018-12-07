@@ -9,7 +9,7 @@
             <p class="p_content">Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit,<br> sed to eiusmod tempor<br> incididunt ut labore et <br>dolore magna aliqua.</p>
          </div>
          <div class="col-md-9 bg_height">
-            <form class="form-horizontal" method="POST" action="#">
+            <form class="form-horizontal" method="POST" id="checkoutform" action="#">
                <div class="form-group g_pad">
                   <label class="control-label col-md-2 l_style" for="package">Package Choosen</label>
                   <div class="col-md-8">
@@ -39,8 +39,19 @@
                      </label>
                   </div>
                </div>
+                    <div class="form-row">
+    <label for="card-element">
+      Credit or debit card
+    </label>
+    <div id="card-element">
+      <!-- A Stripe Element will be inserted here. -->
+    </div>
+
+    <!-- Used to display Element errors. -->
+    <div id="card-errors" role="alert"></div>
+  </div>
                <button type="button" onclick="SaveChanges6()" class="btn p_btn">PAY NOW</button>
-           
+      
             <footer>
                <div class="footer_inner_left clearifix">
                   <a href="<?= base_url();?>select-package" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span>Back</a>
@@ -50,6 +61,7 @@
                </div> -->
                 </form>
          </div>
+       
          </footer>  
          <!--<a href="select_packgae.html" class="con_back"><span class="glyphicon glyphicon-arrow-left"></span>Back</a>
             <a href="payment_confirm.html" class="c_continue">Continue<span class="glyphicon glyphicon-arrow-right"></span></a>-->

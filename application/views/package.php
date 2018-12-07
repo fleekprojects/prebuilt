@@ -22,7 +22,7 @@
                         <h2 class="n_num">$<?= $package['package_price'] ?></h2>
                         <p class="o_one">One time cost</p>
                         <div class="more">
-                           <a href="#" onclick="packageSelect(<?= $package['package_id']?>)" title="Title Link">
+                           <a href="#" onclick="packageSelect(<?= $package['package_id']?>,<?= $package['package_price']?>)" title="Title Link">
                             SELECT 
                            </a>
                         </div>
@@ -32,6 +32,7 @@
             </div>
             <?php } ?>
             <input type="hidden" name="packageid" id="packageid" >
+            <input type="hidden" name="subprice" id="subprice" >
             <footer>
                <div class="footer_inner_left clearifix">
                   <a href="<?= base_url();?>other-info" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span>Back</a>

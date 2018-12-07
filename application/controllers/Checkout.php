@@ -16,8 +16,8 @@
 		
 		public function checkoutsubmit()
 		{
-			
 
+			
 			// 0=business
 			// 1=industry
 			// 2=logo
