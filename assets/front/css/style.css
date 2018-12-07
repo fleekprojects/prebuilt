@@ -156,7 +156,7 @@ select.s_select {
     border: 1px solid !important;
 }
  .form-control{
-max-width: 280px;
+max-width: 400px;
 border-radius: 0px;
 border: none;
 box-shadow: 1px 0px 4px rgba(0,0,0,.5);
@@ -175,7 +175,7 @@ margin-bottom: 20px;
   position: relative;
   font-size: 16px;
   color: #555;
-  max-width: 280px;
+  max-width: 400px;
   border-radius: 0px;
   border: none;
   box-shadow: 1px 0px 4px rgba(0,0,0,.5);

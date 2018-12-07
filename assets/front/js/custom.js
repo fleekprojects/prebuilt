@@ -3,7 +3,25 @@
 AOS.init();
 // this is js slider
 $(document).ready(function() {
+	  // var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
+  var stripe = Stripe('pk_test_1vbqHzMFJMtGk8QbiMCkqMW0');
+var elements = stripe.elements();
 
+// Custom styling can be passed to options when creating an Element.
+var style = {
+  base: {
+    // Add your base input styles here. For example:
+    fontSize: '16px',
+    color: "#020202",
+   
+  }
+};
+
+// Create an instance of the card Element.
+var card = elements.create('card', {style: style});
+
+// Add an instance of the card Element into the `card-element` <div>.
+card.mount('#card-element');
 
 	var owl = $("#owl-demo");
 	$(".owl-carousel").owlCarousel({
@@ -15,27 +33,6 @@ $(document).ready(function() {
 
 
   });
-
-		  // var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
-	  var stripe = Stripe('pk_test_1vbqHzMFJMtGk8QbiMCkqMW0');
-	var elements = stripe.elements();
-	var price = "222";
-
-	// Custom styling can be passed to options when creating an Element.
-	var style = {
-	  base: {
-	    // Add your base input styles here. For example:
-	    fontSize: '16px',
-	    color: "#020202",
-	   
-	  }
-	};
-
-	// Create an instance of the card Element.
-	var card = elements.create('card', {style: style});
-
-	// Add an instance of the card Element into the `card-element` <div>.
-	card.mount('#card-element');
 
 card.addEventListener('change', function(event) {
   var displayError = document.getElementById('card-errors');
