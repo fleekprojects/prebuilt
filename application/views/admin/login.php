@@ -131,15 +131,12 @@
 				type:'POST',
 				data:value,
 				success:function(result){
-					// if(result==0){
-						// $("#msg").html('<div class="alert alert-danger alert-dismissable"><i class="fa fa-ban"></i><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><b>Invalid UserName/Password.</b></div>');
-						// $("#msg").show();
-						// setTimeout(function(){$("#msg").hide(); }, 3000);
-
-					// }
-					// else{	
-						// window.location.href="<?php echo base_url();?>admin/dashboard";
-					// }
+					if(result == 'emailworng'){
+						$('#msge').html('<b style="color: red;">Error: Email does not match. </b>');
+					}
+					else{	
+						$('#msge').html('<p><b style="color: green;">Please check your email.</b></p>');
+					}
 				},
 				error: function (xhr, textStatus, errorThrown){
 					alert(xhr.responseText);

@@ -49,15 +49,17 @@ font-weight: 100;
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 <div class="menu_section">
 <ul class="nav side-menu">
-<li><a href="<?= base_url(); ?>admin/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>	
-<!-- <li><a><i class="fa fa-edit"></i>CMS <span class="fa fa-chevron-down"></span></a>
+<li><a href="<?= base_url(); ?>admin/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+<li><a href="<?= base_url(); ?>admin/users"><i class="fa fa-dashboard"></i> <span>Users</span></a></li>
+<li><a href="<?= base_url(); ?>admin/industry"><i class="fa fa-dashboard"></i> <span>Industries</span></a></li>
+<li><a href="<?= base_url(); ?>admin/packages"><i class="fa fa-dashboard"></i> <span>Packages</span></a></li>	
+<li><a><i class="fa fa-edit"></i>Themes <span class="fa fa-chevron-down"></span></a>
 <ul class="nav child_menu">
-<li><a href="<?= base_url(); ?>admin/posts">Blogs/Pages</a></li>
-<li><a href="<?= base_url(); ?>admin/faqs">Faqs</a></li>
-<li><a href="<?= base_url(); ?>admin/contact-queries">Contact/Queries</a></li>
+<li><a href="<?= base_url(); ?>admin/category">Theme Category</a></li>
+<li><a href="<?= base_url(); ?>admin/themes">Themes</a></li>
 </ul>
-</li> -->
-
+</li>
+<li><a href="<?= base_url(); ?>admin/webapp"><i class="fa fa-dashboard"></i> <span>WebApp</span></a></li>
 </ul>
 </div>
 </div>
