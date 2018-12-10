@@ -25,6 +25,42 @@
 			return $query->row();
 		}
 
+		function get_cat($id){
+			$this->db->select('*');
+			$this->db->from('pre_theme_to_category');
+			$this->db->join('pre_themes', 'pre_themes.theme_id = pre_theme_to_category.theme_id','left');
+			$this->db->where('pre_theme_to_category.category_id',$id);
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
+		function get_domain($domainname){
+			$query = $this->db->get_where('pre_webapp', array('domain' => $domainname));
+			if(($query->num_rows()) > 0){
+				echo 'domainexist';
+			}else{
+				echo 'domainnotexit';
+			}
+		}
+
+		function get_packgs($id){	
+			$this->db->select('*');
+			$this->db->from('pre_packages');
+			$this->db->where('pre_packages.package_id',$id);
+			$query = $this->db->get();
+			return $query->row();
+		}
+
+		function create_webapp($data){
+			$query = $this->db->get_where('pre_webapp', array('domain' => $data['domain']));
+			if(($query->num_rows()) > 0){
+				echo 'domainexist';
+			}else{
+			$query = $this->db->insert('pre_webapp',$data);
+				echo 'webappadd';
+			}
+		}
+
 	}
 
 ?>

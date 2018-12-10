@@ -557,6 +557,126 @@
             }
         });
     });
+
+    function getthemecat(id){
+    	var catId = id;
+    	$.ajax({
+            url: "getcats",
+            data: {catId:catId},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	var catData = '';
+            	if (result.length > 0) {
+            		catData += '<ul class="shwtheme">';
+            		for (i=0;i < result.length; i++) {
+            		if(i == 0){
+            		catData += '<li><img src="../uploads/themeimages/'+result[i].image1+'" width="25px" height="25px"><input class="selectthemes" type="radio" id="themes" name="themes" value="'+result[i].theme_id+'" checked="checked">'+result[i].theme_name+'</li>';	
+            		}else{
+            		catData += '<li><img src="../uploads/themeimages/'+result[i].image1+'" width="25px" height="25px"><input class="selectthemes" type="radio" id="themes" name="themes" value="'+result[i].theme_id+'">'+result[i].theme_name+'</li>';		
+	            	}
+            		}
+            		catData += '</ul>';
+            	}else{
+            		catData += 'Sorry there no themes please select another category';
+            	}
+            	$("#showthemes").html(catData);
+            },
+            error: function () {
+            }
+        });
+    }
+    $(document).on("click", ".srchdpmain", function () {
+    	var domain = $('#domain').val();
+    	$.ajax({
+            url: "searchdomain",
+            data: {domain:domain},
+            type: 'POST',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	if(result == 'domainexist'){
+					  $('#domainmsg').html('<b style="color: red;">Error: Domain Not Available. </b>');
+				}else if(result == 'domainnotexit'){
+					  $('#domainmsg').html('<p><b style="color: green;">Domain Available.</b></p>');	
+					}
+            },
+            error: function () {
+            	$('#domainmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+            }
+        });
+    });	
+
+    function getpackagedetails(id){
+    	var packageId = id;
+    	$.ajax({
+            url: "getpckgs",
+            data: {packageId:packageId},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	if(result == null){
+					  $('#prmpckg').html('Please Select Package');
+				}else if(result != null){
+					var packageDetails = '';	
+					packageDetails += '<ul>';
+					packageDetails += '<li>'+result.package_name+'</li>';
+					packageDetails += '<li>'+result.package_details+'</li>';
+					packageDetails += '<li>$'+result.package_price+'</li>';
+					packageDetails += '</ul>';
+					$('#prmpckg').html(packageDetails);	
+				}
+            },
+            error: function () {
+            	$('#prmpckg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+            }
+        });
+    }
+
+    $("#createwebapp").submit(function(e) { 
+		e.preventDefault();
+		if ($('#createwebapp').valid()) {
+			var value =new FormData(this);
+			$.ajax({
+				url:'createwebapp',
+				type:'POST',
+				data:value,
+				processData: false,
+                contentType: false,
+				success:function(result){
+					if(result == 'invalidimage'){
+					  $('#filemsg').html('<b style="color: red;">Error: Please upload image only. </b>');
+					  $('#showthemes').html('');
+					  $('#domainmsg').html('');
+					  $('#webappmsg').html('');
+					}else if(result == 'themenotselect'){
+					  $('#showthemes').html('<b style="color: red;">Error: Please select theme. </b>');
+					  $('#filemsg').html('');
+					  $('#domainmsg').html('');
+					  $('#webappmsg').html('');
+					}else if(result == 'domainexist'){
+					  $('#domainmsg').html('<b style="color: red;">Error: Domain Not Available. </b>');
+					  $('#showthemes').html('');
+					  $('#filemsg').html('');
+					  $('#webappmsg').html('');
+					}else if(result == 'webappadd'){
+					  $('#webappmsg').html('<p><b style="color: green;">Order Generated Successfully.</b></p>');	
+					  $('#showthemes').html('');
+					  $('#domainmsg').html('');
+					  $('#filemsg').html('');
+					}
+				},
+				error: function (xhr, textStatus, errorThrown){
+					$('#webappmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+				}
+			});
+		}
+
+	});
 	$(".btn-edit").click(function(){
 		$("#id").val($(this).data("id"));
 		$("#title").val($(this).data("title"));

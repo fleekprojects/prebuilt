@@ -91,6 +91,11 @@ $route['admin/themeupdate'] = 'admin/Themes/updatetheme';
 $route['admin/themedelete'] = 'admin/Themes/themedelete';
 $route['admin/webapp'] = 'admin/Webapp';
 $route['admin/vieworder'] = 'admin/Webapp/vieworder';
+$route['admin/newwebapp'] = 'admin/Webapp/addwebapp';
+$route['admin/getcats'] = 'admin/Webapp/getthemecats';
+$route['admin/searchdomain'] = 'admin/Webapp/srchdomain';
+$route['admin/getpckgs'] = 'admin/Webapp/getpackgs';
+$route['admin/createwebapp'] = 'admin/Webapp/createwebapp';
 
 
 $route['admin'] = 'admin/Admin';

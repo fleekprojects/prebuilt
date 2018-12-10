@@ -12,7 +12,7 @@
 <div class="x_panel">
 <div class="x_title">
 <h2><?= $title; ?> |<small>View</small></h2>
-<a data-toggle="modal" data-target="javascript:void(0);" class="btn btn-default margin pull-right" style="margin-right:5px"><i class="fa fa-plus"></i> Add WebApp</a>
+<!-- <a href="newwebapp" class="btn btn-default margin pull-right" style="margin-right:5px"><i class="fa fa-plus"></i> Add WebApp</a> -->
 <div class="clearfix"></div>
 </div>
 <div class="x_content">
@@ -123,7 +123,7 @@
 <td><?php if($webdatas['status'] == 1){ echo 'Active'; }elseif($webdatas['status'] == 0) { echo 'Deactive'; }else{ echo 'Suspend'; } ?></td>
 <td><a data-toggle="modal" data-target="#vieworderModal" class="btn btn-warning btn-editc btn-sm vieworder" webId="<?=$webdatas['webapp_id']?>">
 <i class="fa fa-edit"></i></a>
-<a class="btn btn-danger btn-sm" webId="<?=$webdatas['webapp_id']?>"><i class="fa fa-trash"></i></a></td>
+<!-- <a class="btn btn-danger btn-sm" webId="<?=$webdatas['webapp_id']?>"><i class="fa fa-trash"></i></a> --></td>
 </tr>
 <?php }	?>
 </tbody>
