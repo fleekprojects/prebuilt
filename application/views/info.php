@@ -14,7 +14,7 @@
                   <label class="control-label col-sm-3 label-style" for="w_name">Write Details</label>
                   <div class="col-sm-9">
                      <textarea rows="10"  id="comment" cols="80" name="comment"  class="t_area" placeholder="Mention few details about the features and functions you want to have in your website.You can also ask for help here."></textarea>
-                     </textarea>
+                     <div id="errorcomment"></div>
                   </div>
                </div>
             </div>

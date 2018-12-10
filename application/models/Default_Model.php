@@ -126,6 +126,11 @@
 			$query = $this->db->get($tbl);
 			return $query->row();
 		}
+		function get_tbl_whr_row_key($tbl,$key,$id){	
+			$this->db->where($key, $id);
+			$query = $this->db->get($tbl);
+			return $query->row();
+		}
 		
 		function get_table_where($sdata, $table, $id){
 			$this->db->select($sdata);

@@ -49,6 +49,7 @@
 				<?php } ?>      
 			   </div>
             </div>
+            <div id="errortheme"></div>
 			<input type="hidden" name="theme_id" id="theme_id">
             <div class="clearifix"></div>
          </div>

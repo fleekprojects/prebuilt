@@ -29,8 +29,11 @@
                      </div>
                   </div>
                </div>
+                <div id="errorpackage"></div>
             </div>
+
             <?php } ?>
+
             <input type="hidden" name="packageid" id="packageid" >
             <footer>
                <div class="footer_inner_left clearifix">

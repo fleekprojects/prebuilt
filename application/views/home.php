@@ -14,7 +14,10 @@
                   <label class="control-label col-sm-3 label-style" for="name">Business Name</label>
                   <div class="col-sm-9">
                      <input type="text" class="form-control" id="name"  name="name" placeholder="ENTER YOUR BUSINESS NAME">
+                      <div id="errorname"></div>
                   </div>
+
+
                </div>
                <div class="form-group col-sm-12">
                   <label class="control-label col-sm-3 label-style" for="ind">Industry</label>
@@ -26,6 +29,7 @@
                         }
                         ?>
                      </select>
+                     <div id="errorindustry"></div>
                   </div>
                </div>
                <div class="form-group col-sm-12">
@@ -39,6 +43,7 @@
                         <br>
                         <img id="img" src="#" alt="Image" style="display: none;max-width: 300px;max-height: 350px;" />
                      </div>
+                       <div id="errorimage"></div>
                   </div>
                </div>
             </div>

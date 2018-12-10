@@ -11,30 +11,26 @@
 
          <div class="col-md-9 bg1_height conFrm">
             <div class="topSection">
-               <form class="form-horizontal" method="POST" action="#">
+               <form class="form-horizontal" method="POST" id="checkoutform" action="<?= base_url()?>checkoutsubmit">
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="package">Package Choosen</label>
                      <div class="col-sm-9">
-                        <input type="text" disabled="" name="package" class="form-control" id="package" placeholder="Standard Package">
-                       
-                     </div>
-                  </div>
-                  <div class="form-group col-sm-12">
-                     <label class="control-label col-sm-3 label-style" for="name">Name</label>
-                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="MENTION YOUR NAME">
-                     </div>
+                        <input type="text" disabled=""  class="form-control" id="package" value="<?= $packages->name?> Package" />
+                       <input type="hidden" name="amount" value="<?= $packages->package_price ?>">
+                     </div> 
                   </div>
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="p_num">Phone Number</label>
                      <div class="col-sm-9">
-                        <input type="text" name="phone" id="phone" class="form-control" placeholder="ENTER YOUR PHONE NUMBER"/>&nbsp;<span id="errmsg"></span>
+                        <input type="text" name="phone" id="phone" class="form-control"  placeholder="ENTER YOUR PHONE NUMBER"/>
+                        <div id="errorphone"></div>
                      </div>
                   </div>
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="email">Email Address</label>
                      <div class="col-sm-9">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="ENTER YOUR EMAIL NUMBER">
+                        <input type="email"  class="form-control" id="email" name="email" placeholder="ENTER YOUR EMAIL NUMBER">
+                        <div id="erroremail"></div>
                      </div>
                   </div>
 
@@ -51,6 +47,7 @@
                         <label class="radio-inline r_inline">
                         <input type="radio" name="optradio"  class="radioclass" value="1"> Phone
                         </label>
+                          <div id="errorradio"></div>
                      </div>
                   </div>
                   <div class="form-row">
@@ -65,7 +62,7 @@
     <div id="card-errors" role="alert"></div>
   </div>
                   <div class="form-group col-sm-12" style="text-align: center;padding-top: 10px;">
-                     <button type="button" onclick="SaveChanges6()" class="btn button-default">PAY NOW</button>
+                     <button  class="btn button-default">PAY NOW</button>
                   </div>
                </form>
             </div>

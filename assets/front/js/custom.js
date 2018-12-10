@@ -4,7 +4,7 @@ AOS.init();
 // this is js slider
 $(document).ready(function() {
 	  // var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
-  var stripe = Stripe('pk_test_1vbqHzMFJMtGk8QbiMCkqMW0');
+  var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
 var elements = stripe.elements();
 
 // Custom styling can be passed to options when creating an Element.
@@ -48,8 +48,31 @@ var form = document.getElementById('checkoutform');
 form.addEventListener('submit', function(event) {
    
   event.preventDefault();
+  	var phone=$('#phone').val();
+	var email=$('#email').val();
+	var radio=$('input:radio[name=optradio]:checked').val();
+
+	
+	if(phone ==""){
+
+	$('#errorphone').html('<small style="color:red;"> Please Enter Phone Number </small>');
+	}
+	else if(email ==""){
+	$('#erroremail').html('<small style="color:red;"> Please Enter Email Address </small>');
 
 
+
+	} 
+	else if(radio != 1 && radio != 0){
+
+
+	$('#errorradio').html('<small style="color:red;"> Please select atleast one option</small>');
+
+
+	}
+
+	
+	
   stripe.createToken(card).then(function(result) {
     if (result.error) {
       // Inform the customer that there was an error.
@@ -67,20 +90,23 @@ form.addEventListener('submit', function(event) {
 });
 function stripeTokenHandler(token) {
 
+
   // Insert the token ID into the form so it gets submitted to the server
   if(token){
-  var form = document.getElementById('registerform');
+  var form = document.getElementById('checkoutform');
   var hiddenInput = document.createElement('input');
   hiddenInput.setAttribute('type', 'hidden');
   hiddenInput.setAttribute('name', 'stripeToken');
   hiddenInput.setAttribute('value', token.id);
+
+  	
   form.appendChild(hiddenInput);
 
   // Submit the form
-  SaveChanges6();
+  form.submit();
+
   }
   else {
-     
      $('#card-errors').append('Your card number is invalid.');
   }
 }
@@ -153,22 +179,21 @@ function stripeTokenHandler(token) {
 
 
 
-	$('#youHavedomainName').change(function(){
-		var value = $( 'input[name=youHavedomainName]:checked' ).val();
-if(value == 'no'){
-	show('#domainSearch');
-	hide('#domainHave');
-}else if(value == 'yes'){
-	show('#domainHave');
-	hide('#domainSearch');
-}
-else{
-	hide('#domainSearch');
-	hide('#domainHave');
-}
+
+$('input[type=radio][name=youHavedomainName]').change(function() {
+    var value = $(this).val();
+    if (value == 0) {
+        $('#domainSearch').show();
+        $('#domainHave').hide();
+    } else if (value == 1) {
+        $('#domainHave').show();
+        $('#domainSearch').hide();
+    } else {
+        $('#domainSearch').hide();
+        $('#domainHave').hide();
+    }
 
 })
-
     function readURL(input) {
             if (input.files && input.files[0]) {
                
@@ -183,7 +208,6 @@ else{
             processData: false,
             success: function(response){
                 if(response !=0){
-
                     $("#img").attr("src",response); 
                     $("#img").css("display", "block")
                    		 .width(276)
@@ -211,27 +235,65 @@ else{
         d.fn[c].Constructor = b;
         d.fn[c].noConflict = function() { d.fn[c] = a; return this };
         d(document).on("click.portfilter.data-api", "[data-toggle^=portfilter]", function(f) { d(this).portfilter("filter") }) }(window.jQuery);
-console.log(document.cookie);
+
 var getUrl = window.location;
 var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 function SaveChanges1(q) {
-
 	var name= $('#name').val();
 	var filepath= $('#img').attr('src');
 	var e = document.getElementById(q);
 	var industry = e.options[e.selectedIndex].value ;
-	var userinfo = [name, industry, filepath];
+	if(name ==""){
+
+	$('#errorname').html('<small style="color:red;"> Please Enter Business Name </small>');
+
+	} else if(industry ==""){
+	$('#errorindustry').html('<small style="color:red;"> Please Select Industry </small>');
+
+
+
+	} else if(filepath =="#"){
+	$('#errorimage').html('<small style="color:red;"> Please Select Image </small>');
+
+
+	} else{
+	var userinfo = name+','+industry+','+filepath;
 	$.cookie('userinfo',userinfo);
 	window.location.href = baseUrl+"/select-domain";
+	}
 }
 
 function SaveChanges2() {
 	var cook= $.cookie("userinfo");
 	var domain= $('#domain').val();
+	var domainaddress= $('#domain_name_search').val();
 	var have_domain = document.querySelector('input[name="youHavedomainName"]:checked').value;	// var filepath= $('#img').attr('src');
-	var cookie=cook+','+have_domain+','+domain;
-	$.cookie('userinfo',cookie);
-	window.location.href = baseUrl+"/select-theme";
+	if(have_domain =="1"){
+
+		if(domain ==""){
+		$('#errordomain').html('<small style="color:red;"> Please Enter Domain Name</small>');
+		}
+		 else{
+		var cookie=cook+','+have_domain+','+domain;
+		$.cookie('userinfo',cookie);
+		window.location.href = baseUrl+"/select-theme";
+		}
+		
+	}
+	else
+	{
+		if(domainaddress ==""){
+		$('#errordomainaddress').html('<small style="color:red;"> Please Enter Domain Address</small>');
+		}
+		 else{
+		var cookie=cook+','+have_domain+','+domain;
+		$.cookie('userinfo',cookie);
+		window.location.href = baseUrl+"/select-theme";
+		}
+
+
+	}
+
 }
 function themeSelect(id){
   	$('#theme_id').val(id);
@@ -239,10 +301,16 @@ function themeSelect(id){
  
 function SaveChanges3() {
 	var themeid= $('#theme_id').val();
+	if(themeid ==""){
+		$('#errortheme').html('<small style="color:red;"> Please select atleast one</small>');
+
+	}
+	else{
 	var cook= $.cookie("userinfo");
 	var cookie=cook+','+themeid;
 	$.cookie('userinfo',cookie);
 	window.location.href = baseUrl+"/other-info";
+	}
 }
  function packageSelect(id){
   	$('#packageid').val(id);
@@ -250,42 +318,31 @@ function SaveChanges3() {
 function SaveChanges4() {
 	var cook= $.cookie("userinfo");
 	var comment= $('#comment').val();
-	var cookie=cook+','+comment;
-	$.cookie('userinfo',cookie);
-	window.location.href = baseUrl+"/select-package";
+	if(comment ==""){
+		$('#errorcomment').html('<small style="color:red;"> Please Enter Comments</small>');
+	}
+	else{
+		var cookie=cook+','+comment;
+		$.cookie('userinfo',cookie);
+		window.location.href = baseUrl+"/select-package";
+	}
+	
 }
-function SaveChanges5(packageid) {
+function SaveChanges5() {
 	var packageid= $('#packageid').val();
+
+	if(packageid ==""){
+		$('#errorpackage').html('<small style="color:red;"> Please select atleast one</small>')
+
+	}
+	else{
 	var cook= $.cookie("userinfo");
 	var cookie=cook+','+packageid;
 	$.cookie('userinfo',cookie);
-	window.location.href = baseUrl+"/checkout/";
+	window.location.href = baseUrl+"/checkout/"+packageid;
+	}
 }
 
-
-function SaveChanges6() {
-
-	var phone= $('#phone').val();
-	var email= $('#email').val();
-	var radio=$('input:radio[name=optradio]:checked').val();
-	var cook= $.cookie("userinfo");
-	var cookie=cook+','+phone+','+email+','+radio;
-	$.cookie('userinfo',cookie);
-
-		 $.ajax({
-            url: 'submit',
-            type: 'POST',
-            data: cookie,
-            success: function(response){
-                if(response =='successfull'){
-                 window.location.href = baseUrl+"/payment-confirm";
-                }else{
-                    alert('Error');
-                }
-            },
-        });
-	// window.location.href = baseUrl+"/checkout";
-}
 
 
 		

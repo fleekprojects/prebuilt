@@ -25,6 +25,7 @@
                      <label class="control-label col-sm-3 label-style" for="domain_name">Your Domain </label>
                      <div class="col-sm-9">
                         <input type="text" class="form-control" id="domain" name="domain_name" placeholder="ENTER YOUR DOMAIN NAME">
+                        <div id="errordomain"></div>
                      </div>
                   </div>
                   <div class="form-group col-sm-12">
@@ -42,6 +43,7 @@
                      <div class="col-sm-9">
                         <input type="text" class="form-control" name="domain_name" id="domain_name_search" placeholder="ENTER YOUR DOMAIN ADDRESS">
                         <button type="button" class="btn btn-default">SEARCH DOMAIN</button>
+                           <div id="errordomainaddress"></div>
                      </div>
                   </div>
                </div>
