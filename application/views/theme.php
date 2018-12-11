@@ -25,7 +25,7 @@
                      </button>
 					 <?php
 					   foreach($categories as $category){ ?>
-					   <button class="btn btn-small btn-danger btn_color" data-toggle="portfilter" data-target="<?= $category['tag']?>"><?= $category['name'] ?></button>
+					   <button class="btn btn-small btn-danger btn_color" data-toggle="portfilter" data-target="<?= $category['tag']?>"><?= $category['pre_name'] ?></button>
 					 <?php }  ?>
                   </div>
                </div>
@@ -39,8 +39,8 @@
                            <div class="s_shadow">
                               <h1 class="alignleft"><?= strtoupper($theme['theme_name']) ?></h1>
                               <a href="#" onclick="themeSelect(<?= $theme['theme_id'] ?>)" class="alignright">SELECT</a>
-                              <a href="<?=base_url()?>assets/front/images/<?= $theme['image1'] ?>" class="thumbnail " data-fancybox>
-								<img src="<?=base_url()?>assets/front/images/<?= $theme['image1'] ?>" class="img-responsive i_img">
+                              <a href="<?=base_url()?>uploads/themeimages/<?= $theme['image1'] ?>" class="thumbnail " data-fancybox>
+								<img src="<?=base_url()?>uploads/themeimages/<?= $theme['image1'] ?>" class="img-responsive i_img">
                               </a>
                            </div>
                         </div>

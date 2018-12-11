@@ -26,6 +26,9 @@ user_guide/cilexer/build/*
 user_guide/cilexer/dist/*
 user_guide/cilexer/pycilexer.egg-info/*
 
+assets/admin/uploads/
+assets/admin/uploads/*
+
 #application files
 environment.php
 environment2.php

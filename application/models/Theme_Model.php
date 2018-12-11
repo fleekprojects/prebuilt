@@ -7,7 +7,6 @@
 			$this->db->from('pre_themes');
 			$this->db->join('pre_theme_to_category', 'pre_theme_to_category.theme_id = pre_themes.theme_id','left');
 			$this->db->join('pre_categories', 'pre_categories.id = pre_theme_to_category.category_id','left');
-			$this->db->where('pre_themes.status',1);
 			$query = $this->db->get();
 			return $query->result_array();
 		}

@@ -11,7 +11,7 @@
          <div class="col-md-9 bg1_height">
             <?php foreach($packages as $package){ ?>
             <div class="col-md-6">
-               <h2 class="s_main"><?= $package['name'] ?> Packages</h2>
+               <h2 class="s_main"><?= $package['package_name'] ?> Packages</h2>
                <div class="box">
                   <div class="icon">
                      <!--<div class="image"><i class="fa fa-thumbs-o-up"></i></div>-->
