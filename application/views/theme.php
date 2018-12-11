@@ -2,13 +2,19 @@
    <div class="">
    <div class="">
       <div class="col-md-3 bg_color bg_color1">
+          <div class="table">
+               <div class="table-cell">
          <h1 class="h_content">3/6
             <br>Select
             <br>Theme
          </h1>
          <p class="p_content">Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed to eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
+   </div>
+      </div>
       <div class="col-md-9 bg1_height">
+ <div class="table">
+               <div class="table-cell">
          <div class="topSection">
             <div class="row">
                <div class="col-xs-12">
@@ -34,7 +40,7 @@
                <div class="row">
 			    <?php  foreach($themes as $theme){ ?>
                   <div class="theme-box" data-tag='cms<!-- Categrory tag here.. Dynamic -->'>
-                     <div class="col-md-3">
+                     <div class="col-md-3 col-sm-4">
                         <div class="panel">
                            <div class="s_shadow">
                               <h1 class="alignleft"><?= strtoupper($theme['theme_name']) ?></h1>
@@ -62,5 +68,6 @@
             </div>
          </footer>
       </div>
+   </div></div>
    </div>
 </section>
