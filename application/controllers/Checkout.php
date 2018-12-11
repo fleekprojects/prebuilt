@@ -16,6 +16,17 @@
 		
 		public function checkoutsubmit()
 		{
+
+				$maildata['message']='gello';
+				$maildata['from_email']='test@yopmail.com';
+				$maildata['from_name']='tesdt';
+				$maildata['to_email']='saad@yopmail.com';
+				$maildata['to_name']='saad';
+				$maildata['subject']='hello';
+				$mail=$this->Dmodel->send_mail($maildata);
+				print_r($mail);
+				die;
+
 			$cookiearr=explode(',', $_COOKIE['userinfo']);
 				
 				require_once "vendor\stripe\stripe-php\init.php";
@@ -65,22 +76,19 @@
 				$maildata['subject']='hello';
 
 				$maildata['message']='Hi {{User Name}},
-We welcome you aboard!
-Thank you for placing your order at '.Site_Title.'. Please find your account credentials below:
-Username: '.$_POST['email'].'
+					We welcome you aboard!
+					Thank you for placing your order at '.Site_Title.'. Please find your account credentials below:
+					Username: '.$_POST['email'].'
 
 
-Password: '.$password.'
-Please click here to login your account. Enter the given user name and password and you are good to go!
+					Password: '.$password.'
+					Please click here to login your account. Enter the given user name and password and you are good to go!
 
-Warm regards,
+					Warm regards,
 
 
-'.Site_Title.'Customer Support';
-				$mail=$this->Dmodel->send_mail($maildata);
-				print_r($mail);
-				die;
-
+					'.Site_Title.'Customer Support';
+			
 			redirect(base_url().'payment-confirm',$viewdata);
 
 		}

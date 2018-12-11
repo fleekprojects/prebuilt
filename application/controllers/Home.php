@@ -27,12 +27,12 @@
 				
 					$ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 					$filename=md5(uniqid()).'.'.$ext;
-					$filepath='assets/admin/uploads/logo/'.$filename;
+					$filepath='uploads/logos/'.$filename;
 
 					
 					if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
 						// If file moved to uploads folder.
-						echo $filepath;
+						echo $filename;
 
 						} else {     //  If File Was Not Moved.
 						echo ').<span id="error">please try again!.</span><br/><br/>';
