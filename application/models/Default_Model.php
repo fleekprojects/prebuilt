@@ -76,7 +76,11 @@
 			$query = $this->db->insert($tbl,$data);
 			return $query;
 		}
-		
+		function insertdatatoid($tbl,$data){
+			 $this->db->insert($tbl,$data);
+			 $insert_id=$this->db->insert_id();
+			return $insert_id;
+		}
 		function update_data($tbl,$id,$data,$key){	
 			$this->db->where($key, $id);
 			$query = $this->db->update($tbl,$data);
@@ -119,6 +123,11 @@
 		
 		function get_tbl_whr_row($tbl,$id){	
 			$this->db->where('id', $id);
+			$query = $this->db->get($tbl);
+			return $query->row();
+		}
+		function get_tbl_whr_row_key($tbl,$key,$id){	
+			$this->db->where($key, $id);
 			$query = $this->db->get($tbl);
 			return $query->row();
 		}

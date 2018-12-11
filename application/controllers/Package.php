@@ -9,7 +9,8 @@
 		}
 		
 		public function index(){
-			$viewdata="";
+			$get_data=array('status'=>1);
+			$viewdata['packages']=$this->Dmodel->get_tbl_whr_arr('pre_packages',$get_data);
 			$this->LoadView('package',$viewdata);
 		}
 		
