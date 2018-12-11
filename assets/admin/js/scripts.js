@@ -130,6 +130,7 @@
             	$('#edit_city').val(result.city);
             	$('#edit_address1').val(result.address_1);
             	$('#edit_address2').val(result.address_2);
+            	$('#edit_phone').val(result.phone);
             },
             error: function () {
             }
@@ -496,9 +497,12 @@
             success: function (result) {
             	if(result == 'deletetheme'){
             		location.reload();
+            	}else if(result == 'themeuse'){
+            	$('#ststmsg').html('<b style="color: red;">Error: Cannot delete this theme already in use. </b>');
             	}
             },
             error: function () {
+            	$('#ststmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
             }
         });
 
@@ -526,6 +530,7 @@
             	 	$('#ordhvedmn').html('YES');
             	 }
             	 $('#orddmn').html(result.domain);
+            	 $("#ordlgo img").attr("src","../uploads/logos/"+result.business_logo);
             	 $("#ordthm img").attr("src","../uploads/themeimages/"+result.image1);
             	 $('#orddtls').html(result.customization_details);
             	 $('#ordpckg').html(result.package_name);
@@ -561,7 +566,7 @@
     function getthemecat(id){
     	var catId = id;
     	$.ajax({
-            url: "getcats",
+            url: baseurl+"/admin/getcats",
             data: {catId:catId},
             type: 'POST',
             dataType: 'json',
@@ -573,9 +578,9 @@
             		catData += '<ul class="shwtheme">';
             		for (i=0;i < result.length; i++) {
             		if(i == 0){
-            		catData += '<li><img src="../uploads/themeimages/'+result[i].image1+'" width="25px" height="25px"><input class="selectthemes" type="radio" id="themes" name="themes" value="'+result[i].theme_id+'" checked="checked">'+result[i].theme_name+'</li>';	
+            		catData += '<li><img src="'+baseurl+'/uploads/themeimages/'+result[i].image1+'" width="25px" height="25px"><input class="selectthemes" type="radio" id="themes" name="themes" value="'+result[i].theme_id+'" checked="checked">'+result[i].theme_name+'</li>';	
             		}else{
-            		catData += '<li><img src="../uploads/themeimages/'+result[i].image1+'" width="25px" height="25px"><input class="selectthemes" type="radio" id="themes" name="themes" value="'+result[i].theme_id+'">'+result[i].theme_name+'</li>';		
+            		catData += '<li><img src="'+baseurl+'/uploads/themeimages/'+result[i].image1+'" width="25px" height="25px"><input class="selectthemes" type="radio" id="themes" name="themes" value="'+result[i].theme_id+'">'+result[i].theme_name+'</li>';		
 	            	}
             		}
             		catData += '</ul>';
@@ -591,7 +596,7 @@
     $(document).on("click", ".srchdpmain", function () {
     	var domain = $('#domain').val();
     	$.ajax({
-            url: "searchdomain",
+            url: baseurl+"admin/searchdomain",
             data: {domain:domain},
             type: 'POST',
             beforeSend: function () {
@@ -612,7 +617,7 @@
     function getpackagedetails(id){
     	var packageId = id;
     	$.ajax({
-            url: "getpckgs",
+            url: baseurl+"admin/getpckgs",
             data: {packageId:packageId},
             type: 'POST',
             dataType: 'json',
@@ -677,6 +682,92 @@
 		}
 
 	});
+
+    $("#updatewebapp").submit(function(e) { 
+		e.preventDefault();
+		if ($('#updatewebapp').valid()) {
+			var value =new FormData(this);
+			$.ajax({
+				url:baseurl+'admin/updatewebapp',
+				type:'POST',
+				data:value,
+				processData: false,
+                contentType: false,
+				success:function(result){
+					if(result == 'invalidimage'){
+					  $('#filemsg').html('<b style="color: red;">Error: Please upload image only. </b>');
+					  //$('#showthemes').html('');
+					  //$('#domainmsg').html('');
+					  //$('#webappmsg').html('');
+					}else if(result == 'themenotselect'){
+					  $('#showthemes').html('<b style="color: red;">Error: Please select theme. </b>');
+					  //$('#filemsg').html('');
+					  //$('#domainmsg').html('');
+					  //$('#webappmsg').html('');
+					}else if(result == 'domainexist'){
+					  $('#domainmsg').html('<b style="color: red;">Error: Domain Not Available. </b>');
+					  //$('#showthemes').html('');
+					  //$('#filemsg').html('');
+					  //$('#webappmsg').html('');
+					}else if(result == 'webappupdate'){
+					  $('#webappmsg').html('<p><b style="color: green;">Order updated Successfully.</b></p>');	
+					  //$('#showthemes').html('');
+					  //$('#domainmsg').html('');
+					  //$('#filemsg').html('');
+					}
+				},
+				error: function (xhr, textStatus, errorThrown){
+					$('#webappmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+				}
+			});
+		}
+
+	});
+
+	function themestaus(id,status){
+    	var statusId = id;
+    	var status = status;
+    	$.ajax({
+            url: "themestatus",
+            data: {statusId:statusId,status:status},
+            type: 'POST',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	if(result == 'statusthemedone'){
+            		$('#ststmsg').html('<p><b style="color: green;">Order Status Change Successfully.</b></p>');
+            		location.reload();
+            	}else{
+            	$('#ststmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');		
+            	}
+            },
+            error: function () {
+            	$('#ststmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+            }
+        });
+    }
+    function webstaus(id,status){
+    	var statusId = id;
+    	var status = status;
+    	$.ajax({
+            url: baseurl+"admin/webstatus",
+            data: {statusId:statusId,status:status},
+            type: 'POST',
+            beforeSend: function () {
+            },
+            success: function (result) {
+            	if(result == 'statuswebdone'){
+            		$('#ststmsg').html('<p><b style="color: green;">Order Status Change Successfully.</b></p>');
+            		location.reload();
+            	}else{
+            	$('#ststmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');		
+            	}
+            },
+            error: function () {
+            	$('#ststmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+            }
+        });
+    }
 	$(".btn-edit").click(function(){
 		$("#id").val($(this).data("id"));
 		$("#title").val($(this).data("title"));

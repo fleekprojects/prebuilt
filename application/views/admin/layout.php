@@ -30,6 +30,9 @@ font-weight: 100;
 }
 
 </style>
+<script type="text/javascript">
+var baseurl = 	<?= base_url(); ?>;
+</script>
 </head>
 
 <body class="nav-md">
@@ -60,6 +63,7 @@ font-weight: 100;
 </ul>
 </li>
 <li><a href="<?= base_url(); ?>admin/webapp"><i class="fa fa-dashboard"></i> <span>WebApp</span></a></li>
+<li><a href="<?= base_url(); ?>admin/payments"><i class="fa fa-dashboard"></i> <span>Payment</span></a></li>
 </ul>
 </div>
 </div>

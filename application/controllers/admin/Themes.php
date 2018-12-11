@@ -79,6 +79,11 @@ public function updatetheme(){
 		$result=$this->Tmodel->update_theme($this->table,$data,$data2);
 	}
 }
+public function themestatus(){
+	$data['theme_id']=$this->input->post('statusId');
+	$data['status']=$this->input->post('status');
+	$result=$this->Tmodel->status_theme($this->table,$data);
+}
 
 public function themedelete(){
 	$data['status']=0;
