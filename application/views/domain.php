@@ -2,12 +2,18 @@
    <div class="">
       <div class="">
          <div class="col-md-3 bg_color">
+             <div class="table">
+               <div class="table-cell">
             <h1 class="h_content">2/6
                <br>Select<br>Domain
             </h1>
             <p class="p_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed to eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
          </div>
+      </div>
+         </div>
          <div class="col-md-9 bg_height">
+ <div class="table">
+               <div class="table-cell">
             <div class="topSection">
                <div class="form-group col-sm-12">
                   <label class="control-label col-sm-3 label-style" for="youHavedomainName">Do you have any domain?</label>
@@ -30,10 +36,11 @@
                   </div>
                   <div class="form-group col-sm-12">
 				  <hr noshade>
-                     <label class="control-label col-sm-3 label-style" for="nameserver">Note: Please update your nameserver accordingly </label>
+                     
                      <div class="col-sm-9">
-                        <p>ns1.inmotionhosting.com</p>
-                        <p>ns2.inmotionhosting.com</p>
+                        <p class=" label-style">Note: Please update your nameserver accordingly</p>
+                        <p><b>ns1.inmotionhosting.com</b></p>
+                        <p><b>ns2.inmotionhosting.com</b></p>
                      </div>
                   </div>
                </div>
@@ -42,7 +49,7 @@
                      <label class="control-label col-sm-3 label-style" for="domainSearch">Domain Address</label>
                      <div class="col-sm-9">
                         <input type="text" class="form-control" name="domain_name" id="domain_name_search" placeholder="ENTER YOUR DOMAIN ADDRESS">
-                        <button type="button" class="btn btn-default">SEARCH DOMAIN</button>
+                        <button type="button" class="button-default">SEARCH DOMAIN</button>
                            <div id="errordomainaddress"></div>
                      </div>
                   </div>
@@ -56,6 +63,8 @@
                   <a href="#"  onclick="SaveChanges2()" class="c_continue"><span class="text">Continue</span><span class="glyphicon glyphicon-arrow-right"></span></a>
                </div>
             </footer>
+         </div>
+      </div>
          </div>
       </div>
    </div>

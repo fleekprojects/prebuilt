@@ -7,6 +7,8 @@
       <title>Business Details</title>
       <meta name="description" content="Source code generated using layoutit.com">
       <meta name="author" content="LayoutIt!">
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,300,400,500,600,700,800,900" rel="stylesheet"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link href="<?= base_url(); ?>assets/front/css/bootstrap.min.css" rel="stylesheet">
       <link href="<?= base_url(); ?>assets/front/css/aos-min.css" rel="stylesheet">
       <link href="<?= base_url(); ?>assets/front/css/owl.carousel-min.css" rel="stylesheet">
