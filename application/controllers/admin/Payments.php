@@ -9,7 +9,7 @@ var $viewname='admin/payment';
 
 public function __construct(){
 parent::__construct();
-$this->load->model('Model_admin','Amodel');
+$this->load->model('Model_admin','Amodel','Pmodel');
 }
 
 public function index(){
@@ -17,7 +17,7 @@ public function index(){
 	if($this->session->userdata('admin_roles') == 1){
 		$data['status']=1;
 		$viewdata['title']=$this->pagetitle;
-		//$viewdata['webdata']=$this->Webmodel->get_webapp_orders();
+		$viewdata['paymentdata']=$this->Dmodel->get_tbl($this->table);
 		// echo '<pre>'; print_r($viewdata['webdata']);
 		// exit;
 		$this->LoadAdminView($this->viewname,$viewdata);
