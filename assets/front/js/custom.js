@@ -4,112 +4,6 @@ AOS.init();
 // this is js slider
 $(document).ready(function() {
 	  // var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
-  var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
-var elements = stripe.elements();
-
-// Custom styling can be passed to options when creating an Element.
-var style = {
-  base: {
-    // Add your base input styles here. For example:
-    fontSize: '16px',
-    color: "#020202",
-   
-  }
-};
-
-// Create an instance of the card Element.
-var card = elements.create('card', {style: style});
-
-// Add an instance of the card Element into the `card-element` <div>.
-card.mount('#card-element');
-
-	var owl = $("#owl-demo");
-	$(".owl-carousel").owlCarousel({
-      nav:true,
-      items : 3, //10 items above 1000px browser width
-      itemsDesktop : [1920,3], //5 items between 1000px and 901px
-      itemsTablet: [1200,2], //2 items between 600 and 0
-      itemsMobile :[720,1],  // itemsMobile disabled - inherit from itemsTablet option
-
-
-  });
-
-card.addEventListener('change', function(event) {
-  var displayError = document.getElementById('card-errors');
-  if (event.error) {
-    displayError.textContent = event.error.message;
-  } else {
-    displayError.textContent = '';
-  }
-});
-
-// Create a token or display an error when the form is submitted.
-var form = document.getElementById('checkoutform');
-form.addEventListener('submit', function(event) {
-   
-  event.preventDefault();
-  	var phone=$('#phone').val();
-	var email=$('#email').val();
-	var radio=$('input:radio[name=optradio]:checked').val();
-
-	
-	if(phone ==""){
-
-	$('#errorphone').html('<small style="color:red;"> Please Enter Phone Number </small>');
-	}
-	else if(email ==""){
-	$('#erroremail').html('<small style="color:red;"> Please Enter Email Address </small>');
-
-
-
-	} 
-	else if(radio != 1 && radio != 0){
-
-
-	$('#errorradio').html('<small style="color:red;"> Please select atleast one option</small>');
-
-
-	}
-
-	
-	
-  stripe.createToken(card).then(function(result) {
-    if (result.error) {
-      // Inform the customer that there was an error.
-      var errorElement = document.getElementById('card-errors');
-      errorElement.textContent = result.error.message;
-    } 
-   
-   
-        else {
-        
-      // Send the token to your server.
-      stripeTokenHandler(result.token);
-    }
-  });
-});
-function stripeTokenHandler(token) {
-
-
-  // Insert the token ID into the form so it gets submitted to the server
-  if(token){
-  var form = document.getElementById('checkoutform');
-  var hiddenInput = document.createElement('input');
-  hiddenInput.setAttribute('type', 'hidden');
-  hiddenInput.setAttribute('name', 'stripeToken');
-  hiddenInput.setAttribute('value', token.id);
-
-  	
-  form.appendChild(hiddenInput);
-
-  // Submit the form
-  form.submit();
-
-  }
-  else {
-     $('#card-errors').append('Your card number is invalid.');
-  }
-}
 
 
 
@@ -297,6 +191,8 @@ function SaveChanges2() {
 
 }
 function themeSelect(id){
+	console.log('test', this);
+	$(this).addClass('testing');
   	$('#theme_id').val(id);
   }
  
@@ -320,7 +216,7 @@ function SaveChanges4() {
 	var cook= $.cookie("userinfo");
 	var comment= $('#comment').val();
 	if(comment ==""){
-		$('#errorcomment').html('<small style="color:red;"> Please Enter Comments</small>');
+		$('#errorcomment').html('<small style="color:red;">Please Enter details.</small>');
 	}
 	else{
 		var cookie=cook+','+comment;
@@ -344,6 +240,140 @@ function SaveChanges5() {
 	}
 }
 
+
+   $( document ).ready(function() {
+
+  $('body').on('click', '.theme-box'  , function(e) {
+  	//e.preventDefault();
+
+     $('.theme-box').removeClass( "active" );
+    $(this).addClass( "active" );
+    
+} );
+
+$('.i_info').click( function() {
+      $('.i_info').removeClass( "selected" );
+    $(this).addClass( "selected" );
+
+} );
+
+
+
+
+
+
+
+
+
+  var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
+var elements = stripe.elements();
+
+// Custom styling can be passed to options when creating an Element.
+var style = {
+  base: {
+    // Add your base input styles here. For example:
+    fontSize: '16px',
+    color: "#020202",
+   
+  }
+};
+
+// Create an instance of the card Element.
+var card = elements.create('card', {style: style});
+
+// Add an instance of the card Element into the `card-element` <div>.
+card.mount('#card-element');
+
+	var owl = $("#owl-demo");
+	$(".owl-carousel").owlCarousel({
+      nav:true,
+      items : 3, //10 items above 1000px browser width
+      itemsDesktop : [1920,3], //5 items between 1000px and 901px
+      itemsTablet: [1200,2], //2 items between 600 and 0
+      itemsMobile :[720,1],  // itemsMobile disabled - inherit from itemsTablet option
+
+
+  });
+
+card.addEventListener('change', function(event) {
+  var displayError = document.getElementById('card-errors');
+  if (event.error) {
+    displayError.textContent = event.error.message;
+  } else {
+    displayError.textContent = '';
+  }
+});
+
+// Create a token or display an error when the form is submitted.
+var form = document.getElementById('checkoutform');
+form.addEventListener('submit', function(event) {
+   
+  event.preventDefault();
+  	var phone=$('#phone').val();
+	var email=$('#email').val();
+	var radio=$('input:radio[name=optradio]:checked').val();
+
+	
+	if(phone ==""){
+
+	$('#errorphone').html('<small style="color:red;"> Please Enter Phone Number </small>');
+	}
+	else if(email ==""){
+	$('#erroremail').html('<small style="color:red;"> Please Enter Email Address </small>');
+
+
+
+	} 
+	else if(radio != 1 && radio != 0){
+
+
+	$('#errorradio').html('<small style="color:red;"> Please select atleast one option</small>');
+
+
+	}
+
+	
+	
+  stripe.createToken(card).then(function(result) {
+    if (result.error) {
+      // Inform the customer that there was an error.
+      var errorElement = document.getElementById('card-errors');
+      errorElement.textContent = result.error.message;
+    } 
+   
+   
+        else {
+        
+      // Send the token to your server.
+      stripeTokenHandler(result.token);
+    }
+  });
+});
+function stripeTokenHandler(token) {
+
+
+  // Insert the token ID into the form so it gets submitted to the server
+  if(token){
+  var form = document.getElementById('checkoutform');
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+
+  	
+  form.appendChild(hiddenInput);
+
+  // Submit the form
+  form.submit();
+
+  }
+  else {
+     $('#card-errors').append('Your card number is invalid.');
+  }
+}
+
+
+});
 
 
 		

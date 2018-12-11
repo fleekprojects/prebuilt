@@ -2,14 +2,21 @@
    <div class="">
       <div class="">
          <div class="col-md-3 bg_color bg_color2">
+          <div class="table">
+               <div class="table-cell">
             <h1 class="h_content">6/6
                <br>Confirm
                <br>Purchase
             </h1>
             <p class="p_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit,  sed to eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+          </div>
+        </div>
          </div>
 
          <div class="col-md-9 bg1_height conFrm">
+<div class="table">
+               <div class="table-cell">
             <div class="topSection">
                <form class="form-horizontal" method="POST" id="checkoutform" action="<?= base_url()?>checkoutsubmit">
                   <div class="form-group col-sm-12">
@@ -34,7 +41,7 @@
                      </div>
                   </div>
 
-               </div>
+            
                     
                
       
@@ -71,6 +78,10 @@
                   <a href="<?= base_url();?>select-package" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span>Back</a>
                </div>
             </footer>
+
+</div>
+</div>
+
          </div>
 
       </div>

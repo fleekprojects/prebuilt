@@ -13,6 +13,7 @@
       <link href="<?= base_url(); ?>assets/front/css/aos-min.css" rel="stylesheet">
       <link href="<?= base_url(); ?>assets/front/css/owl.carousel-min.css" rel="stylesheet">
       <link href="<?= base_url(); ?>assets/front/css/owl.theme-min.css" rel="stylesheet">
+        <link href="<?= base_url(); ?>assets/front/css/jquery.fancybox.css" rel="stylesheet">
       <link href="<?= base_url(); ?>assets/front/css/style.css" rel="stylesheet">
    </head>
    <body>
@@ -25,7 +26,8 @@
       <script src="<?= base_url(); ?>assets/front/js/bootstrap.min.js"></script>
       <script src="<?= base_url(); ?>assets/front/js/aos-min.js"></script>
       <script src="<?= base_url(); ?>assets/front/js/owl.carousel-min.js"></script>
-      <script src="<?= base_url(); ?>assets/front/js/custom.js"></script>
+       <script src="<?= base_url(); ?>assets/front/js/jquery.fancybox.min.js"></script>
+      
      <script src="https://js.stripe.com/v3/"></script>
      <script>
 	(function (d, t, g) {
@@ -37,5 +39,6 @@
 		s.parentNode.insertBefore(ph, s);
 	})(document, 'script', '//199.250.201.124/~qc/?p=132&ph_apikey=0e62afea9ad25555d9506bdb21e99e82');
 </script>
+<script src="<?= base_url(); ?>assets/front/js/custom.js"></script>
    </body>
 </html>
