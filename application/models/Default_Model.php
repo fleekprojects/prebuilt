@@ -140,8 +140,9 @@
 			return $result;
 		}
 		
+		
 		function send_mail($maildata){
-			$config = Array(
+			$config = array(
 				'protocol' => 'mail',
 				'smtp_host' => SMTP_Host,
 				'smtp_port' => SMTP_Port,
@@ -156,15 +157,12 @@
 			$this->email->message($maildata['message']);
 			$this->email->set_header('MIME-Version', '1.0; charset=utf-8');
 			$this->email->set_header('Content-type', 'text/html');
-			print_r($this->email->send());
-die;
+			
 			if($this->email->send()) {
 				return 1;
 			} else {
-
-				print_r($this->email->print_debugger());
-			die;
-				return $this->email->print_debugger();
+				echo $this->email->print_debugger();
+				die;
 			}
 		}
 		

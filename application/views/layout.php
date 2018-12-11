@@ -26,8 +26,9 @@
       <script src="<?= base_url(); ?>assets/front/js/bootstrap.min.js"></script>
       <script src="<?= base_url(); ?>assets/front/js/aos-min.js"></script>
       <script src="<?= base_url(); ?>assets/front/js/owl.carousel-min.js"></script>
+       <script src="https://js.stripe.com/v3/"></script>
       <script src="<?= base_url(); ?>assets/front/js/custom.js"></script>
-     <script src="https://js.stripe.com/v3/"></script>
+    
    
    </body>
 </html>
