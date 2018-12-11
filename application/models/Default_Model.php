@@ -156,10 +156,14 @@
 			$this->email->message($maildata['message']);
 			$this->email->set_header('MIME-Version', '1.0; charset=utf-8');
 			$this->email->set_header('Content-type', 'text/html');
-			
+			print_r($this->email->send());
+die;
 			if($this->email->send()) {
 				return 1;
 			} else {
+
+				print_r($this->email->print_debugger());
+			die;
 				return $this->email->print_debugger();
 			}
 		}
