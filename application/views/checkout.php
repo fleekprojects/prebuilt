@@ -15,7 +15,7 @@
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="package">Package Choosen</label>
                      <div class="col-sm-9">
-                        <input type="text" disabled=""  class="form-control" id="package" value="<?= $packages->name?> Package" />
+                        <input type="text" disabled=""  class="form-control" id="package" value="<?= $packages->package_name?> Package" />
                        <input type="hidden" name="amount" value="<?= $packages->package_price ?>">
                      </div> 
                   </div>
@@ -29,7 +29,7 @@
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="email">Email Address</label>
                      <div class="col-sm-9">
-                        <input type="email"  class="form-control" id="email" name="email" placeholder="ENTER YOUR EMAIL NUMBER">
+                        <input type="email"  class="form-control" id="email" name="email" placeholder="ENTER YOUR EMAIL ADDRESS">
                         <div id="erroremail"></div>
                      </div>
                   </div>

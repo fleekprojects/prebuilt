@@ -238,7 +238,7 @@ $('input[type=radio][name=youHavedomainName]').change(function() {
         d(document).on("click.portfilter.data-api", "[data-toggle^=portfilter]", function(f) { d(this).portfilter("filter") }) }(window.jQuery);
 
 var getUrl = window.location;
-var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
 function SaveChanges1(q) {
 	var name= $('#name').val();
 	var imgname= $('#imgname').val();
@@ -253,20 +253,18 @@ function SaveChanges1(q) {
 
 
 
-	} else if(imgname ==""){
-	$('#errorimage').html('<small style="color:red;"> Please Select Image </small>');
-
-
-	} else{
+	}  else{
 	var userinfo = name+','+industry+','+imgname;
 	$.cookie('userinfo',userinfo);
-	window.location.href = baseUrl+"/select-domain";
+	window.location.href = baseUrl+"select-domain";
 	}
 }
 
 function SaveChanges2() {
 	var cook= $.cookie("userinfo");
 	var domain= $('#domain').val();
+	if(/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(domain)){
+    
 	var domainaddress= $('#domain_name_search').val();
 	var have_domain = document.querySelector('input[name="youHavedomainName"]:checked').value;	// var filepath= $('#img').attr('src');
 	if(have_domain =="1"){
@@ -277,7 +275,7 @@ function SaveChanges2() {
 		 else{
 		var cookie=cook+','+have_domain+','+domain;
 		$.cookie('userinfo',cookie);
-		window.location.href = baseUrl+"/select-theme";
+		window.location.href = baseUrl+"select-theme";
 		}
 		
 	}
@@ -289,10 +287,15 @@ function SaveChanges2() {
 		 else{
 		var cookie=cook+','+have_domain+','+domain;
 		$.cookie('userinfo',cookie);
-		window.location.href = baseUrl+"/select-theme";
+		window.location.href = baseUrl+"select-theme";
 		}
 
 
+	}
+
+	}
+	 else {
+	    $('#errordomain').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (https://www.google.com) </small>');
 	}
 
 }
@@ -310,7 +313,7 @@ function SaveChanges3() {
 	var cook= $.cookie("userinfo");
 	var cookie=cook+','+themeid;
 	$.cookie('userinfo',cookie);
-	window.location.href = baseUrl+"/other-info";
+	window.location.href = baseUrl+"other-info";
 	}
 }
  function packageSelect(id){
@@ -319,14 +322,9 @@ function SaveChanges3() {
 function SaveChanges4() {
 	var cook= $.cookie("userinfo");
 	var comment= $('#comment').val();
-	if(comment ==""){
-		$('#errorcomment').html('<small style="color:red;"> Please Enter Comments</small>');
-	}
-	else{
-		var cookie=cook+','+comment;
+	var cookie=cook+','+comment;
 		$.cookie('userinfo',cookie);
-		window.location.href = baseUrl+"/select-package";
-	}
+		window.location.href = baseUrl+"select-package";
 	
 }
 function SaveChanges5() {
@@ -340,7 +338,7 @@ function SaveChanges5() {
 	var cook= $.cookie("userinfo");
 	var cookie=cook+','+packageid;
 	$.cookie('userinfo',cookie);
-	window.location.href = baseUrl+"/checkout/"+packageid;
+	window.location.href = baseUrl+"checkout/"+packageid;
 	}
 }
 

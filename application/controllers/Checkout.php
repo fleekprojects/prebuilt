@@ -17,6 +17,7 @@
 		public function checkoutsubmit()
 		{
 			$cookiearr=explode(',', $_COOKIE['userinfo']);
+			
 				
 				require_once "vendor\stripe\stripe-php\init.php";
 				\Stripe\Stripe::setApiKey("sk_test_940FP89X8e9LGSDvt8YmHmGh");      
