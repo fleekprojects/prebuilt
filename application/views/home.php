@@ -49,6 +49,7 @@
                         <br>
                         <img id="img" src="#" alt="Image" style="display: none;max-width: 300px;max-height: 350px;" />
                      </div>
+                       <input type="hidden"  id="imgname" >
                        <div id="errorimage"></div>
                   </div>
                </div>
