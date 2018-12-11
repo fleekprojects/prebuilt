@@ -47,8 +47,9 @@
 					$status=0;
 				}
 			$cookiearr=explode(',', $_COOKIE['userinfo']);
-			
-			$userdata=array('email'=>$_POST['email'],'status'=>0,'date_created'=>DateTime_Now);
+
+			$password=rand(100000,999999);	
+			$userdata=array('email'=>$_POST['email'],'password'=>$password,'status'=>0,'date_created'=>DateTime_Now);
 			$userid=$this->Dmodel->insertdatatoid('pre_users',$userdata);
 			$userdetailsdata=array('user_id'=>$userid,'phone'=>$_POST['phone']);
 			$usdetail=$this->Dmodel->insertdata('pre_user_details',$userdetailsdata);
@@ -59,8 +60,29 @@
 			$webid=$this->Dmodel->insertdatatoid('pre_webapp',$webdata);
 			$paymentarr=array('user_id'=>$userid,'webapp_id'=>$webid,'amount_paid'=>$amount,'status'=>$status,'payment_date'=>DateTime_Now,'gateway'=>'stripe','gateway_returns'=>$charge->id);
 			$webid=$this->Dmodel->insertdatatoid('pre_payments',$paymentarr);
-
 			$viewdata['message']=$message;
+
+				$maildata['from_email']='info@prebuilt.tk';
+				$maildata['from_name']='Prebuilt';
+				$maildata['to_email']=$_POST['email'];
+				$maildata['to_name']='Customer';
+				$maildata['subject']='Order Confirmation';
+
+				$maildata['message']='Hello Customer,
+We welcome you aboard!
+Thank you for placing your order at '.Site_Title.'. Please find your account credentials below:
+Username: '.$_POST['email'].'
+
+
+Password: '.$password.'
+Please click here to login your account. Enter the given user name and password and you are good to go!
+
+Warm regards,
+
+
+'.Site_Title.'Customer Support';
+				$mail=$this->Dmodel->send_mail($maildata);
+			
 			redirect(base_url().'payment-confirm',$viewdata);
 
 		}

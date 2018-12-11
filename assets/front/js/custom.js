@@ -208,7 +208,8 @@ $('input[type=radio][name=youHavedomainName]').change(function() {
             processData: false,
             success: function(response){
                 if(response !=0){
-                    $("#img").attr("src",response); 
+                    $("#imgname").val(response); 
+                    $("#img").attr("src",'uploads/logos/'+response); 
                     $("#img").css("display", "block")
                    		 .width(276)
                         .height(200); // Display image element
@@ -240,7 +241,7 @@ var getUrl = window.location;
 var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 function SaveChanges1(q) {
 	var name= $('#name').val();
-	var filepath= $('#img').attr('src');
+	var imgname= $('#imgname').val();
 	var e = document.getElementById(q);
 	var industry = e.options[e.selectedIndex].value ;
 	if(name ==""){
@@ -252,12 +253,12 @@ function SaveChanges1(q) {
 
 
 
-	} else if(filepath =="#"){
+	} else if(imgname ==""){
 	$('#errorimage').html('<small style="color:red;"> Please Select Image </small>');
 
 
 	} else{
-	var userinfo = name+','+industry+','+filepath;
+	var userinfo = name+','+industry+','+imgname;
 	$.cookie('userinfo',userinfo);
 	window.location.href = baseUrl+"/select-domain";
 	}
