@@ -102,11 +102,13 @@
 </form>
 <!----------------------/Edit Theme Modal ----------------------->
 <div class="x_content">
+<div id="ststmsg"></div>	
 <table id="datatable-buttons" class="table table-striped table-bordered">
 <thead>
 <tr>
 <th>Theme Name</th>
 <th>Theme Category Name</th>
+<th>Theme Status</th>
 <th>Action</th>
 </tr>
 </thead>
@@ -115,6 +117,12 @@
 <tr>
 <td><?php echo $theme['theme_name']; ?></td>
 <td><?php echo $theme['pre_name']; ?></td>
+<td>
+<select name="themestatus" id="themestatus" onchange="themestaus('<?php echo $theme['theme_id']; ?>',this.value);">
+<option value="0" <?php if($theme['status'] == 0){ echo 'selected="selected"'; }else{} ?>>Deactive</option>	
+<option value="1" <?php if($theme['status'] == 1){ echo 'selected="selected"'; }else{} ?>>Active</option>
+</select>	
+</td>
 <td>
 <a data-toggle="modal" data-target="#editthemeModal" class="btn btn-warning btn-editc btn-sm edittheme" themeId="<?=$theme['theme_id']?>">
 <i class="fa fa-edit"></i></a>

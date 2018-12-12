@@ -90,6 +90,7 @@ $route['admin/themes'] = 'admin/Themes';
 $route['admin/themeadd'] = 'admin/Themes/addtheme';
 $route['admin/themeedit'] = 'admin/Themes/edittheme';
 $route['admin/themeupdate'] = 'admin/Themes/updatetheme';
+$route['admin/themestatus'] = 'admin/Themes/themestatus';
 $route['admin/themedelete'] = 'admin/Themes/themedelete';
 $route['admin/webapp'] = 'admin/Webapp';
 $route['admin/vieworder'] = 'admin/Webapp/vieworder';
@@ -98,6 +99,10 @@ $route['admin/getcats'] = 'admin/Webapp/getthemecats';
 $route['admin/searchdomain'] = 'admin/Webapp/srchdomain';
 $route['admin/getpckgs'] = 'admin/Webapp/getpackgs';
 $route['admin/createwebapp'] = 'admin/Webapp/createwebapp';
+$route['admin/updatewebapp'] = 'admin/Webapp/updatewebapp';
+$route['admin/webstatus'] = 'admin/Webapp/webstatus';
+$route['admin/editwebapp/(:any)'] = 'admin/Webapp/editwebapp/$1';
+$route['admin/payments'] = 'admin/Payments';
 
 
 $route['admin'] = 'admin/Admin';
