@@ -16,10 +16,12 @@
 		
 		public function checkoutsubmit()
 		{
-			
-			// $_COOKIE['userinfo'].','.$_POST['phone'].','.$_POST['email'].','.$_POST['rad']
-			// set()
-			$cookiearr=explode(',', $_COOKIE['userinfo']);
+
+		if($this->Dmodel->IFExist('users','email',$_POST['email'])){
+				$users=$this->Dmodel->get_tbl_whr_row_key('pre_users','email',$_POST['email']);
+				$userid=$users->id;
+			}
+			$cookiearr=explode(',',$_COOKIE['userinfo']);
 
 				
 				require_once APPPATH."libraries/stripe/stripe-php/init.php";
@@ -50,8 +52,18 @@
 			$cookiearr=explode(',', $_COOKIE['userinfo']);
 
 			$password=rand(100000,999999);	
-			$userdata=array('email'=>$_POST['email'],'password'=>$password,'status'=>0,'date_created'=>DateTime_Now);
-			$userid=$this->Dmodel->insertdatatoid('pre_users',$userdata);
+			
+			if($this->Dmodel->IFExist('users','email',$_POST['email'])){
+				$userdata=array('email'=>$_POST['email'],'password'=>md5($password),'status'=>0,'date_created'=>DateTime_Now);
+				$userid=$this->Dmodel->insertdatatoid('pre_users',$userdata);
+			
+			}
+			else{
+					$users=$this->Dmodel->get_tbl_whr_row_key('pre_users','email',$_POST['email']);
+					$userid=$users->id;
+			}
+
+
 			$userdetailsdata=array('user_id'=>$userid,'phone'=>$_POST['phone']);
 			$usdetail=$this->Dmodel->insertdata('pre_user_details',$userdetailsdata);
 			$webdata=array('user_id'=>$userid,'business_name'=>$cookiearr[0],'industry_id'=>$cookiearr[1],'business_logo'=>$cookiearr[2],'have_domain'=>$cookiearr[3],'domain'=>$cookiearr[4],'theme_id'=>$cookiearr[5],'customization_details'=>$cookiearr[6],'package_id'=>$cookiearr[7],'contact_preference'=>$_POST['optradio'],'status'=>0,'date_created'=>DateTime_Now);
@@ -76,7 +88,8 @@
 
 
 				Password: '.$password.'<br/><br/>
-				Please click here to login your account. Enter the given user name and password and you are good to go!<br/><br/>
+				Please <a href="'.base_url().'admin">click here </a> to login your account. Enter the given user name and password and you are good to go!<br/><br/>
+
 
 				Warm regards,<br/>
 
