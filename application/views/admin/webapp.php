@@ -12,7 +12,7 @@
 <div class="x_panel">
 <div class="x_title">
 <h2><?= $title; ?> |<small>View</small></h2>
-<!-- <a href="newwebapp" class="btn btn-default margin pull-right" style="margin-right:5px"><i class="fa fa-plus"></i> Add WebApp</a> -->
+<a href="newwebapp" class="btn btn-default margin pull-right" style="margin-right:5px"><i class="fa fa-plus"></i> Add WebApp</a>
 <div class="clearfix"></div>
 </div>
 <div class="x_content">
@@ -102,6 +102,7 @@
 </div>
 </div>
 <!----------------------/View Order Modal ----------------------->	
+<div id="ststmsg"></div>
 <table id="datatable-buttons" class="table table-striped table-bordered">
 <thead>
 <tr>
@@ -120,10 +121,16 @@
 <td><?php echo $webdatas['business_name']; ?></td>
 <td><?php echo $webdatas['email']; ?></td>
 <td><?php echo $webdatas['date_created']; ?></td>
-<td><?php if($webdatas['status'] == 1){ echo 'Active'; }elseif($webdatas['status'] == 0) { echo 'Deactive'; }else{ echo 'Suspend'; } ?></td>
+<td>
+<select name="webstatus" id="webstatus" onchange="webstaus('<?php echo $webdatas['webapp_id']; ?>',this.value);">
+<option value="0" <?php if($webdatas['status'] == 0){ echo 'selected="selected"'; }else{} ?>>Deactive</option>
+<option value="1" <?php if($webdatas['status'] == 1){ echo 'selected="selected"'; }else{} ?>>Active</option>	
+</select>	
+</td>
 <td><a data-toggle="modal" data-target="#vieworderModal" class="btn btn-warning btn-editc btn-sm vieworder" webId="<?=$webdatas['webapp_id']?>">
-<i class="fa fa-edit"></i></a>
-<!-- <a class="btn btn-danger btn-sm" webId="<?=$webdatas['webapp_id']?>"><i class="fa fa-trash"></i></a> --></td>
+<i class="fa fa-eye"></i></a>
+<a href="editwebapp/<?=$webdatas['webapp_id']?>" class="btn btn-warning btn-editc btn-sm" webId="<?=$webdatas['webapp_id']?>">
+<i class="fa fa-edit"></i></a></td>
 </tr>
 <?php }	?>
 </tbody>

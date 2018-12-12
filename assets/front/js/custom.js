@@ -157,7 +157,7 @@ function SaveChanges1(q) {
 function SaveChanges2() {
 	var cook= $.cookie("userinfo");
 	var domain= $('#domain').val();
-	if(/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(domain)){
+	   if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){
     
 	var domainaddress= $('#domain_name_search').val();
 	var have_domain = document.querySelector('input[name="youHavedomainName"]:checked').value;	// var filepath= $('#img').attr('src');
@@ -189,7 +189,7 @@ function SaveChanges2() {
 
 	}
 	 else {
-	    $('#errordomain').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (https://www.google.com) </small>');
+	    $('#errordomain').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
 	}
 
 }
@@ -228,7 +228,7 @@ function SaveChanges5() {
 
 	if(packageid ==""){
 		$('#errorpackage').html('<small style="color:red;"> Please select atleast one</small>')
-
+  
 	}
 	else{
 	var cook= $.cookie("userinfo");

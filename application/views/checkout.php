@@ -22,14 +22,14 @@
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="package">Package Choosen</label>
                      <div class="col-sm-9">
-                        <input type="text" disabled=""  class="form-control" id="package" value="<?= $packages->package_name?> Package" />
+                        <input type="text" disabled=""  class="form-control" id="package" value="<?= $packages->package_name?>" />
                        <input type="hidden" name="amount" value="<?= $packages->package_price ?>">
                      </div> 
                   </div>
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="p_num">Phone Number</label>
                      <div class="col-sm-9">
-                        <input type="text" name="phone" id="phone" class="form-control"  placeholder="ENTER YOUR PHONE NUMBER"/>
+                        <input type="number" name="phone" id="phone" class="form-control"  placeholder="ENTER YOUR PHONE NUMBER"/>
                         <div id="errorphone"></div>
                      </div>
                   </div>

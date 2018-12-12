@@ -323,13 +323,17 @@
 <label>City:</label>
 <input type="text" name="city" id="city" class="form-control" required />
 </div> 
-<div class="form-group col-md-6">
+<div class="form-group col-md-12">
 <label>Address1:</label>
 <input type="text" name="address1" id="address1" class="form-control" required />
 </div> 
 <div class="form-group col-md-6">
 <label>Address2:</label>
 <input type="text" name="address2" id="address2" class="form-control" />
+</div>
+<div class="form-group col-md-6">
+<label>Phone:</label>
+<input type="text" name="phone" id="phone" class="form-control" />
 </div> 
 <div class="clearfix"></div>
 </div>
@@ -643,13 +647,17 @@
 <label>City:</label>
 <input type="text" name="edit_city" id="edit_city" class="form-control" required />
 </div> 
-<div class="form-group col-md-6">
+<div class="form-group col-md-12">
 <label>Address1:</label>
 <input type="text" name="edit_address1" id="edit_address1" class="form-control" required />
 </div> 
 <div class="form-group col-md-6">
 <label>Address2:</label>
 <input type="text" name="edit_address2" id="edit_address2" class="form-control" />
+</div>
+<div class="form-group col-md-6">
+<label>Phone:</label>
+<input type="text" name="edit_phone" id="edit_phone" class="form-control" />
 </div> 
 <div class="clearfix"></div>
 </div>
