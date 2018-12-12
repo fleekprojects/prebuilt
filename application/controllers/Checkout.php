@@ -17,10 +17,7 @@
 		public function checkoutsubmit()
 		{
 
-		if($this->Dmodel->IFExist('users','email',$_POST['email'])){
-				$users=$this->Dmodel->get_tbl_whr_row_key('pre_users','email',$_POST['email']);
-				$userid=$users->id;
-			}
+		
 			$cookiearr=explode(',',$_COOKIE['userinfo']);
 
 				
@@ -88,7 +85,7 @@
 
 
 				Password: '.$password.'<br/><br/>
-				Please <a href="'.base_url().'admin">click here </a> to login your account. Enter the given user name and password and you are good to go!<br/><br/>
+				Please <a href="//'.$_SERVER['HTTP_HOST'].'/admin">click here </a> to login your account. Enter the given user name and password and you are good to go!<br/><br/>
 
 
 				Warm regards,<br/>
