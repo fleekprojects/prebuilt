@@ -51,6 +51,7 @@
 			}else{
 				$this->db->where('theme_id', $data['theme_id']);
 				$query = $this->db->update($tbl,$data);
+				$this->db->where('theme_id', $data['theme_id']);
 				$query = $this->db->update('pre_theme_to_category',$data2);
 				echo 'themeupdate';
 			}
