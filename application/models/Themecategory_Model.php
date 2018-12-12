@@ -17,6 +17,12 @@
 			$query = $this->db->get_where($tbl, array('id' => $id));
 			return $query->row();
 		}
+		function get_cat_limit($tbl,$limit){
+			$this->db->select('*');
+			$this->db->limit($limit);
+			$query = $this->db->get($tbl);
+			return $query->result_array();
+		}
 
 		function update_category($tbl,$data){
 			$where = "(pre_name = '".$data['pre_name']."' AND id <> '".$data['id']."')";

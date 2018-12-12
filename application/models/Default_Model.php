@@ -37,7 +37,7 @@
 			define('city',$userdetails->city);
 			define('state',$userdetails->state);
 			define('country',$userdetails->country);
-			}else{}
+			}
 		}
 		
 		function checkLogin(){
