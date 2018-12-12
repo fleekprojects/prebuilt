@@ -21,6 +21,9 @@
       </header>
       <?php  $this->load->view($view,$viewData); ?>
       <div class="clearifix"></div>
+        <script type="text/javascript">
+        var baseUrl= "<?= base_url() ?>"
+     </script>
       <script src="<?= base_url(); ?>assets/front/js/jquery.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
       <script src="<?= base_url(); ?>assets/front/js/bootstrap.min.js"></script>
