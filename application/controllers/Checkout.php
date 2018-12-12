@@ -20,6 +20,7 @@
 			// $_COOKIE['userinfo'].','.$_POST['phone'].','.$_POST['email'].','.$_POST['rad']
 			// set()
 			$cookiearr=explode(',', $_COOKIE['userinfo']);
+
 				
 				require_once APPPATH."libraries/stripe/stripe-php/init.php";
 				\Stripe\Stripe::setApiKey("sk_test_940FP89X8e9LGSDvt8YmHmGh");      
@@ -62,27 +63,26 @@
 			$webid=$this->Dmodel->insertdatatoid('pre_payments',$paymentarr);
 			$viewdata['message']=$message;
 
-				$maildata['from_email']='info@prebuilt.tk';
-				$maildata['from_name']='Prebuilt';
+				$maildata['from_email']=Site_Email;
+				$maildata['from_name']=Site_Title;
 				$maildata['to_email']=$_POST['email'];
 				$maildata['to_name']='Customer';
 				$maildata['subject']='Order Confirmation';
 
-				$maildata['message']='Hello Customer,
-We welcome you aboard!
-Thank you for placing your order at '.Site_Title.'. Please find your account credentials below:
-Username: '.$_POST['email'].'
+				$maildata['message']='Hello Customer,<br/><br/>
+				We welcome you aboard!<br/><br/>
+				Thank you for placing your order at '.Site_Title.'. Please find your account credentials below:<br/>
+				Username: '.$_POST['email'].'<br/>
 
 
-Password: '.$password.'
-Please click here to login your account. Enter the given user name and password and you are good to go!
+				Password: '.$password.'<br/><br/>
+				Please click here to login your account. Enter the given user name and password and you are good to go!<br/><br/>
 
-Warm regards,
+				Warm regards,<br/>
 
 
-'.Site_Title.'Customer Support';
+				'.Site_Title.'Customer Support';
 				$mail=$this->Dmodel->send_mail($maildata);
-			
 			redirect(base_url().'payment-confirm',$viewdata);
 
 		}
