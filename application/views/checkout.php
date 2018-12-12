@@ -46,21 +46,30 @@
                
       
                   <div class="form-group col-sm-12">
-                     <label class="control-label col-sm-3 label-style" for="email">How would you like to be contacted?</label>
+                     <label class="control-label col-sm-3 label-style contacted-label" for="email">How would you like to be contacted?</label>
                      <div class="col-sm-9">
-                        <label class="radio-inline r_inline">
+                      <label class="radio-container">Email
+  <input type="radio" name="optradio">
+  <span class="checkmark"></span>
+</label>
+<label class="radio-container">Phone
+  <input type="radio" name="optradio">
+  <span class="checkmark"></span>
+</label>
+                        <!-- <label class="radio-inline r_inline">
                         <input type="radio" name="optradio" class="radioclass" value="0"> Email
                         </label>
                         <label class="radio-inline r_inline">
                         <input type="radio" name="optradio"  class="radioclass" value="1"> Phone
-                        </label>
+                        </label> -->
                           <div id="errorradio"></div>
                      </div>
                   </div>
                   <div class="form-row">
-    <label for="card-element">
+    <label for="card-element" class="control-label col-sm-3 label-style">
       Credit or debit card
     </label>
+    <div class="col-sm-9">
     <div id="card-element">
       <!-- A Stripe Element will be inserted here. -->
     </div>
@@ -68,8 +77,9 @@
     <!-- Used to display Element errors. -->
     <div id="card-errors" role="alert"></div>
   </div>
+  </div>
                   <div class="form-group col-sm-12" style="text-align: center;padding-top: 10px;">
-                     <button  class="btn button-default">PAY NOW</button>
+                     <button  class="btn button-default btn-block">PAY NOW</button>
                   </div>
                </form>
             </div>
