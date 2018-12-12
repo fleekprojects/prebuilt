@@ -20,6 +20,7 @@
 		function get_cat_limit($tbl,$limit){
 			$this->db->select('*');
 			$this->db->limit($limit);
+			$this->db->where('status',1);
 			$query = $this->db->get($tbl);
 			return $query->result_array();
 		}

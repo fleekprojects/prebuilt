@@ -17,8 +17,11 @@
 		public function checkoutsubmit()
 		{
 
-		
-			$cookiearr=explode(',', $_COOKIE['userinfo']);
+		if($this->Dmodel->IFExist('users','email',$_POST['email'])){
+				$users=$this->Dmodel->get_tbl_whr_row_key('pre_users','email',$_POST['email']);
+				$userid=$users->id;
+			}
+			$cookiearr=explode(',',$_COOKIE['userinfo']);
 
 				
 				require_once APPPATH."libraries/stripe/stripe-php/init.php";
@@ -51,12 +54,13 @@
 			$password=rand(100000,999999);	
 			
 			if($this->Dmodel->IFExist('users','email',$_POST['email'])){
-				$users=$this->Dmodel->get_tbl_whr_row_key('users','email',$_POST['email']));
-				$userid=$users->id;
-			}
-			else{
 				$userdata=array('email'=>$_POST['email'],'password'=>md5($password),'status'=>0,'date_created'=>DateTime_Now);
 				$userid=$this->Dmodel->insertdatatoid('pre_users',$userdata);
+			
+			}
+			else{
+					$users=$this->Dmodel->get_tbl_whr_row_key('pre_users','email',$_POST['email']);
+					$userid=$users->id;
 			}
 
 
@@ -84,7 +88,8 @@
 
 
 				Password: '.$password.'<br/><br/>
-				Please click here to login your account. Enter the given user name and password and you are good to go!<br/><br/>
+				Please <a href="'.base_url().'admin">click here </a> to login your account. Enter the given user name and password and you are good to go!<br/><br/>
+
 
 				Warm regards,<br/>
 
