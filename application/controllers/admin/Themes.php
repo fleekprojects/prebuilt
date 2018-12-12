@@ -18,7 +18,7 @@ public function index(){
 		$data['status']=1;
 		$viewdata['title']=$this->pagetitle;
 		$viewdata['themedata']=$this->Tmodel->get_theme_data();
-		$viewdata['themecategory']=$this->Dmodel->get_tbl_whr_arr('pre_categories',$data);
+		$viewdata['themecategory']=$this->Dmodel->get_tbl('pre_categories');
 		$this->LoadAdminView($this->viewname,$viewdata);
 	}else{
 		redirect(base_url().'admin/dashboard');	

@@ -5,14 +5,15 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->library('user_agent');
+			$this->load->model('Theme_Model','Tmodel');
+			$this->load->model('Themecategory_Model','TCmodel');
 			$this->load->library('cart'); 
 		}
 		
 		public function index(){
-			$get_data=array('parent_id'=>0);
-			$viewdata['categories']=$this->Dmodel->get_tbl_whr_arr('pre_categories',$get_data);
-			$viewdata['themes']=$this->Dmodel->get_tbl('pre_themes');
-			
+			$viewdata['categories']=$this->TCmodel->get_cat_limit('pre_categories',4);
+			$viewdata['themes']=$this->Tmodel->get_theme_category_id();
+
 			$this->LoadView('theme',$viewdata);
 		}
 		
