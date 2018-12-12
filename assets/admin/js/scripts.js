@@ -16,6 +16,7 @@
 			if(data == 1){
 			  $("#settingsform")[0].reset();
 			  $('#settingsmsg').html('<p><b style="color: green;">Settings Successfully Updated </b></p>');
+			  location.reload();
 			}
 			else{
 			  $('#settingsmsg').html('<b style="color: error;">Error Submitting your request. Please Try Again. </b>');
@@ -43,6 +44,7 @@
 			  $('#usersmsg').html('<b style="color: red;">Error: User name already exists. </b>');
 			}else{
 			   $('#usersmsg').html('<p><b style="color: green;">User add Successfully.</b></p>');	
+			   location.reload();
 			}
 		  },
 		  error: function (xhr, textStatus, errorThrown) 
@@ -61,6 +63,7 @@
 		  success: function (data) {
 		  	if(data == 'updateuser'){
 			   $('#editusersmsg').html('<p><b style="color: green;">User Updat Successfully.</b></p>');	
+			   location.reload();
 			}
 		  },
 		  error: function (xhr, textStatus, errorThrown) 
@@ -169,6 +172,7 @@
 			}
 			else if(data == 'industryadd'){
 			  $('#industrymsg').html('<p><b style="color: green;">Industry add Successfully.</b></p>');	
+			  location.reload();
 			}
 		  },
 		  error: function (xhr, textStatus, errorThrown) 
@@ -209,6 +213,7 @@
 			}
 			else if(data == 'industryupdate'){
 			  $('#editindustrysmsg').html('<p><b style="color: green;">Industry Update Successfully.</b></p>');	
+			  location.reload();
 			}
 		  },
 		  error: function (xhr, textStatus, errorThrown) 
@@ -252,6 +257,7 @@
 			}
 			else if(data == 'packageadd'){
 			  $('#pckgsmsg').html('<p><b style="color: green;">Package add Successfully.</b></p>');	
+			  location.reload();
 			}
 		  },
 		  error: function (xhr, textStatus, errorThrown) 
@@ -298,6 +304,7 @@
 			}
 			else if(data == 'packageupdate'){
 			  $('#editpckgsmsg').html('<p><b style="color: green;">Package update Successfully.</b></p>');	
+			  location.reload();
 			}
 		  },
 		  error: function (xhr, textStatus, errorThrown) 
@@ -339,6 +346,7 @@
 			}
 			else if(data == 'categoryadd'){
 			  $('#catorymsg').html('<p><b style="color: green;">Category add Successfully.</b></p>');	
+			  location.reload();
 			}
 		  },
 		  error: function (xhr, textStatus, errorThrown) 
@@ -379,6 +387,7 @@
 			}
 			else if(data == 'categoryupdate'){
 			  $('#editcategorysmsg').html('<p><b style="color: green;">Category update Successfully.</b></p>');	
+			  location.reload();
 			}
 		  },
 		  error: function (xhr, textStatus, errorThrown) 
@@ -427,6 +436,7 @@
 					}
 					else if(result == 'themeadd'){
 					  $('#thememsg').html('<p><b style="color: green;">Theme add Successfully.</b></p>');	
+					  location.reload();
 					}
 				},
 				error: function (xhr, textStatus, errorThrown){
@@ -476,6 +486,7 @@
 					}
 					else if(result == 'themeupdate'){
 					  $('#editthemesmsg').html('<p><b style="color: green;">Theme update Successfully.</b></p>');	
+					  location.reload();
 					}
 				},
 				error: function (xhr, textStatus, errorThrown){
