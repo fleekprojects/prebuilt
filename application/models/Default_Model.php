@@ -37,7 +37,7 @@
 			define('city',$userdetails->city);
 			define('state',$userdetails->state);
 			define('country',$userdetails->country);
-			}else{}
+			}
 		}
 		
 		function checkLogin(){
@@ -76,7 +76,11 @@
 			$query = $this->db->insert($tbl,$data);
 			return $query;
 		}
-		
+		function insertdatatoid($tbl,$data){
+			 $this->db->insert($tbl,$data);
+			 $insert_id=$this->db->insert_id();
+			return $insert_id;
+		}
 		function update_data($tbl,$id,$data,$key){	
 			$this->db->where($key, $id);
 			$query = $this->db->update($tbl,$data);
@@ -122,6 +126,12 @@
 			$query = $this->db->get($tbl);
 			return $query->row();
 		}
+		function get_tbl_whr_row_key($tbl,$key,$id){
+
+			$this->db->where($key, $id);
+			$query = $this->db->get($tbl);
+			return $query->row();
+		}
 		
 		function get_table_where($sdata, $table, $id){
 			$this->db->select($sdata);
@@ -131,8 +141,9 @@
 			return $result;
 		}
 		
+		
 		function send_mail($maildata){
-			$config = Array(
+			$config = array(
 				'protocol' => 'mail',
 				'smtp_host' => SMTP_Host,
 				'smtp_port' => SMTP_Port,
@@ -141,7 +152,7 @@
 				'wordwrap' => TRUE
 			);
 			$this->load->library('email', $config);
-			$this->email->from($maildata['email'],$maildata['from_name']);
+			$this->email->from($maildata['from_email'],$maildata['from_name']);
 			$this->email->to($maildata['to_email'],$maildata['to_name']);
 			$this->email->subject($maildata['subject']);
 			$this->email->message($maildata['message']);
@@ -151,7 +162,8 @@
 			if($this->email->send()) {
 				return 1;
 			} else {
-				return $this->email->print_debugger();
+				echo $this->email->print_debugger();
+				die;
 			}
 		}
 		

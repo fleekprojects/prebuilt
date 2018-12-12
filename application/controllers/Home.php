@@ -11,31 +11,41 @@
 		}
 		
 		public function index(){
+			// print_r($_COOKIE['userinfo']);
+			// die;
+			// $viewdata['cookiearr']=explode(',',$_COOKIE['userinfo']);
+			//  print_r($viewdata['cookiearr']);
+			// die;
 			$get_data=array('status'=>1);
 			$viewdata['industries']=$this->Dmodel->get_tbl_whr_arr('industries',$get_data);
 			$this->LoadView('home',$viewdata);
 		}
 		
 		public function save_user_info(){
-			
-			if(isset($_FILES['business_logo']) && $_FILES['business_logo']['tmp_name']){
+
+			if(isset($_FILES['file']) && $_FILES['file']['tmp_name']){
 				
-					$ext = pathinfo($_FILES['business_logo']['name'], PATHINFO_EXTENSION);
+					$ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 					$filename=md5(uniqid()).'.'.$ext;
-					$filepath='assets/admin/uploads/users/'.$filename;
+					$filepath='uploads/logos/'.$filename;
+
 					
-					if (move_uploaded_file($_FILES['business_logo']['tmp_name'], $filepath)) {
+					if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
 						// If file moved to uploads folder.
+						echo $filename;
 
 						} else {     //  If File Was Not Moved.
 						echo ').<span id="error">please try again!.</span><br/><br/>';
 
 						}
 				}
+
+
 						
-			$user_info=array('user_info'=>$_POST,'filepath'=>''.$filepath);
-			$exec=$this->Fmodel->save_user_data($user_info);
-			redirect(base_url().'domain');
+
+			// $exec=$this->Fmodel->save_user_data('user_info',array('user_info'=>$_POST,'filepath'=>''.$filepath));
+			// redirect(base_url().'domain');
+			
 		}
 		
 		
