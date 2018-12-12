@@ -19,7 +19,7 @@
                <div class="form-group col-sm-12">
                   <label class="control-label col-sm-3 label-style" for="name">Business Name</label>
                   <div class="col-sm-9">
-                     <input type="text" class="form-control" id="name"  name="name" placeholder="ENTER YOUR BUSINESS NAME">
+                     <input type="text" class="form-control" id="name"  name="name" placeholder="YOUR BUSINESS NAME">
                       <div id="errorname"></div>
                   </div>
 

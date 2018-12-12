@@ -272,8 +272,10 @@ var style = {
     // Add your base input styles here. For example:
     fontSize: '16px',
     color: "#020202",
-   
-  }
+'::placeholder': {
+      color: '#999',
+    },
+},
 };
 
 // Create an instance of the card Element.

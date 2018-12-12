@@ -30,7 +30,8 @@ body{
 .table {
   display: table;
   width: 100%;
-  height: 100%
+  height: 100%;
+  margin-bottom:0px;
 }
 
 .table .table-cell {
@@ -116,9 +117,14 @@ footer{
     display: none;
 }
 
+.btn-danger.focus, .btn-danger:focus {
+    color: #fff;
+    background-color:  #7038bd !important;
+    border-color:  #7038bd !important;
+}
 .btn-danger:active,
 .btn_color:hover{
-  background: #8953d3;
+  background: #7038bd !important;
   border-color: #8953d3 !important;
 }
 select.s_select {
@@ -175,6 +181,9 @@ select.s_select {
   font-weight: 500;
   line-height: 44px;
 }
+.contacted-label{
+  line-height: normal;
+}
 .fa-arrow-right{
   font-family: 'FontAwesome';
 }
@@ -185,6 +194,12 @@ select.s_select {
 }
 .active .panel .s_shadow {
     border: 1px solid !important;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+
 }
 .selected {
     border: 1px solid !important;
@@ -332,7 +347,7 @@ textarea.t_area {
 .box > .icon > .image > i { font-size: 36px !important; color: #fff !important; }
 
 .box > .icon > .info {background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0;
-padding: 28px 15px 50px 15px;}
+padding: 28px 15px 50px 15px;box-shadow: 1px 0px 5px rgba(0,0,0,.2);}
 
 .box > .icon > .info > h3.title { font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500; }
 .box > .icon > .info > p { font-family: "Roboto",sans-serif !important; font-size: 13px; color: #666; line-height: 1.5em; margin: 20px;}
@@ -372,7 +387,9 @@ width: 100%;
 max-width: 170px;
 box-shadow: 1px 0px 7px rgba(0,0,0,.5);
 }
-
+.more .button-default{
+  max-width: 280px;
+}
 h2.s_main {
     font-weight: 600;
     color: #757373;
@@ -397,7 +414,38 @@ h2.s_main {
     font-weight: 600;
     color: #656363;
 }
+.StripeElement {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  max-width: 400px;
+border-radius: 0px;
+border: none;
+box-shadow: 1px 0px 5px rgba(0,0,0,.2);
+padding: 10px 12px;
+height: 47px;
 
+border-radius: 5px
+}
+
+.button-default.btn-block{
+  max-width: 650px;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
 button.btn.p_btn {
     border: 1px solid #a56fef;
     background-color: #a56fef;
@@ -420,7 +468,6 @@ h2.p_confirm {
     font-weight: 600;
     text-align: center;
     transform: translateY(-50%);
-top: 50%;
 position: relative;
 }
 p.t_thank {
@@ -429,18 +476,16 @@ p.t_thank {
     line-height: 11px;
     text-align: center;
     transform: translateY(-50%);
-top: 50%;
 position: relative;
 }
 p.l_link {
     text-align: center;
     font-size: 16px;
     color: #fff;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom:20px;
     font-weight: 600;
     transform: translateY(-50%);
-top: 50%;
 position: relative;
 }
 
@@ -450,7 +495,6 @@ position: relative;
     text-decoration: underline;
     font-weight: 600;
     transform: translateY(-50%);
-top: 50%;
 position: relative;
 }
 
@@ -615,7 +659,76 @@ button.btn.p_btn:hover {
    position: fixed;*/
 }
 
+.radio-container {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 16px;
+font-weight: 600;
+color: #656363;
+}
 
+/* Hide the browser's default radio button */
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+ position: absolute;
+top: 0;
+left: 0;
+height: 25px;
+width: 25px;
+background-color: #fdfdfd;
+border-radius: 50%;
+box-shadow: 1px 2px 5px rgba(0,0,0,.2);
+}
+.radio-container + .radio-container{
+  margin-left: 20px;
+}
+/* On mouse-over, add a grey background color */
+.radio-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-container input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-container .checkmark:after {
+top: 0;
+left: 0;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #8953d3;
+right: 0px;
+bottom: 0px;
+margin: auto;
+}
 
 
 
@@ -774,6 +887,33 @@ h1.h_content{
 }
 }
 @media (max-width:768px){
+  .s_shadow:hover {
+    transform: scale(1.0);
+}
+.i_info ul{
+  padding: 0px;
+}
+.s_main{text-align: center;}
+  .bg_color_bg.padding {
+    padding: 0 20px;
+}
+.box > .icon > .info{
+  text-align: center;
+}
+
+
+p.t_thank {
+    line-height: inherit;
+
+}
+label.custom-file-upload {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.custom-file-upload .custom-file-upload {
+    display: block;
+}
+
   .bg1_height, .bg_height {
     height: auto;
 }
@@ -794,7 +934,6 @@ h1.h_content{
   .topSection {  height: 100%;}
   footer{
    padding: 10px;
-   background: none;
 }
 .padding_bg footer, .bg1_height footer {
     bottom: 0px;
