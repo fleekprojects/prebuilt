@@ -60,7 +60,7 @@
 			}
 			else{
 					$users=$this->Dmodel->get_tbl_whr_row_key('pre_users','email',$_POST['email']);
-					$userid=$users->id;
+					$userid=$users->user_id;
 			}
 
 
