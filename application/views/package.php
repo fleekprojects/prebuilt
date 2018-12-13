@@ -13,6 +13,7 @@
       </div>
          </div>
          <div class="col-md-9 bg1_height">
+            <div class="height-scrolling">
             <div class="table">
                <div class="table-cell">
             <?php foreach($packages as $package){ ?>
@@ -41,6 +42,7 @@
             <?php } ?>
          </div>
       </div>
+   </div>
 
             <input type="hidden" name="packageid" id="packageid" >
             <footer>

@@ -2,6 +2,7 @@
    <div class="">
    <div class="">
       <div class="col-md-3 bg_color bg_color1">
+
           <div class="table">
                <div class="table-cell">
          <h1 class="h_content">3/6
@@ -44,7 +45,8 @@
                         <div class="panel">
                            <div class="s_shadow">
                               <h1 class="alignleft"><?= strtoupper($theme['theme_name']) ?></h1>
-                              <a href="#" onclick="themeSelect(<?= $theme['theme_id'] ?>)" class="alignright">SELECT</a>
+                              <a href="javascript:void(0)" onclick="themeSelect(<?= $theme['theme_id'] ?>)" class="alignright">SELECT</a>
+                            
                               <a href="<?=base_url()?>uploads/themeimages/<?= $theme['image1'] ?>" class="thumbnail " data-fancybox>
 								<img src="<?=base_url()?>uploads/themeimages/<?= $theme['image1'] ?>" class="img-responsive i_img">
                               </a>
@@ -59,6 +61,11 @@
 			<input type="hidden" name="theme_id" id="theme_id">
             <div class="clearifix"></div>
          </div>
+      </div>
+</div>
+   
+   </div>
+
          <footer>
             <div class="footer_inner_left clearifix">
                <a href="<?= base_url();?>select-domain" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span><span class="text">Back</span></a>
@@ -67,7 +74,8 @@
                <a href="#" onclick="SaveChanges3()" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
             </div>
          </footer>
-      </div>
-   </div></div>
+      
+
+</div>
    </div>
 </section>
