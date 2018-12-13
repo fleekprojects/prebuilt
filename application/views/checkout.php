@@ -29,7 +29,7 @@
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="p_num">Phone Number</label>
                      <div class="col-sm-9">
-                        <input type="number" name="phone" id="phone" class="form-control"  placeholder="ENTER YOUR PHONE NUMBER"/>
+                        <input type="text" name="phone" id="phone" class="form-control"  placeholder="ENTER YOUR PHONE NUMBER"/>
                         <div id="errorphone"></div>
                      </div>
                   </div>
