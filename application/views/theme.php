@@ -64,7 +64,7 @@
                <a href="<?= base_url();?>select-domain" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span><span class="text">Back</span></a>
             </div>
             <div class="footer_inner clearifix">
-               <a href="#" onclick="SaveChanges3()" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
+               <a  href="javascript:void(0)" onclick="SaveChanges3()" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
             </div>
          </footer>
       </div>

@@ -4,7 +4,7 @@ AOS.init();
 // this is js slider
 $(document).ready(function() {
 	  // var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
-
+	  $('#phone').mask('(000) 000-0000');	 
 
 
 	  // Custom Navigation Events
@@ -154,6 +154,18 @@ function SaveChanges1(q) {
 	}
 }
 
+// function domainvalidate(domain) {
+// 	// body...
+// 	 if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){
+// 		 $('#errordomain').html('<small style="color:green;"> Domain Accepted </small>');
+// 		return true;
+// 	 }
+// 	 else{
+// 	 $('#errordomain').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+
+// 	 }
+
+// }
 function SaveChanges2() {
 	var cook= $.cookie("userinfo");
 	var domain= $('#domain').val();
@@ -177,6 +189,7 @@ function SaveChanges2() {
 	{
 		if(domainaddress ==""){
 		$('#errordomainaddress').html('<small style="color:red;"> Please Enter Domain Address</small>');
+		
 		}
 		 else{
 		var cookie=cook+','+have_domain+','+domain;
@@ -189,7 +202,9 @@ function SaveChanges2() {
 
 	}
 	 else {
+	 	
 	    $('#errordomain').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+		 
 	}
 
 }

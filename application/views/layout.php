@@ -43,5 +43,6 @@
 	})(document, 'script', '//199.250.201.124/~qc/?p=132&ph_apikey=0e62afea9ad25555d9506bdb21e99e82');
 </script>
 <script src="<?= base_url(); ?>assets/front/js/custom.js"></script>
+<script src="<?= base_url(); ?>assets/front/js/jquery.mask.js"></script>
    </body>
 </html>
