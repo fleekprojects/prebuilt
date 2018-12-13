@@ -37,7 +37,7 @@
 			define('city',$userdetails->city);
 			define('state',$userdetails->state);
 			define('country',$userdetails->country);
-			}else{}
+			}
 		}
 		
 		function checkLogin(){
@@ -126,7 +126,8 @@
 			$query = $this->db->get($tbl);
 			return $query->row();
 		}
-		function get_tbl_whr_row_key($tbl,$key,$id){	
+		function get_tbl_whr_row_key($tbl,$key,$id){
+
 			$this->db->where($key, $id);
 			$query = $this->db->get($tbl);
 			return $query->row();

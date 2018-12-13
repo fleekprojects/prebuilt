@@ -32,7 +32,7 @@
                      </button>
 					 <?php
 					   foreach($categories as $category){ ?>
-					   <button class="btn btn-small btn-danger btn_color" data-toggle="portfilter" data-target="<?= $category['tag']?>"><?= $category['pre_name'] ?></button>
+					   <button class="btn btn-small btn-danger btn_color" data-toggle="portfilter" data-target="<?= $category['id']?>"><?= $category['pre_name'] ?></button>
 					 <?php }  ?>
                   </div>
                </div>
@@ -40,7 +40,7 @@
             <div class="theme-sec">
                <div class="row">
 			    <?php  foreach($themes as $theme){ ?>
-                  <div class="theme-box" data-tag='cms<!-- Categrory tag here.. Dynamic -->'>
+                  <div class="theme-box" data-tag="<?= $theme['cat_id']?>">
                      <div class="col-md-3 col-sm-4">
                         <div class="panel">
                            <div class="s_shadow">
