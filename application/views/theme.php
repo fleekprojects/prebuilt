@@ -37,7 +37,7 @@
                   </div>
                </div>
             </div>
-            <div class="theme-sec">
+            <div class="theme-sec" id="lightgallery">
                <div class="row">
 			    <?php  foreach($themes as $theme){ ?>
                   <div class="theme-box" data-tag="<?= $theme['cat_id']?>">
@@ -45,7 +45,7 @@
                         <div class="panel">
                            <div class="s_shadow">
                               <h1 class="alignleft"><?= strtoupper($theme['theme_name']) ?></h1>
-                              <a href="javascript:void(0)" onclick="themeSelect(<?= $theme['theme_id'] ?>)" class="alignright">SELECT</a>
+                              <a href="javascript:void(0)" onclick="themeSelect(<?= $theme['theme_id'] ?>)" class="alignright selectTheme">SELECT</a>
                             
                               <a href="<?=base_url()?>uploads/themeimages/<?= $theme['image1'] ?>" class="thumbnail " data-fancybox>
 								<img src="<?=base_url()?>uploads/themeimages/<?= $theme['image1'] ?>" class="img-responsive i_img">

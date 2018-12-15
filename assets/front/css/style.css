@@ -116,6 +116,12 @@ footer{
     overflow: hidden;
     overflow-y: scroll;
 }
+.height-scrolling-one {
+    height: calc(100vh - 102px);
+    margin-bottom: 120px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 
 /* .bg1_height{
     margin-bottom: 80px;
@@ -182,6 +188,7 @@ select.s_select {
 .d-block{
   display: block;
 }
+.form-control[disabled],
 .form-control[readonly]{
     background-color: transparent;
     margin-bottom: 20px;
@@ -190,6 +197,7 @@ select.s_select {
     margin-bottom: 35px;
 
 }
+
 
 
 .g_pad label.control-label.col-sm-2.l_style {
@@ -449,8 +457,8 @@ border: none;
 box-shadow: 1px 0px 5px rgba(0,0,0,.2);
 padding: 10px 12px;
 height: 47px;
-
-border-radius: 5px
+border-radius: 5px;
+margin-bottom: 35px;
 }
 
 .button-default.btn-block{
@@ -647,7 +655,11 @@ a:hover{
     padding-right: 50px;
     background-color: #a56fef;
     border-color: #a56fef;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    
+}
+.navbar-collapse.collapse{
+margin-bottom: 30px;	
 }
 .btn_color:hover:active:focus {
     background-color: #a56fef;
@@ -887,10 +899,20 @@ select.s_select {
 	.bg1_height, .bg_height {
     overflow: inherit;
 }
-    .toTop{
-  top:inherit;
-  bottom: 100%;
+.height-scrolling-one {
+    margin-bottom: 98px;
 }
+.i_info ul {
+    text-align: center;
+    font-size: 18px;
+    margin: 0px;
+       padding: 0px 25px;
+
+}
+.i_info li {
+    list-style-position: inside;
+}
+
 .select-options li {
     text-indent: 0;
     text-align: center;
@@ -907,6 +929,7 @@ select.s_select {
   }
   footer {
     max-width:100%;
+    width:75%;
 }
 p.p_content,
 h1.h_content{
@@ -922,7 +945,18 @@ h1.h_content{
 }
 }
 @media (max-width:768px){
-
+	    .toTop{
+  top:inherit;
+  bottom: 100%;
+}
+	.height-scrolling-one {
+		overflow-y: inherit;
+		overflow: inherit;
+	}
+  footer {
+    max-width:100%;
+    width:100%;
+}
   .head {
     margin: 0px;
     padding: 0px;
@@ -991,7 +1025,6 @@ label.custom-file-upload {
 }
 @media (max-width:576px) {
   .bg_color {
-    padding-top: 17px;
     height: 100vh;
 }
 .bg_height {
@@ -1001,8 +1034,7 @@ label.custom-file-upload {
 
 @media (max-width:480px){
   .bg_color {
-    padding-top: 88px;
-    height: 100vh;
+    height: 92vh;
 }
 
 }

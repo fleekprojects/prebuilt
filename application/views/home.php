@@ -13,6 +13,7 @@
             </div>
          </div>
          <div class="col-md-9 bg_height">
+            <div class="height-scrolling-one">
  <div class="table">
                <div class="table-cell">
             <div class="topSection">
@@ -53,6 +54,7 @@
                        <div id="errorimage"></div>
                   </div>
                </div>
+            </div>
             </div>
             <footer>
                <div class="footer_inner clearifix">

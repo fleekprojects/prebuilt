@@ -23,9 +23,7 @@
                   <div class="icon">
                      <!--<div class="image"><i class="fa fa-thumbs-o-up"></i></div>-->
                      <div class="info i_info">
-                        <ul>
                           <?= $package['package_details'] ?>
-                        </ul>
                         <h2 class="n_num">$<?= $package['package_price'] ?></h2>
                         <p class="o_one">One time cost</p>
                         <div class="more">

@@ -34,7 +34,7 @@
 
 #sublog:hover 
 {
-	color:#fff;
+	color:#fff !important;
 	background: #57c65d !important;
 	transition:0.8s all;
 }
