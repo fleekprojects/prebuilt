@@ -2732,7 +2732,7 @@ $('.i_info').click( function() {
 
 // $(".select-options").mCustomScrollbar();
 
-
+jQuery('#lightgallery').lightGallery();
 
 
 
