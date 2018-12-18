@@ -15,13 +15,15 @@
          <div class="col-md-9 bg1_height">
             <div class="table">
                <div class="table-cell">
+                  <?php  $packagecook=(isset($cookiearr[7]) ? $cookiearr[7] : 0); 
+                  ?>
             <?php foreach($packages as $package){ ?>
             <div class="col-md-6">
                <h2 class="s_main"><?= $package['package_name'] ?></h2>
                <div class="box">
                   <div class="icon">
                      <!--<div class="image"><i class="fa fa-thumbs-o-up"></i></div>-->
-                     <div class="info i_info">
+                     <div class="info i_info <?= ($packagecook==$package['package_id'] ? 'selected' : '') ?>"">
                         <ul>
                           <?= $package['package_details'] ?>
                         </ul>
@@ -42,7 +44,7 @@
          </div>
       </div>
 
-            <input type="hidden" name="packageid" id="packageid" >
+            <input type="hidden" name="packageid" id="packageid" value="<?=(isset($cookiearr[7]) ? $cookiearr[7] : '')?>" >
             <footer>
                <div class="footer_inner_left clearifix">
                   <a href="<?= base_url();?>other-info" class="c_back">

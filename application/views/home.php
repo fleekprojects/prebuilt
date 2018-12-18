@@ -19,7 +19,7 @@
                <div class="form-group col-sm-12">
                   <label class="control-label col-sm-3 label-style" for="name">Business Name</label>
                   <div class="col-sm-9">
-                     <input type="text" class="form-control" id="name"  name="name" placeholder="ENTER YOUR BUSINESS NAME">
+                     <input type="text" class="form-control" id="name" value="<?= (isset($cookiearr[0]) ? $cookiearr[0] : '') ?>" name="name" placeholder="ENTER YOUR BUSINESS NAME">
                       <div id="errorname"></div>
                   </div>
 
@@ -29,9 +29,12 @@
                   <label class="control-label col-sm-3 label-style" for="ind">Industry</label>
                   <div class="col-sm-9">
                      <select name="industry_id" id="industry_id" class="form-control">
+                      
                      <?php
+                           $industry=(isset($cookiearr[1]) ? $cookiearr[1] : 0); 
+
                         foreach($industries AS $ind){
-                          echo '<option  value="'.$ind['id'].'">'.$ind['name'].'</option>';
+                          echo '<option  '.($ind['id']==$industry ? "selected" : "").'  value="'.$ind['id'].'">'.$ind['name'].'</option>';
                         }
                         ?>
                      </select>
@@ -47,16 +50,20 @@
                         </label>
                         <input name="business_logo" id="file-upload" onchange="readURL(this);"  type="file">
                         <br>
-                        <img id="img" src="#" alt="Image" style="display: none;max-width: 300px;max-height: 350px;" />
+                       
+                        
+                        <img id="img" src="<?= (isset($cookiearr[2]) ? 'uploads/logos/'.$cookiearr[2] : '#') ?>" alt="Image" style="<?= (isset($cookiearr[2]) ? ($cookiearr[2]!="" ? '' : 'display: none;') : 'display: none;') ?> max-width: 300px;max-height: 350px;" />
+                       
                      </div>
-                       <input type="hidden"  id="imgname" >
+
+                       <input type="hidden"  id="imgname" src="<?= (isset($cookiearr[2]) ? $cookiearr[2] : '') ?>">
                        <div id="errorimage"></div>
                   </div>
                </div>
             </div>
             <footer>
                <div class="footer_inner clearifix">
-                  <a href="#" onclick="SaveChanges1('industry_id')" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
+                  <a  href="javascript:void(0)" onclick="SaveChanges1()" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
                </div>
             </footer>
 

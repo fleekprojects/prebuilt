@@ -10,8 +10,20 @@
 		}
 		
 		public function index(){
-			$viewdata="";
-			$this->LoadView('info',$viewdata);
+		
+		
+					if(isset($_COOKIE['userinfo'])):
+				$cookiearr=explode(',',$_COOKIE['userinfo']);
+
+				if(isset($cookiearr[5])):
+					
+						$this->LoadView('info');
+				else:
+					redirect(base_url().'select-theme');
+				endif;
+			else:
+				redirect(base_url());
+			endif;	
 		}
 		public function savedetails(){
 

@@ -11,10 +11,21 @@
 		}
 		
 		public function index(){
-			$viewdata['categories']=$this->TCmodel->get_cat_limit('pre_categories',4);
-			$viewdata['themes']=$this->Tmodel->get_theme_category_id();
+			if(isset($_COOKIE['userinfo'])):
+				$cookiearr=explode(',',$_COOKIE['userinfo']);
 
-			$this->LoadView('theme',$viewdata);
+				if(isset($cookiearr[3])):
+					$viewdata['categories']=$this->TCmodel->get_cat_limit('pre_categories',4);
+					$viewdata['themes']=$this->Tmodel->get_theme_category_id();
+					$this->LoadView('theme',$viewdata);
+				else:
+					redirect(base_url().'select-domain');
+				endif;
+			else:
+				redirect(base_url());
+			endif;		
+
+			
 		}
 		
 	}

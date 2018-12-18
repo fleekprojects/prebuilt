@@ -5,7 +5,18 @@ AOS.init();
 $(document).ready(function() {
 	  // var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
 	  $('#phone').mask('(000) 000-0000');	 
-
+	  	
+		if ($("input[name='youHavedomainName']:checked").val() == 0) {
+        $('#domainSearch').show();
+        $('#domainHave').hide();
+    } else if ($("input[name='youHavedomainName']:checked").val() == 1) {
+        $('#domainHave').show();
+        $('#domainSearch').hide();
+    } else {
+        $('#domainSearch').hide();
+        $('#domainHave').hide();
+    }
+	
 
 	  // Custom Navigation Events
 	  $(".next").click(function(){
@@ -22,10 +33,24 @@ $(document).ready(function() {
 	  });
 
 	});
+  $('input[type=radio][name=youHavedomainName]').change(function() {
+    var value = $(this).val();
+    if (value == 0) {
+        $('#domainSearch').show();
+        $('#domainHave').hide();
+    } else if (value == 1) {
+        $('#domainHave').show();
+        $('#domainSearch').hide();
+    } else {
+        $('#domainSearch').hide();
+        $('#domainHave').hide();
+    }
+
+})
 
 	function show(id,value= null){$(id).slideDown(value);}
 	function hide(id,value= null){$(id).slideUp(value);}
-	$('select').each(function(){
+	$('sselect').each(function(){
 	    var $this = $(this), numberOfOptions = $(this).children('option').length;
 
 	    $this.addClass('select-hidden');
@@ -74,20 +99,7 @@ $(document).ready(function() {
 
 
 
-$('input[type=radio][name=youHavedomainName]').change(function() {
-    var value = $(this).val();
-    if (value == 0) {
-        $('#domainSearch').show();
-        $('#domainHave').hide();
-    } else if (value == 1) {
-        $('#domainHave').show();
-        $('#domainSearch').hide();
-    } else {
-        $('#domainSearch').hide();
-        $('#domainHave').hide();
-    }
 
-})
     function readURL(input) {
             if (input.files && input.files[0]) {
                
@@ -132,98 +144,143 @@ $('input[type=radio][name=youHavedomainName]').change(function() {
         d(document).on("click.portfilter.data-api", "[data-toggle^=portfilter]", function(f) { d(this).portfilter("filter") }) }(window.jQuery);
 
 var getUrl = window.location;
+var cpath="/prebuilt";
+var delaytime=5000;
 
-function SaveChanges1(q) {
+function SaveChanges1() {
 	var name= $('#name').val();
 	var imgname= $('#imgname').val();
-	var e = document.getElementById(q);
-	var industry = e.options[e.selectedIndex].value ;
+	var industry = $('#industry_id option:selected').val();
+
 	if(name ==""){
 
 	$('#errorname').html('<small style="color:red;"> Please Enter Business Name </small>');
+	setTimeout(function(){$('#errorname').empty();}, delaytime);
 
 	} else if(industry ==""){
 	$('#errorindustry').html('<small style="color:red;"> Please Select Industry </small>');
+	setTimeout(function(){$('#errorindustry').empty();}, delaytime);
 
 
 
 	}  else{
-	var userinfo = name+','+industry+','+imgname;
-	$.cookie('userinfo',userinfo);
-	window.location.href = baseUrl+"select-domain";
+
+
+		var formarr=[name,industry,imgname];
+
+		if (typeof $.cookie('userinfo') === 'undefined'){
+			var userinfo=[];
+		}
+		else{
+			var userinfo= $.cookie('userinfo').split(",");
+		}
+		userinfo[0]=formarr[0];
+		userinfo[1]=formarr[1];
+		userinfo[2]=formarr[2];
+		$.cookie('userinfo',userinfo,{path:cpath});
+		window.location.href = baseUrl+"select-domain";
 	}
 }
 
-// function domainvalidate(domain) {
-// 	// body...
-// 	 if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){
-// 		 $('#errordomain').html('<small style="color:green;"> Domain Accepted </small>');
-// 		return true;
-// 	 }
-// 	 else{
-// 	 $('#errordomain').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
 
-// 	 }
-
-// }
 function SaveChanges2() {
-	var cook= $.cookie("userinfo");
 	var domain= $('#domain').val();
+	var domainaddress= $('#domain_name_search').val();
+	var have_domain = $('input[name="youHavedomainName"]:checked').val();
+		 // var filepath= $('#img').attr('src');
+		 
+	if(have_domain ==1){
+
 	   if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){
     
-	var domainaddress= $('#domain_name_search').val();
-	var have_domain = document.querySelector('input[name="youHavedomainName"]:checked').value;	// var filepath= $('#img').attr('src');
-	if(have_domain =="1"){
-
+	
 		if(domain ==""){
 		$('#errordomain').html('<small style="color:red;"> Please Enter Domain Name</small>');
+		setTimeout(function(){$('#errordomain').empty();}, delaytime);
 		}
 		 else{
-		var cookie=cook+','+have_domain+','+domain;
-		$.cookie('userinfo',cookie);
+
+		var formarr=[have_domain,domain];
+
+		if (typeof $.cookie('userinfo') === 'undefined'){
+			var userinfo=[];
+		}
+		else{
+			var userinfo= $.cookie('userinfo').split(",");
+		}
+		userinfo[3]=formarr[0];
+		userinfo[4]=formarr[1];
+
+		$.cookie('userinfo',userinfo,{path:cpath});
 		window.location.href = baseUrl+"select-theme";
 		}
 		
-	}
-	else
-	{
-		if(domainaddress ==""){
-		$('#errordomainaddress').html('<small style="color:red;"> Please Enter Domain Address</small>');
-		
-		}
-		 else{
-		var cookie=cook+','+have_domain+','+domain;
-		$.cookie('userinfo',cookie);
-		window.location.href = baseUrl+"select-theme";
-		}
-
-
-	}
-
-	}
+	  }
 	 else {
 	 	
 	    $('#errordomain').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+	    setTimeout(function(){$('#errordomain').empty();}, delaytime);
 		 
+		}
+	}
+	else
+	{
+
+		if(domainaddress ==""){
+		$('#errordomainaddress').html('<small style="color:red;"> Please Enter Domain Address</small>');
+			setTimeout(function(){$('#errordomainaddress').empty();}, delaytime);
+		
+		}
+		 else{
+
+
+		var formarr=[have_domain,domain];
+
+		if (typeof $.cookie('userinfo') === 'undefined'){
+			var userinfo=[];
+		}
+		else{
+			var userinfo= $.cookie('userinfo').split(",");
+		}
+		userinfo[3]=formarr[0];
+		userinfo[4]=formarr[1];
+
+
+
+		$.cookie('userinfo',userinfo,{path:cpath});
+
+		window.location.href = baseUrl+"select-theme";
+		}
+
+
 	}
 
 }
 function themeSelect(id){
-	console.log('test', this);
 	$(this).addClass('testing');
   	$('#theme_id').val(id);
   }
  
 function SaveChanges3() {
 	var themeid= $('#theme_id').val();
+	
 	if(themeid ==""){
 		$('#errortheme').html('<small style="color:red;"> Please select atleast one</small>');
 
 	}
 	else{
-	var cook= $.cookie("userinfo");
-	var cookie=cook+','+themeid;
-	$.cookie('userinfo',cookie);
+		var formarr=[themeid];
+
+		if (typeof $.cookie('userinfo') === 'undefined'){
+			var userinfo=[];
+		}
+		else{
+			var userinfo= $.cookie('userinfo').split(",");
+		}
+		userinfo[5]=formarr[0];
+
+		$.cookie('userinfo',userinfo,{path:cpath});
+
 	window.location.href = baseUrl+"other-info";
 	}
 }
@@ -231,10 +288,20 @@ function SaveChanges3() {
   	$('#packageid').val(id);
   }
 function SaveChanges4() {
-	var cook= $.cookie("userinfo");
+
 	var comment= $('#comment').val();
-	var cookie=cook+','+comment;
-		$.cookie('userinfo',cookie);
+	var formarr=[comment];
+
+		if (typeof $.cookie('userinfo') === 'undefined'){
+			var userinfo=[];
+		}
+		else{
+			var userinfo= $.cookie('userinfo').split(",");
+		}
+		userinfo[6]=formarr[0];
+
+		$.cookie('userinfo',userinfo,{path:cpath});
+
 		window.location.href = baseUrl+"select-package";
 	
 }
@@ -242,14 +309,25 @@ function SaveChanges5() {
 	var packageid= $('#packageid').val();
 
 	if(packageid ==""){
-		$('#errorpackage').html('<small style="color:red;"> Please select atleast one</small>')
+		$('#errorpackage').html('<small style="color:red;"> Please select atleast one</small>');
+		 setTimeout(function(){$('#errorpackage').empty();}, delaytime);
   
 	}
 	else{
-	var cook= $.cookie("userinfo");
-	var cookie=cook+','+packageid;
-	$.cookie('userinfo',cookie);
-	window.location.href = baseUrl+"checkout/"+packageid;
+
+	var formarr=[packageid];
+
+		if (typeof $.cookie('userinfo') === 'undefined'){
+			var userinfo=[];
+		}
+		else{
+			var userinfo= $.cookie('userinfo').split(",");
+		}
+		userinfo[7]=formarr[0];
+
+		$.cookie('userinfo',userinfo,{path:cpath});
+
+	window.location.href = baseUrl+"checkout";
 	}
 }
 
@@ -326,26 +404,44 @@ form.addEventListener('submit', function(event) {
 	var email=$('#email').val();
 	var radio=$('input:radio[name=optradio]:checked').val();
 
-	
-	if(phone ==""){
+		if(phone ==""){
 
 	$('#errorphone').html('<small style="color:red;"> Please Enter Phone Number </small>');
+	 setTimeout(function(){$('#errorphone').empty();}, delaytime);
 	}
 	else if(email ==""){
 	$('#erroremail').html('<small style="color:red;"> Please Enter Email Address </small>');
-
-
+ 	setTimeout(function(){$('#erroremail').empty();}, delaytime);
 
 	} 
 	else if(radio != 1 && radio != 0){
 
 
 	$('#errorradio').html('<small style="color:red;"> Please select atleast one option</small>');
+	 setTimeout(function(){$('#errorradio').empty();}, delaytime);
 
 
 	}
+	else{
+		$('#paynow').hide();
+		$('#loadergif').show();
+		var cook= $.cookie("userinfo");
+	var cookie=cook+','+phone+','+email+','+radio;
 
-	
+	var formarr=[phone,email,radio];
+
+		if (typeof $.cookie('userinfo') === 'undefined'){
+			var userinfo=[];
+		}
+		else{
+			var userinfo= $.cookie('userinfo').split(",");
+		}
+		userinfo[8]=formarr[0];
+		userinfo[9]=formarr[1];
+		userinfo[10]=formarr[2];
+
+		$.cookie('userinfo',userinfo,{path:cpath});
+
 	
   stripe.createToken(card).then(function(result) {
     if (result.error) {
@@ -361,6 +457,7 @@ form.addEventListener('submit', function(event) {
       stripeTokenHandler(result.token);
     }
   });
+	}
 });
 function stripeTokenHandler(token) {
 
@@ -382,6 +479,7 @@ function stripeTokenHandler(token) {
   }
   else {
      $('#card-errors').append('Your card number is invalid.');
+
   }
 }
 

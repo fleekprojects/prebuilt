@@ -13,9 +13,15 @@
 		public function index(){
 			// print_r($_COOKIE['userinfo']);
 			// die;
-			// $viewdata['cookiearr']=explode(',',$_COOKIE['userinfo']);
-			//  print_r($viewdata['cookiearr']);
-			// die;
+			if(isset($_COOKIE['userinfo'])){
+				$viewdata['cookiearr']=explode(',',$_COOKIE['userinfo']);
+				}
+				else{
+
+					$viewdata['cookiearr']="";
+				}
+				
+			
 			$get_data=array('status'=>1);
 			$viewdata['industries']=$this->Dmodel->get_tbl_whr_arr('industries',$get_data);
 			$this->LoadView('home',$viewdata);

@@ -9,8 +9,18 @@
 		}
 		
 		public function index(){
-			$viewdata="";
-			$this->LoadView('confirm',$viewdata);
+			if(isset($_COOKIE['userinfo'])):
+				$cookiearr=explode(',',$_COOKIE['userinfo']);
+				if(isset($cookiearr[10])):
+					 setcookie('userinfo', '', 1);
+					$this->LoadView('confirm');
+				else:
+					redirect(base_url().'checkout');
+				endif;
+			else:
+				redirect(base_url());
+			endif;		
+
 		}
 		
 	}

@@ -19,7 +19,7 @@
                <div class="form-group col-sm-12">
                   <label class="control-label col-sm-3 label-style" for="w_name">Write Details</label>
                   <div class="col-sm-9">
-                     <textarea rows="10"  id="comment" class="form-control" cols="80" name="comment"  class="t_area" placeholder="Mention few details about the features and functions you want to have in your website.You can also ask for help here."></textarea>
+                     <textarea rows="10"  id="comment" class="form-control" cols="80" name="comment"     class="t_area" placeholder="Mention few details about the features and functions you want to have in your website.You can also ask for help here."><?= (isset($cookiearr[6]) ? $cookiearr[6] : '') ?></textarea>
                      <div id="errorcomment"></div>
                   </div>
                </div>
@@ -29,7 +29,7 @@
                   <a href="<?= base_url();?>select-theme" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span><span class="text">Back</span></a>
                </div>
                <div class="footer_inner clearifix">
-                  <a href="#" onclick="SaveChanges4()" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
+                  <a href="javascript:void(0)" onclick="SaveChanges4()" class="c_continue"><span class="text">Continue</span> <span class="glyphicon glyphicon-arrow-right"></span></a>
                </div>
             </footer>
          </div>

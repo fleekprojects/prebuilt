@@ -8,16 +8,26 @@
 			$this->load->library('cart'); 
 		}
 		
-		public function index($id){
-			$viewdata['packages']=$this->Dmodel->get_tbl_whr_row_key('pre_packages','package_id',$id);
-		
-			$this->LoadView('checkout',$viewdata);
+		public function index(){
+			if(isset($_COOKIE['userinfo'])):
+				$cookiearr=explode(',',$_COOKIE['userinfo']);
+				if(isset($cookiearr[7])):
+					
+					$viewdata['packages']=$this->Dmodel->get_tbl_whr_row_key('pre_packages','package_id',$cookiearr[7]);
+					
+					$this->LoadView('checkout',$viewdata);
+				else:	
+					redirect(base_url().'select-package');
+				endif;	
+			else:
+				redirect(base_url());
+			endif;		
+
 		}
 		
 		public function checkoutsubmit()
 		{
 
-		
 			$cookiearr=explode(',',$_COOKIE['userinfo']);
 
 				
@@ -93,6 +103,7 @@
 
 				'.Site_Title.'Customer Support';
 				$mail=$this->Dmodel->send_mail($maildata);
+				  
 			redirect(base_url().'payment-confirm',$viewdata);
 
 		}

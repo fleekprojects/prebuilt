@@ -19,10 +19,13 @@
                   <label class="control-label col-sm-3 label-style" for="youHavedomainName">Do you have any domain?</label>
                   <div class="col-sm-9">
                      <label class="radio-inline">
-						<input type="radio" name="youHavedomainName" value="1" checked> Yes
+                        <?php 
+                         $checkdomain=(isset($cookiearr[3]) ? $cookiearr[3] : 2);    
+                         ?>
+						<input type="radio" <?= ($checkdomain=='1' ? 'checked' : '' ) ?> name="youHavedomainName" value="1" checked> Yes
                      </label>
                      <label class="radio-inline">
-						<input type="radio" name="youHavedomainName" value="0"> No
+						<input type="radio" <?= ($checkdomain=='0' ? 'checked' : '' )?> name="youHavedomainName" value="0"> No
                      </label>
                   </div>
                </div>
@@ -30,7 +33,7 @@
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="domain_name">Your Domain </label>
                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="domain" name="domain_name" placeholder="ENTER YOUR DOMAIN NAME">
+                        <input type="text" class="form-control" id="domain" name="domain_name"  value="<?= (isset($cookiearr[4]) ? $cookiearr[4] : '') ?>" placeholder="ENTER YOUR DOMAIN NAME">
                         <div id="errordomain"></div>
                      </div>
                   </div>
@@ -48,7 +51,7 @@
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="domainSearch">Domain Address</label>
                      <div class="col-sm-9">
-                        <input type="text" class="form-control" name="domain_name" id="domain_name_search" placeholder="ENTER YOUR DOMAIN ADDRESS">
+                        <input type="text" class="form-control" name="domain_name" id="domain_name_search"  value=""  placeholder="ENTER YOUR DOMAIN ADDRESS">
                         <button type="button" class="button-default">SEARCH DOMAIN</button>
                            <div id="errordomainaddress"></div>
                      </div>
