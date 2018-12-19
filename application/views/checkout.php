@@ -29,39 +29,31 @@
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="p_num">Phone Number</label>
                      <div class="col-sm-9">
-                        <input type="text" name="phone" id="phone" class="form-control"  placeholder="ENTER YOUR PHONE NUMBER"/>
+                        <input type="text" name="phone" value="<?= (isset($cookiearr[8]) ? $cookiearr[8] : '') ?>" id="phone" class="form-control"  placeholder="ENTER YOUR PHONE NUMBER"/>
                         <div id="errorphone"></div>
                      </div>
                   </div>
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style" for="email">Email Address</label>
                      <div class="col-sm-9">
-                        <input type="email"  class="form-control" id="email" name="email" placeholder="ENTER YOUR EMAIL ADDRESS">
+                        <input type="email"  value="<?= (isset($cookiearr[9]) ? $cookiearr[9] : '') ?>" class="form-control" id="email" name="email" placeholder="ENTER YOUR EMAIL ADDRESS">
                         <div id="erroremail"></div>
                      </div>
                   </div>
+                       <?php 
+                         $contact=(isset($cookiearr[10]) ? $cookiearr[10] : 0); 
 
+                         ?>
             
-                    
-               
-      
                   <div class="form-group col-sm-12">
                      <label class="control-label col-sm-3 label-style contacted-label" for="email">How would you like to be contacted?</label>
                      <div class="col-sm-9">
-                      <label class="radio-container">Email
-  <input type="radio" name="optradio">
-  <span class="checkmark"></span>
-</label>
-<label class="radio-container">Phone
-  <input type="radio" name="optradio">
-  <span class="checkmark"></span>
-</label>
-                        <!-- <label class="radio-inline r_inline">
-                        <input type="radio" name="optradio" class="radioclass" value="0"> Email
+                        <label class="radio-inline r_inline">
+                        <input type="radio" <?= ($contact==1 ? 'checked' : 'checked' ) ?> name="optradio" class="radioclass"  value="0"> Email
                         </label>
                         <label class="radio-inline r_inline">
-                        <input type="radio" name="optradio"  class="radioclass" value="1"> Phone
-                        </label> -->
+                        <input type="radio"   <?= ($contact==0 ? 'checked' : '' ) ?> name="optradio"  class="radioclass" value="1"> Phone
+                        </label>
                           <div id="errorradio"></div>
                      </div>
                   </div>
@@ -79,7 +71,8 @@
   </div>
   </div>
                   <div class="form-group col-sm-12" style="text-align: center;padding-top: 10px;">
-                     <button  class="btn button-default btn-block">PAY NOW</button>
+                     <button id="paynow" class="btn button-default">PAY NOW</button>
+                     <img id="loadergif" src="<?=base_url()?>assets/front/images/loader.gif" style="display: none; width: 27%;" >
                   </div>
                </form>
             </div>

@@ -9,9 +9,18 @@
 		}
 		
 		public function index(){
-			$get_data=array('status'=>1);
-			$viewdata['packages']=$this->Dmodel->get_tbl_whr_arr('pre_packages',$get_data);
-			$this->LoadView('package',$viewdata);
+			if(isset($_COOKIE['userinfo'])):
+				$cookiearr=explode(',',$_COOKIE['userinfo']);
+				if(isset($cookiearr[5])):
+					$get_data=array('status'=>1);
+					$viewdata['packages']=$this->Dmodel->get_tbl_whr_arr('pre_packages',$get_data);
+					$this->LoadView('package',$viewdata);
+				else:
+					redirect(base_url().'other-info');
+				endif;
+			else:
+				redirect(base_url());
+			endif;	
 		}
 		
 	}

@@ -10,8 +10,17 @@
 		
 		public function index(){
 			
-			$viewdata="";
-			$this->LoadView('domain',$viewdata);
+			if(isset($_COOKIE['userinfo'])):
+				$cookiearr=explode(',',$_COOKIE['userinfo']);
+				if(isset($cookiearr[0])):
+					$this->LoadView('domain');
+				else:
+					redirect(base_url());
+				endif;
+			else:
+				redirect(base_url());
+			endif;	
+			
 		}
 		
 	}

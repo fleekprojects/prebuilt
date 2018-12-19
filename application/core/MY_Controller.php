@@ -7,6 +7,7 @@ class My_Controller extends CI_Controller {
     public function LoadAdminView($view,$viewData=null){
 		//$viewData['side_cat']=$this->Dmodel->get_tbl("categories");
 		
+
         $data=array(
             'view'=>$view,
             'viewData'=>$viewData
@@ -15,10 +16,20 @@ class My_Controller extends CI_Controller {
     }
     
 	public function LoadView($view,$viewData=null){
+		$viewData['cookiearr']=array();
+
+		if(isset($_COOKIE['userinfo'])){
+								
+
+			$viewData['cookiearr']=explode(',',$_COOKIE['userinfo']);
+				
+			
+				}
+				
+
         $data=array(
             'view'=>$view,
-            'viewData'=>$viewData
-        );
+            'viewData'=>$viewData);
         $this->load->view('layout',$data);
     }
 	

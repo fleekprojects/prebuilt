@@ -39,14 +39,16 @@
             </div>
             <div class="theme-sec" id="lightgallery">
                <div class="row">
+                   <?php 
+                         $themecook=(isset($cookiearr[5]) ? $cookiearr[5] : 0); 
+                         ?>
 			    <?php  foreach($themes as $theme){ ?>
-                  <div class="theme-box" data-tag="<?= $theme['cat_id']?>">
+                  <div class="theme-box <?= ($themecook==$theme['theme_id'] ? 'active' : '') ?>" data-tag="<?= $theme['cat_id']?>">
                      <div class="col-md-3 col-sm-4">
                         <div class="panel">
                            <div class="s_shadow">
                               <h1 class="alignleft"><?= strtoupper($theme['theme_name']) ?></h1>
-                              <a href="javascript:void(0)" onclick="themeSelect(<?= $theme['theme_id'] ?>)" class="alignright selectTheme">SELECT</a>
-                            
+                              <a href="javascript:void(0)" onclick="themeSelect(<?= $theme['theme_id'] ?>)" class="alignright">SELECT</a>
                               <a href="<?=base_url()?>uploads/themeimages/<?= $theme['image1'] ?>" class="thumbnail " data-fancybox>
 								<img src="<?=base_url()?>uploads/themeimages/<?= $theme['image1'] ?>" class="img-responsive i_img">
                               </a>
@@ -58,7 +60,7 @@
 			   </div>
             </div>
             <div id="errortheme"></div>
-			<input type="hidden" name="theme_id" id="theme_id">
+			<input type="hidden" name="theme_id" id="theme_id" value="<?=(isset($cookiearr[5]) ? $cookiearr[5] : '')?>">
             <div class="clearifix"></div>
          </div>
       </div>
