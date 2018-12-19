@@ -71,6 +71,12 @@
 			$this->Dmodel->checkLogin();
 			$viewdata['title']="Online Prebuilt";
 			$viewdata['userdata']=$this->Dmodel->get_user_roles('pre_users',$this->session->userdata('admin_id'));
+			$viewdata['totaluser']=$this->Dmodel->get_tbl('pre_users');
+			$viewdata['totalorder']=$this->Dmodel->get_tbl('pre_webapp');
+			$viewdata['totalpackage']=$this->Dmodel->get_tbl('pre_packages');
+			$viewdata['totalindustry']=$this->Dmodel->get_tbl('pre_industries');
+			$viewdata['totaltheme']=$this->Dmodel->get_tbl('pre_themes');
+			$viewdata['totalamnt']=$this->Dmodel->get_tbl('pre_payments');
 			$viewdata['userdetails']='yahooo';
 			$this->LoadAdminView("admin/dashboard",$viewdata);
 		}
