@@ -11,28 +11,33 @@
 <div id="msg"></div>
 <div class="x_panel">
 <div class="x_content">
-<form role="form" id="createwebapp" method="post" enctype="multipart/form-data" name="createwebapp">
+<?php if(isset($webappdata)){ ?>	
+<form role="form" id="updatewebapp" method="post" enctype="multipart/form-data" name="updatewebapp">
+<input type="hidden" name="id" id="id" value="<?php if(isset($webappdata)){ echo $webappdata->webapp_id; }else{} ?>">	
+<?php }else{ ?>
+<form role="form" id="createwebapp" method="post" enctype="multipart/form-data" name="createwebapp">	
+<?php } ?>
 <div id="webappmsg"></div>	
 <div class="form-group col-md-6">
 <label>Business Name:</label>
-<input type="text" name="businessname" id="businessname" class="form-control" required />
+<input type="text" name="businessname" id="businessname" class="form-control" value="<?php if(isset($webappdata)){ echo $webappdata->business_name; }else{} ?>" required />
 </div>
 <div class="form-group col-md-6">
 <label>Industry:</label>
 <select name="industry" id="industry" class="form-control">
 <?php foreach ($industrydata as $industry) { ?>
-<option value="<?php echo $industry['id']; ?>"><?php echo $industry['name']; ?></option>	
+<option value="<?php echo $industry['id']; ?>" <?php if(isset($webappdata) && $webappdata->industry_id == $industry['id']){ echo 'selected="selected"'; }else{} ?>><?php echo $industry['name']; ?></option>	
 <?php }	?>
 </select>
 </div>
 <div class="form-group col-md-6">
 <label>Upload Your Logo:</label>
-<input type="file" name="weblogo" id="weblogo" class="form-control" required />
-<div id="filemsg"></div>
+<input type="file" name="weblogo" id="weblogo" class="form-control" <?php if(!isset($webappdata)){ echo 'required="required"'; }else{} ?> />
+<div id="filemsg"><?php if(isset($webappdata)){ echo '<img src="../../uploads/logos/'.$webappdata->business_logo.'" width="50px" height="50px">'; }else{} ?></div>
 </div>
 <div class="form-group col-md-6">
 <label>Domain Address:</label>
-<input type="text" name="domain" id="domain" class="form-control" required /> 
+<input type="text" name="domain" id="domain" class="form-control" value="<?php if(isset($webappdata)){ echo $webappdata->domain; }else{} ?>" required /> 
 <div id="domainmsg"></div>
 <a class="srchdpmain btn">Search Domain</a>
 </div>
@@ -41,7 +46,7 @@
 <select name="themecat" id="themecat" class="form-control" onchange="getthemecat(this.value)" required="required">
 <option value="">Select Theme Category</option>	
 <?php foreach ($themecatedata as $themecat) { ?>
-<option value="<?php echo $themecat['id']; ?>"><?php echo $themecat['pre_name']; ?></option>	
+<option value="<?php echo $themecat['id']; ?>" <?php if(isset($webappdata) && $webappdata->category_id == $themecat['id']){ echo 'selected="selected"'; }else{} ?>><?php echo $themecat['pre_name']; ?></option>	
 <?php }	?>
 </select>
 </div>
@@ -52,14 +57,14 @@
 </div>
 <div class="form-group col-md-12">
 <label>Write Details:</label>
-<textarea class="summernote" name="details" id="details"></textarea>
+<textarea class="summernote" name="details" id="details"><?php if(isset($webappdata)){ echo $webappdata->customization_details; }else{} ?></textarea>
 </div>
 <div class="form-group col-md-6">
 <label>Package:</label>
 <select name="package" id="package" class="form-control" required="required" onchange="getpackagedetails(this.value)">
 <option value="">Select Theme Category</option>	
 <?php foreach ($packagedata as $packge) { ?>
-<option value="<?php echo $packge['package_id']; ?>"><?php echo $packge['package_name']; ?></option>	
+<option value="<?php echo $packge['package_id']; ?>" <?php if(isset($webappdata) && $webappdata->package_id == $packge['package_id']){ echo 'selected="selected"'; }else{} ?>><?php echo $packge['package_name']; ?></option>	
 <?php }	?>
 </select>
 </div>
@@ -75,20 +80,24 @@
 foreach ($userdata as $usersdata) { 
 	if($usersdata['user_id'] == 1){}else{
 ?>
-<option value="<?php echo $usersdata['user_id']; ?>"><?php echo $usersdata['email']; ?></option>
+<option value="<?php echo $usersdata['user_id']; ?>" <?php if(isset($webappdata) && $webappdata->user_id == $usersdata['user_id']){ echo 'selected="selected"'; }else{} ?>><?php echo $usersdata['email']; ?></option>
 <?php }} ?>
 </select>
 </div>
 <div class="form-group col-md-6">
 <label>How would you like to be contacted?:</label>
 <select name="contacted" id="contacted" class="form-control">
-<option value="0">Email</option>
-<option value="1">Phone</option>
+<option value="0" <?php if(isset($webappdata) && $webappdata->contact_preference == 0){ echo 'selected="selected"'; }else{} ?>>Email</option>
+<option value="1" <?php if(isset($webappdata) && $webappdata->contact_preference == 1){ echo 'selected="selected"'; }else{} ?>>Phone</option>
 </select>
 </div>
 <div class="clearfix"></div>
 <div class="modal-footer">
+<?php if(isset($webappdata)){ ?>
+<button type="submit" id="submit" name="submit" class="btn btn-warning">Update Web App</button>
+<?php }else{ ?>	
 <button type="submit" id="submit" name="submit" class="btn btn-warning"><i class="fa fa-plus"></i>   Add Web App</button>
+<?php } ?>
 </div>
 </form>
 </div>
@@ -104,4 +113,10 @@ tabsize: 2,
 height: 100
 });
 });
+<?php if(isset($webappdata)){ ?>
+$(document).ready(function(){
+getthemecat('<?php echo $webappdata->category_id; ?>');	
+getpackagedetails('<?php echo $webappdata->package_id; ?>')
+});	
+<?php } ?>
 </script>

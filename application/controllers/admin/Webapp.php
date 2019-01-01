@@ -91,4 +91,70 @@ public function createwebapp(){
 		}
 	}
 }
+public function editwebapp($id){
+	$this->Dmodel->checkLogin();
+	if($this->session->userdata('admin_roles') == 1){
+		$viewdata['title']='Edit';
+		$data['status']=1;
+		$viewdata['themecatedata']=$this->Dmodel->get_tbl_whr_arr('pre_categories',$data);
+		$viewdata['packagedata']=$this->Dmodel->get_tbl_whr_arr('pre_packages',$data);
+		$viewdata['userdata']=$this->Dmodel->get_tbl_whr_arr('pre_users',$data);
+		$viewdata['industrydata']=$this->Dmodel->get_tbl_whr_arr('pre_industries',$data);
+		$viewdata['webappdata']=$this->Webmodel->get_webapp_data($id);
+		$this->LoadAdminView('admin/newwebapp',$viewdata);
+	}else{
+		redirect(base_url().'admin/dashboard');	
+	}
+}
+public function updatewebapp(){
+
+	$type=Array(1 => 'jpg', 2 => 'jpeg', 3 => 'png', 4 => 'gif');
+	$theme_ext = explode(".",$_FILES['weblogo']['name']);	
+	$theme_filename = $_FILES['weblogo']['name'];
+	$theme_target_path = "uploads/logos/";
+
+	if($theme_filename != '' && !(in_array($theme_ext[1],$type))){
+	    echo 'invalidimage';
+	}else{
+		if($theme_filename != ''){
+			$target_path_theme = $theme_target_path . $theme_filename;
+			move_uploaded_file($_FILES['weblogo']['tmp_name'], $target_path_theme);
+			$data['webapp_id']=$this->input->post('id');
+			$data['user_id']=$this->input->post('useremail');
+			$data['business_name']=$this->input->post('businessname');
+			$data['business_logo']=$theme_filename;
+			$data['industry_id']=$this->input->post('industry');
+			$data['domain']=$this->input->post('domain');
+			$data['theme_id']=$this->input->post('themes');
+			$data['customization_details']=$this->input->post('details');
+			$data['package_id']=$this->input->post('package');
+			$data['contact_preference']=$this->input->post('contacted');
+			if($data['theme_id'] == ''){
+				echo 'themenotselect';
+			}else{
+				$result=$this->Webmodel->update_webapp($data);
+			}
+		}else{
+			$data['webapp_id']=$this->input->post('id');
+			$data['user_id']=$this->input->post('useremail');
+			$data['business_name']=$this->input->post('businessname');
+			$data['industry_id']=$this->input->post('industry');
+			$data['domain']=$this->input->post('domain');
+			$data['theme_id']=$this->input->post('themes');
+			$data['customization_details']=$this->input->post('details');
+			$data['package_id']=$this->input->post('package');
+			$data['contact_preference']=$this->input->post('contacted');
+			if($data['theme_id'] == ''){
+				echo 'themenotselect';
+			}else{
+				$result=$this->Webmodel->update_webapp($data);
+			}
+		}
+	}
+}
+public function webstatus(){
+	$data['webapp_id']=$this->input->post('statusId');
+	$data['status']=$this->input->post('status');
+	$result=$this->Webmodel->status_web($this->table,$data);
+}
 }

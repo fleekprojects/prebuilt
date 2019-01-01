@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Industry extends MY_Controller {
 
 var $table='pre_industries';
-var $pagetitle='Industry';
+var $pagetitle='Industries';
 var $viewname='admin/industry';
 
 public function __construct(){

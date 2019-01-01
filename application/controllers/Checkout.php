@@ -16,10 +16,10 @@
 		
 		public function checkoutsubmit()
 		{
-			
-			// $_COOKIE['userinfo'].','.$_POST['phone'].','.$_POST['email'].','.$_POST['rad']
-			// set()
-			$cookiearr=explode(',', $_COOKIE['userinfo']);
+
+		
+			$cookiearr=explode(',',$_COOKIE['userinfo']);
+
 				
 				require_once APPPATH."libraries/stripe/stripe-php/init.php";
 				\Stripe\Stripe::setApiKey("sk_test_940FP89X8e9LGSDvt8YmHmGh");      
@@ -49,8 +49,18 @@
 			$cookiearr=explode(',', $_COOKIE['userinfo']);
 
 			$password=rand(100000,999999);	
-			$userdata=array('email'=>$_POST['email'],'password'=>$password,'status'=>0,'date_created'=>DateTime_Now);
-			$userid=$this->Dmodel->insertdatatoid('pre_users',$userdata);
+			
+			if($this->Dmodel->IFExist('users','email',$_POST['email'])){
+				$userdata=array('email'=>$_POST['email'],'password'=>md5($password),'status'=>0,'date_created'=>DateTime_Now);
+				$userid=$this->Dmodel->insertdatatoid('pre_users',$userdata);
+			
+			}
+			else{
+					$users=$this->Dmodel->get_tbl_whr_row_key('pre_users','email',$_POST['email']);
+					$userid=$users->user_id;
+			}
+
+
 			$userdetailsdata=array('user_id'=>$userid,'phone'=>$_POST['phone']);
 			$usdetail=$this->Dmodel->insertdata('pre_user_details',$userdetailsdata);
 			$webdata=array('user_id'=>$userid,'business_name'=>$cookiearr[0],'industry_id'=>$cookiearr[1],'business_logo'=>$cookiearr[2],'have_domain'=>$cookiearr[3],'domain'=>$cookiearr[4],'theme_id'=>$cookiearr[5],'customization_details'=>$cookiearr[6],'package_id'=>$cookiearr[7],'contact_preference'=>$_POST['optradio'],'status'=>0,'date_created'=>DateTime_Now);
@@ -62,27 +72,27 @@
 			$webid=$this->Dmodel->insertdatatoid('pre_payments',$paymentarr);
 			$viewdata['message']=$message;
 
-				$maildata['from_email']='info@prebuilt.tk';
-				$maildata['from_name']='Prebuilt';
+				$maildata['from_email']=Site_Email;
+				$maildata['from_name']=Site_Title;
 				$maildata['to_email']=$_POST['email'];
 				$maildata['to_name']='Customer';
 				$maildata['subject']='Order Confirmation';
 
-				$maildata['message']='Hello Customer,
-We welcome you aboard!
-Thank you for placing your order at '.Site_Title.'. Please find your account credentials below:
-Username: '.$_POST['email'].'
+				$maildata['message']='Hello Customer,<br/><br/>
+				We welcome you aboard!<br/><br/>
+				Thank you for placing your order at '.Site_Title.'. Please find your account credentials below:<br/>
+				Username: '.$_POST['email'].'<br/>
 
 
-Password: '.$password.'
-Please click here to login your account. Enter the given user name and password and you are good to go!
-
-Warm regards,
+				Password: '.$password.'<br/><br/>
+				Please <a href="//'.$_SERVER['HTTP_HOST'].'/admin">click here </a> to login your account. Enter the given user name and password and you are good to go!<br/><br/>
 
 
-'.Site_Title.'Customer Support';
+				Warm regards,<br/>
+
+
+				'.Site_Title.'Customer Support';
 				$mail=$this->Dmodel->send_mail($maildata);
-			
 			redirect(base_url().'payment-confirm',$viewdata);
 
 		}

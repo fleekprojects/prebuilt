@@ -19,6 +19,8 @@
 <link href="<?= base_url(); ?>assets/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<link href="<?= base_url(); ?>assets/admin/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+<link href="<?= base_url(); ?>assets/admin/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
 <link href="<?= base_url(); ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
 <link href="<?= base_url(); ?>assets/admin/build/css/dynamic.css" rel="stylesheet">
 <script src="<?= base_url(); ?>assets/admin/vendors/jquery/dist/jquery.min.js"></script>
@@ -30,6 +32,9 @@ font-weight: 100;
 }
 
 </style>
+<script type="text/javascript">
+var baseurl = 	<?= base_url(); ?>;
+</script>
 </head>
 
 <body class="nav-md">
@@ -60,6 +65,7 @@ font-weight: 100;
 </ul>
 </li>
 <li><a href="<?= base_url(); ?>admin/webapp"><i class="fa fa-dashboard"></i> <span>WebApp</span></a></li>
+<li><a href="<?= base_url(); ?>admin/payments"><i class="fa fa-dashboard"></i> <span>Payment</span></a></li>
 </ul>
 </div>
 </div>
@@ -533,7 +539,30 @@ Powered by Online Prebuilt</a>
 <!-- Custom Theme Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-<script src="<?= base_url(); ?>assets/admin/build/js/custom.min.js"></script>
 <script src="<?= base_url(); ?>assets/admin/js/scripts.js"></script>
+<script src="<?= base_url(); ?>assets/admin/vendors/Chart.js/dist/Chart.min.js"></script>
+<script src="<?= base_url(); ?>assets/admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+<script src="<?= base_url(); ?>assets/admin/vendors/skycons/skycons.js"></script>
+<script src="<?= base_url(); ?>assets/admin/vendors/Flot/jquery.flot.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/Flot/jquery.flot.resize.js"></script>
+
+<script src="<?= base_url(); ?>assets/admin/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/flot.curvedlines/curvedLines.js"></script>
+<script src="<?= base_url(); ?>assets/admin/vendors/gauge.js/dist/gauge.min.js"></script>
+<script src="<?= base_url(); ?>assets/admin/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="<?= base_url(); ?>assets/admin/vendors/DateJS/build/date.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/moment/min/moment.min.js"></script>
+    <script src="<?= base_url(); ?>assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    
+
+<script src="<?= base_url(); ?>assets/admin/build/js/custom.min.js"></script>
 </body>
 </html>

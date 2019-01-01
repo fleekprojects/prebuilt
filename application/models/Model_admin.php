@@ -28,6 +28,7 @@ class Model_admin extends CI_Model {
 		    //$this->input->set_cookie($cookie);
 		}
 		$this->db->where('user_name',$user_name);    
+		$this->db->or_where('email',$user_name);
 		$query = $this->db->get('pre_users');
         if($query->num_rows() == 1){
             $rows = $query->row();
