@@ -118,7 +118,7 @@
 <td><?php echo $theme['theme_name']; ?></td>
 <td><?php echo $theme['pre_name']; ?></td>
 <td>
-<select name="themestatus" id="themestatus" onchange="themestaus('<?php echo $theme['theme_id']; ?>',this.value);">
+<select name="themestatus" id="themestatus" onchange="themestaus('<?php echo $theme['theme_id']; ?>',this.value);" class="form-control">
 <option value="0" <?php if($theme['status'] == 0){ echo 'selected="selected"'; }else{} ?>>Deactive</option>	
 <option value="1" <?php if($theme['status'] == 1){ echo 'selected="selected"'; }else{} ?>>Active</option>
 </select>	

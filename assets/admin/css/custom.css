@@ -1,0 +1,124 @@
+body {
+     color: #546062;
+     background: #ffffff;
+}
+body.login {
+     background:rgba(0, 0, 0, 0.85) !important;
+}
+body.login .form.login_form {
+     padding: 30px;
+     background: linear-gradient(#afafaf,#a56fef,#131313);
+}
+.admin_login_logo {
+     width: 200px;
+     margin-top: -60px;
+}
+.login_content form {
+     text-shadow: none;
+     color: #fefefe;
+}
+.login_content div .reset_pass {
+     margin-right: 0!important;
+}
+.login_content a, a:focus, a:hover {
+     color: #eb8a23;
+     text-shadow: none;
+}
+.login_content form input[type="text"], .login_content form input[type="email"], .login_content form input[type="password"] {
+     border-radius: 0;
+     box-shadow: none;
+     height: 40px;
+}
+.nav_menu {
+     background: #a56fef;
+     border-bottom: 1px solid #ffffff;
+}
+.nav_menu a {
+     color: #ffffff;
+}
+.nav_title {
+     background: #ffffff;
+}
+#sidebar-menu .nav>li>a {
+     padding: 7px 14px 5px;
+}
+.left_col {
+     background: #ffffff;
+}
+.menu_section h3 {
+     color: #546062;
+     text-shadow: 1px 1px #fff;
+}
+.page-title {
+     height: 40px;
+}
+.page-title .title_left h3 {
+     font-weight: 600;
+     color: #546062;
+}
+.accordion .panel-heading {
+     background: #a56fef;
+     color: #ffffff !important;
+}
+#ordertbl select{
+     width: 120px;
+     padding: 0px 2px;
+     border-radius: 4px;
+     border: 1px solid #651dc7;
+}
+.nav_title {
+     background: #a56fef;
+}
+.site_title {
+     background: #a56fef;
+}
+.nav.child_menu>li>a, .nav.side-menu>li>a {
+     color: #714ca2;
+     font-size: 15px;
+}
+.nav.side-menu>li>a:hover {
+     color: #651dc7!important;
+}
+.nav.side-menu>li.active, .nav.side-menu>li.current-page {
+     border-right: 5px solid #651dc7;
+}
+.nav.side-menu>li.active>a {
+     background: linear-gradient(#f7deb1,#b7b7b7), #f7deb1;
+     text-shadow: none;
+}
+.nav li li.current-page a, .nav.child_menu li li a.active, .nav.child_menu li li a:hover {
+     color: #651dc7;
+}
+.nav.navbar-nav>li>a {
+     color: #ffffff!important;
+     font-size: 15px;
+}
+.nav_title img{
+	max-width: 100%;
+    max-height: 100%;
+}
+.x_title .btn-default{
+     border: 2px solid #651dc7 !important;
+     color: #651dc7 !important;
+     padding: 5px 12px;
+}
+.btn-success {
+     background: #539d53;
+     border-color: #4a884a;
+}
+.dt-buttons .dt-button{
+     border: 1px solid #651dc7 !important;
+     color: #651dc7 !important;
+	 margin-right: 0;
+}
+#sublog {
+     width: 100%;
+     border: 2px solid #651dc7 !important;
+     color: #651dc7 !important;
+     transition: 0.8s all;
+}
+#sublog:hover {
+     color: #fff !important;
+     background: #651dc7 !important;
+     transition: 0.8s all;
+}

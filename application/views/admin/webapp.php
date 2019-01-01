@@ -122,12 +122,12 @@
 <td><?php echo $webdatas['email']; ?></td>
 <td><?php echo $webdatas['date_created']; ?></td>
 <td>
-<select name="webstatus" id="webstatus" onchange="webstaus('<?php echo $webdatas['webapp_id']; ?>',this.value);">
+<select name="webstatus" id="webstatus" onchange="webstaus('<?php echo $webdatas['webapp_id']; ?>',this.value);" class="form-control">
 <option value="0" <?php if($webdatas['status'] == 0){ echo 'selected="selected"'; }else{} ?>>Deactive</option>
 <option value="1" <?php if($webdatas['status'] == 1){ echo 'selected="selected"'; }else{} ?>>Active</option>	
 </select>	
 </td>
-<td><a data-toggle="modal" data-target="#vieworderModal" class="btn btn-warning btn-editc btn-sm vieworder" webId="<?=$webdatas['webapp_id']?>">
+<td><a data-toggle="modal" data-target="#vieworderModal" class="btn btn-primary btn-sm vieworder" webId="<?=$webdatas['webapp_id']?>">
 <i class="fa fa-eye"></i></a>
 <a href="editwebapp/<?=$webdatas['webapp_id']?>" class="btn btn-warning btn-editc btn-sm" webId="<?=$webdatas['webapp_id']?>">
 <i class="fa fa-edit"></i></a></td>
