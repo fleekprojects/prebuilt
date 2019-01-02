@@ -2730,14 +2730,6 @@ $('.i_info').click( function() {
 
 } );
 
-// $(".select-options").mCustomScrollbar();
-
-jQuery('#lightgallery').lightGallery();
-
-
-
-
-
   var stripe = Stripe('pk_test_L59T4T2utlwOMMVqxVGYnsRK');
 var elements = stripe.elements();
 
@@ -2849,6 +2841,10 @@ function stripeTokenHandler(token) {
 
 
 });
+
+// $(".select-options").mCustomScrollbar();
+
+jQuery('#lightgallery').lightGallery();
 
 
 		
