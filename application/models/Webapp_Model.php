@@ -13,6 +13,11 @@
 			return $query->result_array();
 		}
 
+		function get_tbl_whr($tbl,$id){	
+			$query = $this->db->get_where($tbl, array('user_id' => $id));
+			return $query->result_array();
+		}
+		
 		function get_order($id){	
 			$this->db->select('*');
 			$this->db->from('pre_webapp');
