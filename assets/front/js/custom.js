@@ -2796,19 +2796,18 @@ function checkDomain(){
 }
    $( document ).ready(function() {
 
-  $('body').on('click', '.theme-box'  , function(e) {
+  $('body').on('click', '.theme-box .selectTheme'  , function(e) {
   	//e.preventDefault();
 
      $('.theme-box').removeClass( "active" );
-    $(this).addClass( "active" );
+    $(this).closest('.theme-box').addClass( "active" );
     
 } );
 
-$('.i_info').click( function() {
-      $('.i_info').removeClass( "selected" );
-    $(this).addClass( "selected" );
-
-} );
+$('.i_info .button-default').click( function() {
+    $('.i_info').removeClass( "selected" );
+    $(this).closest('.i_info').addClass( "selected" );
+});
 
 // $(".select-options").mCustomScrollbar();
 
@@ -2868,27 +2867,19 @@ form.addEventListener('submit', function(event) {
 	var email=$('#email').val();
 	var radio=$('input:radio[name=optradio]:checked').val();
 
-	
+	$('#erroremail, #errorradio, #errorphone').html('');
 	if(phone ==""){
 
-	$('#errorphone').html('<small style="color:red;"> Please Enter Phone Number </small>');
-	}
+    	$('#errorphone').html('<small style="color:red;"> Please Enter Phone Number </small>');
+    	}
 	else if(email ==""){
-	$('#erroremail').html('<small style="color:red;"> Please Enter Email Address </small>');
-
-
-
+	   $('#erroremail').html('<small style="color:red;"> Please Enter Email Address </small>');
 	} 
 	else if(radio != 1 && radio != 0){
-
-
-	$('#errorradio').html('<small style="color:red;"> Please select atleast one option</small>');
-
-
+	   $('#errorradio').html('<small style="color:red;"> Please select atleast one option</small>');
 	}
 
-	
-	
+
   stripe.createToken(card).then(function(result) {
     if (result.error) {
       // Inform the customer that there was an error.

@@ -168,7 +168,7 @@ select.s_select {
 }
 #domain_name_search,
 .f_name {
-    width: 40%;
+    width: 50%;
     float: left;
 }
 #domain_name_search{
@@ -222,7 +222,7 @@ select.s_select {
     color: #a56fef;
 }
 .active .panel .s_shadow {
-    border: 1px solid !important;
+    border: 2px solid !important;
 }
 
 .btn-block {
