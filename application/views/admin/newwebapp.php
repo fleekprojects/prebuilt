@@ -37,11 +37,14 @@
 </div>
 <div class="form-group col-md-6">
 <label>Domain Address:</label>
+<div class="form-group">
 <input type="text" name="domain" id="domain" class="form-control" value="<?php if(isset($webappdata)){ echo $webappdata->domain; }else{} ?>" <?php if(isset($webappdata)){ ?>  readonly="readonly" <?php }else{} ?> required /> 
-<div id="domainmsg"></div>
+
 <?php if(isset($webappdata)){}else{ ?>
-<a class="srchdpmain btn">Search Domain</a>
+<a class="srchdpmain btn btn btn-warning">Search Domain</a>
 <?php } ?>
+</div>
+<div id="domainmsg"></div>
 </div>
 <div class="form-group col-md-6">
 <label>Select Theme Category:</label>
@@ -74,6 +77,7 @@
 <label>Package Detail:</label>
 <div id="prmpckg"></div>
 </div>
+<div class="clearfix"></div>
 <div class="form-group col-md-6">
 <label>User Email:</label>
 <select name="useremail" id="useremail" class="form-control" required="required">

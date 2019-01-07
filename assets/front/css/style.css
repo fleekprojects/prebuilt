@@ -368,8 +368,32 @@ span.glyphicon.glyphicon-arrow-right {
 textarea.t_area {
     padding-left: 10px;
 }
-
-
+#errordomainaddress{
+	position: relative;
+	max-width: 450px;
+	width: 100%;
+}
+#errordomainaddress img{
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 20px;
+	left: 0;
+	margin: 0px auto;
+	vertical-align: middle;
+	bottom: 0px;
+}
+#errordomainaddress .alert-success,
+#errordomainaddress .alert-danger {
+    max-width: 450px;
+    margin-top: 20px;
+    width: 100%;
+}
+#domainHave,
+#domainSearch {
+    min-height: 360px;
+    height: 100%;
+}
 
 .box > .icon { text-align: center; position: relative; }
 .box > .icon > .image { position: relative; z-index: 2; margin: auto; width: 88px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 50%; background: #63B76C; vertical-align: middle; }
