@@ -61,9 +61,9 @@
 			}
 
 
-			$userdetailsdata=array('user_id'=>$userid,'phone'=>$_POST['phone']);
+			$userdetailsdata=array('user_id'=>$userid,'email'=>$_POST['email'],'phone'=>$_POST['phone']);
 			$usdetail=$this->Dmodel->insertdata('pre_user_details',$userdetailsdata);
-			$webdata=array('user_id'=>$userid,'email'=>$_POST['email'],'business_name'=>$cookiearr[0],'industry_id'=>$cookiearr[1],'business_logo'=>$cookiearr[2],'have_domain'=>$cookiearr[3],'domain'=>$cookiearr[4],'theme_id'=>$cookiearr[5],'customization_details'=>$cookiearr[6],'package_id'=>$cookiearr[7],'contact_preference'=>$_POST['optradio'],'status'=>0,'date_created'=>DateTime_Now);
+			$webdata=array('user_id'=>$userid,'business_name'=>$cookiearr[0],'industry_id'=>$cookiearr[1],'business_logo'=>$cookiearr[2],'have_domain'=>$cookiearr[3],'domain'=>$cookiearr[4],'theme_id'=>$cookiearr[5],'customization_details'=>$cookiearr[6],'package_id'=>$cookiearr[7],'contact_preference'=>$_POST['optradio'],'status'=>0,'date_created'=>DateTime_Now);
 			$packagewhere=array('package_id'=>$cookiearr[7]);
 			$packages=$this->Dmodel->get_tbl_whr_arr('pre_packages',$packagewhere);
 			$amount=$_POST['amount'];
