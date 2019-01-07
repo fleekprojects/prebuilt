@@ -2672,7 +2672,7 @@ function SaveChanges2() {
 	}
 	 else {
 	 	
-	    $('#errordomain').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+	    $('#errordomain').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
 		 
 	}
 
@@ -2738,7 +2738,7 @@ var have_domain = document.querySelector('input[name="youHavedomainName"]:checke
         },
         success: function (result) {
             if(result.status == false && result.IsPremiumName == 'false'){
-                $('#errordomainaddress').html('<small style="color:red;"> Domain Not Available !!! </small>');
+                $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Domain Not Available !!! </p></div>');
                 $('#domainyss').hide();
             }else if(result.status == true && result.IsPremiumName == 'false'){
                 document.getElementById('domain').value = '';
@@ -2747,17 +2747,17 @@ var have_domain = document.querySelector('input[name="youHavedomainName"]:checke
                 $.cookie('userinfo',cookie);
                 window.location.href = baseUrl+"select-theme";
             }else if(result.status == true && result.IsPremiumName == 'true'){
-                $('#errordomainaddress').html('<small style="color:red;"> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </small>');
+                $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </p></div>');
                 $('#domainyss').hide();
             }
         },
         error: function () {
-            $('#errordomainaddress').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+            $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
             $('#domainnos').hide();
         }
     });
     }else{
-        $('#errordomainaddress').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+        $('#errordomainaddress').html('<div class="alert alert-danger"><p> Invalid Domain Name EXAMPLE (google.com) </p></div>');
     }    
 }
 
@@ -2775,23 +2775,23 @@ function checkDomain(){
         },
         success: function (result) {
             if(result.status == false && result.IsPremiumName == 'false'){
-                $('#errordomainaddress').html('<small style="color:red;"> Domain Not Available !!! </small>');
+                $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Domain Not Available !!! </p></div>');
                 $('#domainnos').hide();
             }else if(result.status == true && result.IsPremiumName == 'false'){
-                $('#errordomainaddress').html('<small style="color:green;"> Domain Available !!! </small>');
+                $('#errordomainaddress').html('<div class="alert alert-success"><p><i class="fa fa-check-circle"></i>  Domain Available !!! </p></p>');
                 $('#domainnos').show();
             }else if(result.status == true && result.IsPremiumName == 'true'){
-                $('#errordomainaddress').html('<small style="color:red;"> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </small>');
+                $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </p></div>');
                 $('#domainnos').hide();
             }
         },
         error: function () {
-            $('#errordomainaddress').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+            $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
             $('#domainnos').hide();
         }
     });
     }else{
-        $('#errordomainaddress').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+        $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
     }
 }
    $( document ).ready(function() {
