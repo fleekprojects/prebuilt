@@ -49,7 +49,7 @@
                      <label class="control-label col-sm-3 label-style" for="domainSearch">Domain Address</label>
                      <div class="col-sm-9">
                         <input type="text" class="form-control" name="domain_name" id="domain_name_search" placeholder="ENTER YOUR DOMAIN ADDRESS">
-                        <button type="button" class="button-default">SEARCH DOMAIN</button>
+                        <button type="button" class="button-default" onclick="checkDomain();">SEARCH DOMAIN</button>
                            <div id="errordomainaddress"></div>
                      </div>
                   </div>
@@ -59,8 +59,11 @@
                <div class="footer_inner_left clearifix">
                   <a href="<?= base_url()?>" class="c_back"><span class="glyphicon glyphicon-arrow-left"></span><span class="text">Back</span></a>
                </div>
-               <div class="footer_inner clearifix">
+               <div id="domainyss" class="footer_inner clearifix">
                   <a href="javascript:void(0)"  onclick="SaveChanges2()" class="c_continue"><span class="text">Continue</span><span class="glyphicon glyphicon-arrow-right"></span></a>
+               </div>
+               <div id="domainnos" class="footer_inner clearifix" style="display: none;">
+                  <a href="javascript:void(0)"  onclick="continue_checkDomain()" class="c_continue"><span class="text">Continue</span><span class="glyphicon glyphicon-arrow-right"></span></a>
                </div>
             </footer>
          </div>

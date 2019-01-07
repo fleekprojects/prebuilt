@@ -586,7 +586,7 @@
             success: function (result) {
             	var catData = '';
             	if (result.length > 0) {
-            		catData += '<ul class="shwtheme">';
+            		catData += '<ul class="shwtheme list-inline">';
             		for (i=0;i < result.length; i++) {
             		if(i == 0){
             		catData += '<li><img src="'+baseurl+'/uploads/themeimages/'+result[i].image1+'" width="25px" height="25px"><input class="selectthemes" type="radio" id="themes" name="themes" value="'+result[i].theme_id+'" checked="checked">'+result[i].theme_name+'</li>';	
@@ -604,27 +604,84 @@
             }
         });
     }
+    // $(document).on("click", ".srchdpmain", function () {
+    // 	var domain = $('#domain').val();
+    // 	$.ajax({
+    //         url: baseurl+"admin/searchdomain",
+    //         data: {domain:domain},
+    //         type: 'POST',
+    //         beforeSend: function () {
+    //         },
+    //         success: function (result) {
+    //         	if(result == 'domainexist'){
+				// 	  $('#domainmsg').html('<b style="color: red;">Error: Domain Not Available. </b>');
+				// }else if(result == 'domainnotexit'){
+				// 	  $('#domainmsg').html('<p><b style="color: green;">Domain Available.</b></p>');	
+				// 	}
+    //         },
+    //         error: function () {
+    //         	$('#domainmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+    //         }
+    //     });
+    // });	
     $(document).on("click", ".srchdpmain", function () {
     	var domain = $('#domain').val();
+    	if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){
     	$.ajax({
-            url: baseurl+"admin/searchdomain",
+            url: baseurl+"assets/namecheap/checkdomain.php",
             data: {domain:domain},
             type: 'POST',
+            dataType: 'json',
             beforeSend: function () {
+            	$('#domainmsg').html('<img src="'+baseurl+'assets/front/images/sandwatch.gif">');
             },
             success: function (result) {
-            	if(result == 'domainexist'){
-					  $('#domainmsg').html('<b style="color: red;">Error: Domain Not Available. </b>');
-				}else if(result == 'domainnotexit'){
-					  $('#domainmsg').html('<p><b style="color: green;">Domain Available.</b></p>');	
-					}
+            	if(result.status == false && result.IsPremiumName == 'false'){
+	                $('#domainmsg').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Domain Not Available !!! </p></div<');
+	            }else if(result.status == true && result.IsPremiumName == 'false'){
+	                $('#domainmsg').html('<div class="alert alert-success"><p><i class="fa fa-check-circle"></i> Domain Available !!! </p></div>');
+	            }else if(result.status == true && result.IsPremiumName == 'true'){
+	                $('#domainmsg').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </p></div>');
+	            }
+            },
+            error: function () {
+            	$('#domainmsg').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Error: Somthing gone wrong please refresh your browser and try again. </p></div>');
+            }
+        });
+        }else{
+        	$('#domainmsg').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
+    	}
+    });	
+
+    function checkdomainagain(){
+    	var domain = $('#domain').val();
+    	if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){
+    	$.ajax({
+            url: baseurl+"assets/namecheap/checkdomain.php",
+            data: {domain:domain},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            	$('#domainmsg').html('<img src="'+baseurl+'assets/front/images/sandwatch.gif">');
+            },
+            success: function (result) {
+            	if(result.status == false && result.IsPremiumName == 'false'){
+	                $('#domainmsg').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Domain Not Available !!! </p></div>');
+	            }else if(result.status == true && result.IsPremiumName == 'false'){
+	            	$('#domainmsg').html('<div class="alert alert-success"><p><i class="fa fa-check-circle"></i> Domain Available !!! </p></div>');
+	                $('#submit').click();
+	            }else if(result.status == true && result.IsPremiumName == 'true'){
+	                $('#domainmsg').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </p></div>');
+	            }
             },
             error: function () {
             	$('#domainmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
             }
         });
-    });	
-
+        }else{
+        	$('#domainmsg').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
+    	}
+    }
     function getpackagedetails(id){
     	var packageId = id;
     	$.ajax({
@@ -639,10 +696,10 @@
 					  $('#prmpckg').html('Please Select Package');
 				}else if(result != null){
 					var packageDetails = '';	
-					packageDetails += '<ul>';
+					packageDetails += '<ul class="list-unstyled pricing-list">';
 					packageDetails += '<li>'+result.package_name+'</li>';
 					packageDetails += '<li>'+result.package_details+'</li>';
-					packageDetails += '<li>$'+result.package_price+'</li>';
+					packageDetails += '<li class="price-show">$'+result.package_price+'</li>';
 					packageDetails += '</ul>';
 					$('#prmpckg').html(packageDetails);	
 				}
@@ -684,6 +741,11 @@
 					  $('#showthemes').html('');
 					  $('#domainmsg').html('');
 					  $('#filemsg').html('');
+					}else{
+					  $('#apierrors').html(result);	
+					  $('#showthemes').html('');
+					  $('#domainmsg').html('');
+					  $('#filemsg').html('');	
 					}
 				},
 				error: function (xhr, textStatus, errorThrown){
