@@ -87,7 +87,60 @@ public function createwebapp(){
 		if($data['theme_id'] == ''){
 			echo 'themenotselect';
 		}else{
-			$result=$this->Webmodel->create_webapp($data);
+			$viewdata['userdata']=$this->Webmodel->get_tbl_whr('pre_users',$this->input->post('useremail'));
+			$email = $viewdata['userdata'][0]['email'];
+			require_once "assets/namecheap/namecheap.php";
+			$nc_api = array( 'api_user' => 'fleekncapi',
+					'api_key' => '7d246acf7f194480af532353997b943a',
+					'api_ip' => 'detect'
+			);
+			$sandbox = 'true'; // use the Namecheap sandbox to test
+			$nc = new Namecheap( $nc_api, $sandbox );
+			$domain = $this->input->post('domain');
+			$registration_data = array(
+				'DomainName' => $this->input->post('domain'),
+				'Years' => '2',
+				'RegistrantFirstName'	=> 'John',
+				'RegistrantLastName'	=> 'Smith',
+				'RegistrantAddress1'	=> 'Testing USA 123 homs',
+				'RegistrantCity'	=> 'alea',
+				'RegistrantStateProvince'	=> 'alea',
+				'RegistrantPostalCode'	=> 'alea',
+				'RegistrantCountry'	=> 'alea',
+				'RegistrantPhone'	=> '+61.312349876',
+				'RegistrantEmailAddress'	=> $email,
+				'TechFirstName'	=> 'alea',
+				'TechLastName'	=> 'alea',
+				'TechAddress1'	=> 'alea',
+				'TechCity'	=> 'alea',
+				'TechStateProvince'	=> 'alea',
+				'TechPostalCode'	=> 'alea',
+				'TechCountry'	=> 'alea',
+				'TechPhone'	=> '+61.312349876',
+				'TechEmailAddress'	=> $email,
+				'AdminFirstName'	=> 'alea',
+				'AdminLastName'	=> 'alea',
+				'AdminAddress1'	=> 'alea',
+				'AdminCity'	=> 'alea',
+				'AdminStateProvince'	=> 'alea',
+				'AdminPostalCode'	=> 'alea',
+				'AdminCountry'	=> 'alea',
+				'AdminPhone'	=> '+61.312349876',
+				'AdminEmailAddress'	=> $email,
+				'AuxBillingFirstName'	=> 'alea',
+				'AuxBillingLastName'	=> 'alea',
+				'AuxBillingAddress1'	=> 'alea',
+				'AuxBillingCity'	=> 'alea',
+				'AuxBillingStateProvince'	=> 'alea',
+				'AuxBillingPostalCode'	=> 'alea',
+				'AuxBillingCountry'	=> 'alea',
+				'AuxBillingPhone'	=> '+61.312349876',
+				'AuxBillingEmailAddress'	=> $email);
+			if (!$nc->domainsCreate( $domain, $registration_data ) ) {
+				print_r( $nc->Error );
+			}else{
+				$result=$this->Webmodel->create_webapp($data);
+			}
 		}
 	}
 }

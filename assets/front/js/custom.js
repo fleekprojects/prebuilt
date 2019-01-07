@@ -2539,12 +2539,19 @@ $('input[type=radio][name=youHavedomainName]').change(function() {
     if (value == 0) {
         $('#domainSearch').show();
         $('#domainHave').hide();
+        $('#domainnos').hide();
+        $('#domainyss').hide();
+        document.getElementById('domain_name_search').value = '';
+        $('#errordomainaddress').html('');
     } else if (value == 1) {
         $('#domainHave').show();
         $('#domainSearch').hide();
+        $('#domainyss').show();
+        $('#domainnos').hide();
     } else {
         $('#domainSearch').hide();
         $('#domainHave').hide();
+        $('#domainnos').hide();
     }
 
 })
@@ -2639,6 +2646,7 @@ function SaveChanges2() {
 		$('#errordomain').html('<small style="color:red;"> Please Enter Domain Name</small>');
 		}
 		 else{
+        document.getElementById('domain_name_search').value = '';    
 		var cookie=cook+','+have_domain+','+domain;
 		$.cookie('userinfo',cookie);
 		window.location.href = baseUrl+"select-theme";
@@ -2647,15 +2655,16 @@ function SaveChanges2() {
 	}
 	else
 	{
-		if(domainaddress ==""){
-		$('#errordomainaddress').html('<small style="color:red;"> Please Enter Domain Address</small>');
+        document.getElementById('domain').value = '';
+		// if(domainaddress ==""){
+		// $('#errordomainaddress').html('<small style="color:red;"> Please Enter Domain Address</small>');
 		
-		}
-		 else{
-		var cookie=cook+','+have_domain+','+domain;
-		$.cookie('userinfo',cookie);
-		window.location.href = baseUrl+"select-theme";
-		}
+		// }
+		//  else{
+		// var cookie=cook+','+have_domain+','+domain;
+		// $.cookie('userinfo',cookie);
+		// window.location.href = baseUrl+"select-theme";
+		// }
 
 
 	}
@@ -2663,7 +2672,7 @@ function SaveChanges2() {
 	}
 	 else {
 	 	
-	    $('#errordomain').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+	    $('#errordomain').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
 		 
 	}
 
@@ -2713,7 +2722,78 @@ function SaveChanges5() {
 	}
 }
 
+function continue_checkDomain(){
+var domain = $('#domain_name_search').val();
+var cook= $.cookie("userinfo");
+var have_domain = document.querySelector('input[name="youHavedomainName"]:checked').value;
+    if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){    
+    $.ajax({
+        url: baseUrl+"assets/namecheap/checkdomain.php",
+        data: {domain:domain},
+        type: 'POST',
+        dataType: 'json',
+        beforeSend: function () {
+            $('#errordomainaddress').html('<img src="'+baseUrl+'assets/front/images/sandwatch.gif">');
+            $('#domainyss').hide();
+        },
+        success: function (result) {
+            if(result.status == false && result.IsPremiumName == 'false'){
+                $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Domain Not Available !!! </p></div>');
+                $('#domainyss').hide();
+            }else if(result.status == true && result.IsPremiumName == 'false'){
+                document.getElementById('domain').value = '';
+                // var cookie=cook+','+have_domain+','+result.domain+','+result.PremiumRegistrationPrice;
+                var cookie=cook+','+have_domain+','+result.domain;
+                $.cookie('userinfo',cookie);
+                window.location.href = baseUrl+"select-theme";
+            }else if(result.status == true && result.IsPremiumName == 'true'){
+                $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </p></div>');
+                $('#domainyss').hide();
+            }
+        },
+        error: function () {
+            $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
+            $('#domainnos').hide();
+        }
+    });
+    }else{
+        $('#errordomainaddress').html('<div class="alert alert-danger"><p> Invalid Domain Name EXAMPLE (google.com) </p></div>');
+    }    
+}
 
+function checkDomain(){
+    var domain = $('#domain_name_search').val();
+    if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){    
+    $.ajax({
+        url: baseUrl+"assets/namecheap/checkdomain.php",
+        data: {domain:domain},
+        type: 'POST',
+        dataType: 'json',
+        beforeSend: function () {
+            $('#errordomainaddress').html('<img src="'+baseUrl+'assets/front/images/sandwatch.gif">');
+            $('#domainnos').hide();
+        },
+        success: function (result) {
+            if(result.status == false && result.IsPremiumName == 'false'){
+                $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Domain Not Available !!! </p></div>');
+                $('#domainnos').hide();
+            }else if(result.status == true && result.IsPremiumName == 'false'){
+                $('#errordomainaddress').html('<div class="alert alert-success"><p><i class="fa fa-check-circle"></i>  Domain Available !!! </p></p>');
+                $('#domainnos').show();
+            }else if(result.status == true && result.IsPremiumName == 'true'){
+                $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </p></div>');
+                $('#domainnos').hide();
+            }
+        },
+        error: function () {
+            $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
+            $('#domainnos').hide();
+        }
+    });
+    }else{
+        $('#errordomainaddress').html('<div class="alert alert-danger"><p><i class="fa fa-warning"></i> Invalid Domain Name EXAMPLE (google.com) </p></div>');
+    }
+}
    $( document ).ready(function() {
 
   $('body').on('click', '.theme-box'  , function(e) {
@@ -2732,7 +2812,7 @@ $('.i_info').click( function() {
 
 // $(".select-options").mCustomScrollbar();
 
-jQuery('#lightgallery').lightGallery();
+//jQuery('#lightgallery').lightGallery();
 
 
 

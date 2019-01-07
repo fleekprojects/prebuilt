@@ -22,7 +22,7 @@
       <?php  $this->load->view($view,$viewData); ?>
       <div class="clearifix"></div>
         <script type="text/javascript">
-        var baseUrl= "<?= base_url() ?>"
+        var baseUrl= "<?php echo base_url(); ?>";
      </script>
       <script src="<?= base_url(); ?>assets/front/js/jquery.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -33,14 +33,14 @@
       
      <script src="https://js.stripe.com/v3/"></script>
      <script>
-	(function (d, t, g) {
-		var ph    = d.createElement(t), s = d.getElementsByTagName(t)[0];
-		ph.type   = 'text/javascript';
-		ph.async   = true;
-		ph.charset = 'UTF-8';
-		ph.src     = g + '&v=' + (new Date()).getTime();
-		s.parentNode.insertBefore(ph, s);
-	})(document, 'script', '//199.250.201.124/~qc/?p=132&ph_apikey=0e62afea9ad25555d9506bdb21e99e82');
+	// (function (d, t, g) {
+	// 	var ph    = d.createElement(t), s = d.getElementsByTagName(t)[0];
+	// 	ph.type   = 'text/javascript';
+	// 	ph.async   = true;
+	// 	ph.charset = 'UTF-8';
+	// 	ph.src     = g + '&v=' + (new Date()).getTime();
+	// 	s.parentNode.insertBefore(ph, s);
+	// })(document, 'script', '//199.250.201.124/~qc/?p=132&ph_apikey=0e62afea9ad25555d9506bdb21e99e82');
 </script>
 <script src="<?= base_url(); ?>assets/front/js/custom.js"></script>
 <script src="<?= base_url(); ?>assets/front/js/jquery.mask.js"></script>

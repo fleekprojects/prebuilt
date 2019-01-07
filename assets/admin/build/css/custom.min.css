@@ -45,3 +45,39 @@
 .login_content div .reset_pass {
     margin-right: 0!important;
 }
+
+#domain{
+  width: 100%;
+float: left;
+margin-right: 2%;
+max-width: 395px;
+}
+#domainmsg img {
+
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: 0px auto;
+        margin-top: 0px;
+    margin-top: 12px;
+
+}
+.shwtheme.list-inline {
+    line-height: 40px;
+}
+.shwtheme.list-inline li{
+width: 100%;
+max-width: 150px;
+}
+.shwtheme.list-inline li img{
+	margin-right:5%;
+}
+
+.price-show{
+	    font-size: 18px;
+	    font-weight: 500;
+}
+.pricing-list li ul{
+padding-left: 0;
+list-style: none;
+}
