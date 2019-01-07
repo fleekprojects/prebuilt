@@ -18,7 +18,7 @@
 		{
 
 		
-			$cookiearr=explode(',',$_COOKIE['userinfo']);
+			 $cookiearr=explode(',',$_COOKIE['userinfo']);
 
 				
 				require_once APPPATH."libraries/stripe/stripe-php/init.php";
@@ -72,28 +72,83 @@
 			$webid=$this->Dmodel->insertdatatoid('pre_payments',$paymentarr);
 			$viewdata['message']=$message;
 
-				$maildata['from_email']=Site_Email;
-				$maildata['from_name']=Site_Title;
-				$maildata['to_email']=$_POST['email'];
-				$maildata['to_name']='Customer';
-				$maildata['subject']='Order Confirmation';
+			// 	$maildata['from_email']=Site_Email;
+			// 	$maildata['from_name']=Site_Title;
+			// 	$maildata['to_email']=$_POST['email'];
+			// 	$maildata['to_name']='Customer';
+			// 	$maildata['subject']='Order Confirmation';
 
-				$maildata['message']='Hello Customer,<br/><br/>
-				We welcome you aboard!<br/><br/>
-				Thank you for placing your order at '.Site_Title.'. Please find your account credentials below:<br/>
-				Username: '.$_POST['email'].'<br/>
-
-
-				Password: '.$password.'<br/><br/>
-				Please <a href="//'.$_SERVER['HTTP_HOST'].'/admin">click here </a> to login your account. Enter the given user name and password and you are good to go!<br/><br/>
+				// $maildata['message']='Hello Customer,<br/><br/>
+				// We welcome you aboard!<br/><br/>
+				// Thank you for placing your order at '.Site_Title.'. Please find your account credentials below:<br/>
+				// Username: '.$_POST['email'].'<br/>
 
 
-				Warm regards,<br/>
+				// Password: '.$password.'<br/><br/>
+				// Please <a href="//'.$_SERVER['HTTP_HOST'].'/admin">click here </a> to login your account. Enter the given user name and password and you are good to go!<br/><br/>
 
 
-				'.Site_Title.'Customer Support';
-				$mail=$this->Dmodel->send_mail($maildata);
-			redirect(base_url().'payment-confirm',$viewdata);
+				// Warm regards,<br/>
+
+
+				// '.Site_Title.'Customer Support';
+				// $mail=$this->Dmodel->send_mail($maildata);
+			if($cookiearr[3] == 0){
+			require_once "assets/namecheap/namecheap.php";
+			$nc_api = array( 'api_user' => 'fleekncapi',
+					'api_key' => '7d246acf7f194480af532353997b943a',
+					'api_ip' => 'detect'
+			);
+			$sandbox = 'true'; // use the Namecheap sandbox to test
+			$nc = new Namecheap( $nc_api, $sandbox );
+			$domain = $cookiearr[4];
+			$registration_data = array(
+				'DomainName' => $domain,
+				'Years' => '2',
+				'RegistrantFirstName'	=> 'John',
+				'RegistrantLastName'	=> 'Smith',
+				'RegistrantAddress1'	=> 'Testing USA 123 homs',
+				'RegistrantCity'	=> 'alea',
+				'RegistrantStateProvince'	=> 'alea',
+				'RegistrantPostalCode'	=> 'alea',
+				'RegistrantCountry'	=> 'alea',
+				'RegistrantPhone'	=> '+61.312349876',
+				'RegistrantEmailAddress'	=> $_POST['email'],
+				'TechFirstName'	=> 'alea',
+				'TechLastName'	=> 'alea',
+				'TechAddress1'	=> 'alea',
+				'TechCity'	=> 'alea',
+				'TechStateProvince'	=> 'alea',
+				'TechPostalCode'	=> 'alea',
+				'TechCountry'	=> 'alea',
+				'TechPhone'	=> '+61.312349876',
+				'TechEmailAddress'	=> $_POST['email'],
+				'AdminFirstName'	=> 'alea',
+				'AdminLastName'	=> 'alea',
+				'AdminAddress1'	=> 'alea',
+				'AdminCity'	=> 'alea',
+				'AdminStateProvince'	=> 'alea',
+				'AdminPostalCode'	=> 'alea',
+				'AdminCountry'	=> 'alea',
+				'AdminPhone'	=> '+61.312349876',
+				'AdminEmailAddress'	=> $_POST['email'],
+				'AuxBillingFirstName'	=> 'alea',
+				'AuxBillingLastName'	=> 'alea',
+				'AuxBillingAddress1'	=> 'alea',
+				'AuxBillingCity'	=> 'alea',
+				'AuxBillingStateProvince'	=> 'alea',
+				'AuxBillingPostalCode'	=> 'alea',
+				'AuxBillingCountry'	=> 'alea',
+				'AuxBillingPhone'	=> '+61.312349876',
+				'AuxBillingEmailAddress'	=> $_POST['email']);
+			if (!$nc->domainsCreate( $domain, $registration_data ) ) {
+				print_r( $nc->Error );
+			}else{
+				redirect(base_url().'payment-confirm',$viewdata);	
+			}
+			}else{
+				redirect(base_url().'payment-confirm',$viewdata);
+			}
 
 		}
 	}
