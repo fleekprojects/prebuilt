@@ -676,7 +676,6 @@
 <tr>
 <th>User Name</th>
 <th>Email</th>
-<th>User Role</th>
 <th>Action</th>
 </tr>
 </thead>
@@ -685,7 +684,6 @@
 <tr>
 <td><?=$rec['user_name']?></td>
 <td><?=$rec['email']?></td>
-<td><?=$rec['name']?></td>
 <td>
 <a data-toggle="modal" data-target="#edituserModal" class="btn btn-warning btn-editc btn-sm edituser" userId="<?=$rec['user_id']?>">
 <i class="fa fa-edit"></i></a>
