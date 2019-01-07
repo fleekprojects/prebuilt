@@ -604,27 +604,84 @@
             }
         });
     }
+    // $(document).on("click", ".srchdpmain", function () {
+    // 	var domain = $('#domain').val();
+    // 	$.ajax({
+    //         url: baseurl+"admin/searchdomain",
+    //         data: {domain:domain},
+    //         type: 'POST',
+    //         beforeSend: function () {
+    //         },
+    //         success: function (result) {
+    //         	if(result == 'domainexist'){
+				// 	  $('#domainmsg').html('<b style="color: red;">Error: Domain Not Available. </b>');
+				// }else if(result == 'domainnotexit'){
+				// 	  $('#domainmsg').html('<p><b style="color: green;">Domain Available.</b></p>');	
+				// 	}
+    //         },
+    //         error: function () {
+    //         	$('#domainmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+    //         }
+    //     });
+    // });	
     $(document).on("click", ".srchdpmain", function () {
     	var domain = $('#domain').val();
+    	if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){
     	$.ajax({
-            url: baseurl+"admin/searchdomain",
+            url: baseurl+"assets/namecheap/checkdomain.php",
             data: {domain:domain},
             type: 'POST',
+            dataType: 'json',
             beforeSend: function () {
+            	$('#domainmsg').html('<img src="'+baseurl+'assets/front/images/sandwatch.gif">');
             },
             success: function (result) {
-            	if(result == 'domainexist'){
-					  $('#domainmsg').html('<b style="color: red;">Error: Domain Not Available. </b>');
-				}else if(result == 'domainnotexit'){
-					  $('#domainmsg').html('<p><b style="color: green;">Domain Available.</b></p>');	
-					}
+            	if(result.status == false && result.IsPremiumName == 'false'){
+	                $('#domainmsg').html('<small style="color:red;"> Domain Not Available !!! </small>');
+	            }else if(result.status == true && result.IsPremiumName == 'false'){
+	                $('#domainmsg').html('<small style="color:green;"> Domain Available !!! </small>');
+	            }else if(result.status == true && result.IsPremiumName == 'true'){
+	                $('#domainmsg').html('<small style="color:red;"> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </small>');
+	            }
             },
             error: function () {
             	$('#domainmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
             }
         });
+        }else{
+        	$('#domainmsg').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+    	}
     });	
 
+    function checkdomainagain(){
+    	var domain = $('#domain').val();
+    	if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)){
+    	$.ajax({
+            url: baseurl+"assets/namecheap/checkdomain.php",
+            data: {domain:domain},
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+            	$('#domainmsg').html('<img src="'+baseurl+'assets/front/images/sandwatch.gif">');
+            },
+            success: function (result) {
+            	if(result.status == false && result.IsPremiumName == 'false'){
+	                $('#domainmsg').html('<small style="color:red;"> Domain Not Available !!! </small>');
+	            }else if(result.status == true && result.IsPremiumName == 'false'){
+	            	$('#domainmsg').html('<small style="color:green;"> Domain Available !!! </small>');
+	                $('#submit').click();
+	            }else if(result.status == true && result.IsPremiumName == 'true'){
+	                $('#domainmsg').html('<small style="color:red;"> Sorry this Domain Premium we are not purchase this domain try to search another domain !!! </small>');
+	            }
+            },
+            error: function () {
+            	$('#domainmsg').html('<b style="color: red;">Error: Somthing gone wrong please refresh your browser and try again. </b>');
+            }
+        });
+        }else{
+        	$('#domainmsg').html('<small style="color:red;"> Invalid Domain Name EXAMPLE (google.com) </small>');
+    	}
+    }
     function getpackagedetails(id){
     	var packageId = id;
     	$.ajax({
@@ -684,6 +741,11 @@
 					  $('#showthemes').html('');
 					  $('#domainmsg').html('');
 					  $('#filemsg').html('');
+					}else{
+					  $('#apierrors').html(result);	
+					  $('#showthemes').html('');
+					  $('#domainmsg').html('');
+					  $('#filemsg').html('');	
 					}
 				},
 				error: function (xhr, textStatus, errorThrown){

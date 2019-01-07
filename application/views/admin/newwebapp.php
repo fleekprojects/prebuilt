@@ -37,9 +37,11 @@
 </div>
 <div class="form-group col-md-6">
 <label>Domain Address:</label>
-<input type="text" name="domain" id="domain" class="form-control" value="<?php if(isset($webappdata)){ echo $webappdata->domain; }else{} ?>" required /> 
+<input type="text" name="domain" id="domain" class="form-control" value="<?php if(isset($webappdata)){ echo $webappdata->domain; }else{} ?>" <?php if(isset($webappdata)){ ?>  readonly="readonly" <?php }else{} ?> required /> 
 <div id="domainmsg"></div>
+<?php if(isset($webappdata)){}else{ ?>
 <a class="srchdpmain btn">Search Domain</a>
+<?php } ?>
 </div>
 <div class="form-group col-md-6">
 <label>Select Theme Category:</label>
@@ -96,7 +98,9 @@ foreach ($userdata as $usersdata) {
 <?php if(isset($webappdata)){ ?>
 <button type="submit" id="submit" name="submit" class="btn btn-warning">Update Web App</button>
 <?php }else{ ?>	
-<button type="submit" id="submit" name="submit" class="btn btn-warning"><i class="fa fa-plus"></i>   Add Web App</button>
+<button type="button" id="chkdmn" name="chkdmn" class="btn btn-warning" onclick="checkdomainagain();"><i class="fa fa-plus"></i>   Add Web App</button>	
+<button type="submit" id="submit" name="submit" class="btn btn-warning hide"><i class="fa fa-plus"></i>   Add Web App</button>
+<div id="apierrors"></div>
 <?php } ?>
 </div>
 </form>
