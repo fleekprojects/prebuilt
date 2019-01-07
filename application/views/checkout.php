@@ -49,19 +49,14 @@
                      <label class="control-label col-sm-3 label-style contacted-label" for="email">How would you like to be contacted?</label>
                      <div class="col-sm-9">
                       <label class="radio-container">Email
-  <input type="radio" name="optradio">
+  <input type="radio" name="optradio" value="0">
   <span class="checkmark"></span>
 </label>
 <label class="radio-container">Phone
-  <input type="radio" name="optradio">
+  <input type="radio" name="optradio" value="1">
   <span class="checkmark"></span>
 </label>
-                        <!-- <label class="radio-inline r_inline">
-                        <input type="radio" name="optradio" class="radioclass" value="0"> Email
-                        </label>
-                        <label class="radio-inline r_inline">
-                        <input type="radio" name="optradio"  class="radioclass" value="1"> Phone
-                        </label> -->
+                     
                           <div id="errorradio"></div>
                      </div>
                   </div>
