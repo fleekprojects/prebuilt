@@ -64,7 +64,7 @@ var baseurl = 	<?= base_url(); ?>;
 <li><a href="<?= base_url(); ?>admin/themes">Themes</a></li>
 </ul>
 </li>
-<li><a href="<?= base_url(); ?>admin/webapp"><i class="fa fa-dashboard"></i> <span>WebApp</span></a></li>
+<li><a href="<?= base_url(); ?>admin/webapp"><i class="fa fa-dashboard"></i> <span>Orders</span></a></li>
 <li><a href="<?= base_url(); ?>admin/payments"><i class="fa fa-dashboard"></i> <span>Payment</span></a></li>
 </ul>
 </div>

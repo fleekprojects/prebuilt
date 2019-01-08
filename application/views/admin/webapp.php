@@ -12,7 +12,7 @@
 <div class="x_panel">
 <div class="x_title">
 <h2><?= $title; ?> |<small>View</small></h2>
-<a href="newwebapp" class="btn btn-default margin pull-right" style="margin-right:5px"><i class="fa fa-plus"></i> Add WebApp</a>
+<a href="newwebapp" class="btn btn-default margin pull-right" style="margin-right:5px"><i class="fa fa-plus"></i> Add Order</a>
 <div class="clearfix"></div>
 </div>
 <div class="x_content">
@@ -22,11 +22,11 @@
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h3 class="panel-title" id="myModalLabel">Webapp Details</h3>
+<h3 class="panel-title" id="myModalLabel">Order Details</h3>
 </div>
 <div class="modal-body">
 <div class="form-group col-md-6">
-<label>Webapp ID:</label>
+<label>Order ID:</label>
 <span id="ordnumber"></span>
 </div>
 <div class="form-group col-md-6">
@@ -106,7 +106,7 @@
 <table id="datatable-buttons" class="table table-striped table-bordered">
 <thead>
 <tr>
-<th>Webapp ID</th>
+<th>Order ID</th>
 <th>Business</th>
 <th>Email</th>
 <th>Payment Date</th>

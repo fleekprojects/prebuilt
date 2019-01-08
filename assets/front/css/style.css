@@ -383,12 +383,14 @@ textarea.t_area {
 	vertical-align: middle;
 	bottom: 0px;
 }
+#errordomain,
 #errordomainaddress .alert-success,
 #errordomainaddress .alert-danger {
     max-width: 450px;
     margin-top: 20px;
     width: 100%;
 }
+#errordomain{max-width: 400px;}
 #domainHave,
 #domainSearch {
     min-height: 360px;

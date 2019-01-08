@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Webapp extends MY_Controller {
 
 var $table='pre_webapp';
-var $pagetitle='Web App';
+var $pagetitle='Orders';
 var $viewname='admin/webapp';
 
 public function __construct(){

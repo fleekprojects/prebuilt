@@ -53,24 +53,10 @@
 			if($this->Dmodel->IFExist('users','email',$_POST['email'])){
 				$userdata=array('user_name'=>$_POST['email'],'email'=>$_POST['email'],'password'=>md5($password),'status'=>1,'date_created'=>DateTime_Now);
 				$userid=$this->Dmodel->insertdatatoid('pre_users',$userdata);
-			
-			}
-			else{
-					$users=$this->Dmodel->get_tbl_whr_row_key('pre_users','email',$_POST['email']);
-					$userid=$users->user_id;
-			}
+				$userdetailsdata=array('user_id'=>$userid,'email'=>$_POST['email'],'phone'=>$_POST['phone']);
+				$usdetail=$this->Dmodel->insertdata('pre_user_details',$userdetailsdata);
 
-
-			$userdetailsdata=array('user_id'=>$userid,'email'=>$_POST['email'],'phone'=>$_POST['phone']);
-			$usdetail=$this->Dmodel->insertdata('pre_user_details',$userdetailsdata);
-			$webdata=array('user_id'=>$userid,'business_name'=>$cookiearr[0],'industry_id'=>$cookiearr[1],'business_logo'=>$cookiearr[2],'have_domain'=>$cookiearr[3],'domain'=>$cookiearr[4],'theme_id'=>$cookiearr[5],'customization_details'=>$cookiearr[6],'package_id'=>$cookiearr[7],'contact_preference'=>$_POST['optradio'],'status'=>0,'date_created'=>DateTime_Now);
-			$packagewhere=array('package_id'=>$cookiearr[7]);
-			$packages=$this->Dmodel->get_tbl_whr_arr('pre_packages',$packagewhere);
-			$amount=$_POST['amount'];
-			$webid=$this->Dmodel->insertdatatoid('pre_webapp',$webdata);
-			$paymentarr=array('user_id'=>$userid,'webapp_id'=>$webid,'amount_paid'=>$amount,'status'=>$status,'payment_date'=>DateTime_Now,'gateway'=>'stripe','gateway_returns'=>$charge->id);
-			$webid=$this->Dmodel->insertdatatoid('pre_payments',$paymentarr);
-			$viewdata['message']=$message;
+				$viewdata['message']=$message;
 
 				$maildata['from_email']=Site_Email;
 				$maildata['from_name']=Site_Title;
@@ -93,6 +79,22 @@
 
 				'.Site_Title.'Customer Support';
 				$mail=$this->Dmodel->send_mail($maildata);
+			
+			}
+			else{
+					$users=$this->Dmodel->get_tbl_whr_row_key('pre_users','email',$_POST['email']);
+					$userid=$users->user_id;
+					$viewdata['message']=$message;
+			}
+
+			$webdata=array('user_id'=>$userid,'business_name'=>$cookiearr[0],'industry_id'=>$cookiearr[1],'business_logo'=>$cookiearr[2],'have_domain'=>$cookiearr[3],'domain'=>$cookiearr[4],'theme_id'=>$cookiearr[5],'customization_details'=>$cookiearr[6],'package_id'=>$cookiearr[7],'contact_preference'=>$_POST['optradio'],'status'=>0,'date_created'=>DateTime_Now);
+			$packagewhere=array('package_id'=>$cookiearr[7]);
+			$packages=$this->Dmodel->get_tbl_whr_arr('pre_packages',$packagewhere);
+			$amount=$_POST['amount'];
+			$webid=$this->Dmodel->insertdatatoid('pre_webapp',$webdata);
+			$paymentarr=array('user_id'=>$userid,'webapp_id'=>$webid,'amount_paid'=>$amount,'status'=>$status,'payment_date'=>DateTime_Now,'gateway'=>'stripe','gateway_returns'=>$charge->id);
+			$webid=$this->Dmodel->insertdatatoid('pre_payments',$paymentarr);
+			
 			if($cookiearr[3] == 0){
 			require_once "assets/namecheap/namecheap.php";
 			$nc_api = array( 'api_user' => 'fleekncapi',

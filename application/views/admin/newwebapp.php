@@ -100,9 +100,9 @@ foreach ($userdata as $usersdata) {
 <div class="clearfix"></div>
 <div class="modal-footer">
 <?php if(isset($webappdata)){ ?>
-<button type="submit" id="submit" name="submit" class="btn btn-warning">Update Web App</button>
+<button type="submit" id="submit" name="submit" class="btn btn-warning">Update Order</button>
 <?php }else{ ?>	
-<button type="button" id="chkdmn" name="chkdmn" class="btn btn-warning" onclick="checkdomainagain();"><i class="fa fa-plus"></i>   Add Web App</button>	
+<button type="button" id="chkdmn" name="chkdmn" class="btn btn-warning" onclick="checkdomainagain();"><i class="fa fa-plus"></i>   Add Order</button>	
 <button type="submit" id="submit" name="submit" class="btn btn-warning hide"><i class="fa fa-plus"></i>   Add Web App</button>
 <div id="apierrors"></div>
 <?php } ?>
